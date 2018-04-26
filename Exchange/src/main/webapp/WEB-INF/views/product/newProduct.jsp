@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+#imgbox li {float:left; list-style:none; display: inline;}
+</style>
 <!-- Title -->
 <title>Habitat - A Professional Bootstrap Template</title>
 <%@include file="../include/style.jsp"%>
@@ -106,7 +109,13 @@
 						<form method="post" enctype="multipart/form-data">
 							<div class="row">
 								<div class="col-md-3">
-									<input type="file" name="photofile">
+									<input type="file" name="photofile" id="inputGroupFile02">
+									 <div id="imgbox" draggable="auto">
+										<img id="preview_img" height="200" style="max-width:300px; max-height:300px; width: 210px; height: 210px;"
+                                     src="" />
+                                     <ul id="imagelist" class="list-group" style="list-style-type:none;margin-top:1px">
+                   					 </ul>
+      								  </div>
 								</div>
 								<div class="col-md-7">
 								<table><tr>
@@ -142,48 +151,40 @@
 		<%@include file="../include/jsFile.jsp"%>
 		<script src="<%=request.getContextPath()%>/resources/js/category.js">
 		</script>
-		
-		<script type="text/javascript">  
-   jQuery(function($) {  
-        var tocken = ""; /* Access Tocken 입력 */  
-        var count = "6";  
-        $.ajax({  
-            type: "GET",  
-            dataType: "jsonp",  
-            cache: false,  
-            url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + tocken + "&count=" + count,  
-            success: function(response) {  
-             if ( response.data.length > 0 ) {  
-                  for(var i = 0; i < response.data.length; i++) {  
-                       var insta = '<div class="insta-box">';  
-                       insta += "<a target='_blank' href='" + response.data[i].link + "'>";  
-                       insta += "<div class'image-layer'>";  
-                       //insta += "<img src='" + response.data[i].images.thumbnail.url + "'>";  
-                       insta += '<img src="' + response.data[i].images.thumbnail.url + '">';  
-                       insta += "</div>";  
-                       //console.log(response.data[i].caption.text);  
-                       if ( response.data[i].caption !== null ) {  
-                            insta += "<div class='caption-layer'>";  
-                            if ( response.data[i].caption.text.length > 0 ) {  
-                                 insta += "<p class='insta-caption'>" + response.data[i].caption.text + "</p>"  
-                            }  
-                            insta += "<span class='insta-likes'>" + response.data[i].likes.count + " Likes</span>";  
-                            insta += "</div>";  
-                       }  
-                       insta += "</a>";  
-                       insta += "</div>";  
-                       $("#instaPics").append(insta);  
-                  }  
-             }  
-             $(".insta-box").hover(function(){  
-                  $(this).find(".caption-layer").css({"backbround" : "rgba(255,255,255,0.7)", "display":"block"});  
-             }, function(){  
-                  $(this).find(".caption-layer").css({"display":"none"});  
-             });  
-            }  
-           });  
-   });  
-   </script>  
+
+        	<script type="text/javascript">  
+        $(document).ready(function() {
+        	var cnt=0;
+            var upload = $('#inputGroupFile02')[0],
+                imgbox = document.getElementById('imgbox'),
+                state = $('#inputGroupFile02');
+
+            if (typeof window.FileReader === 'undefined') {
+                state.className = 'fail';
+            } else {
+                state.className = 'success';
+            }
+            upload.onchange = function(e) {
+                e.preventDefault();
+                var file = upload.files[0],
+                    reader = new FileReader();
+                reader.onload = function(event) {
+                	cnt+=1;
+                	alert(cnt);
+                	$('#imgbox ul').append(
+                		    $('<li>').append(
+                		        $('<a>').attr("href","/user/messages").append(
+                		            $('<span>').attr({'class': 'tab'}).append($("<img id='img_"+cnt+"'>").attr({'src':event.target.result,'style':'width:55px; height:55px'})
+                		            ))));  
+                    $("#preview_img").attr("src",event.target.result);
+                };
+                reader.readAsDataURL(file);
+                return false;
+            };
+        });
+
+    </script>  
+
 		
 		<%-- <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 		<script src="<%=request.getContextPath()%>/resources/js/daumAdressAPI.js"></script> --%>
