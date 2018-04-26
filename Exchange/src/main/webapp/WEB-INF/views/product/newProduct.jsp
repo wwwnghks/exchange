@@ -113,7 +113,12 @@
 										<option selected="selected">1차 분류</option>
 									</select> <select id="sec_name" name="sec_name" style="width: 16em">
 										<option selected="selected">2차 분류</option>
-									</select> <input type="submit" value="등록">
+									</select> <br>
+									브랜드 : <select id="brand" name="brand" style="width: 10em">
+										<option selected="selected">브랜드 분류</option>
+									</select> 
+									<input type="text" name="bra_name" id="bra_name">
+									<input type="submit" value="등록">
 								</div>
 							</div>
 							<!-- End Icon Size -->
@@ -145,12 +150,9 @@
 	};
  	$(function category02(){
  		$('#fir_name').change(function(){
- 			/* alert(this.value); */
  			$("#sec_name").find("option").remove();
  			$("#sec_name").append("<option selected='selected'>2차분류</option>");
-
  			$.ajax({
- 				
  				type:'GET',
  				url:'category02',
  				dataType : "json",
@@ -169,24 +171,34 @@
  				}
  			});
  		});
- 		/* alert($("#fir_name option:selected").val());
-		$.ajax({
-			
-			type:'GET',
-			url:'category02',
-			dataType : "json",
-			cache : false,
-			
-			success:function(data){
-				$.each(data.second_Category, function(index, second_Category) {
-					$('#sec_name').append('<option value='+second_Category.sec_name+'>'+second_Category.sec_name+'</option>');
-				});
-			},
-			error:function(request,status,error){
-				alert('ERROR : ' +request + ' ' + status + ' ' + error);
-			}
-		}); */
+ 		
 	}); 
+ 	
+ 	$(function brand(){
+ 		$('#sec_name').change(function(){
+ 			$("#brand").find("option").remove();
+ 			$("#brand").append("<option selected='selected'>2차분류</option>");
+ 			$.ajax({
+ 				type:'GET',
+ 				url:'brand',
+ 				dataType : "json",
+ 				cache : false,
+ 				data : {
+ 					sec_name : this.value
+ 				},
+ 				success:function(data){
+ 					$.each(data.brand_Category, function(index, brand_Category) {	
+ 						$('#brand').append('<option value='+brand_Category.bra_name+'>'+brand_Category.bra_name+'</option>');
+ 					});
+ 				},
+ 				error:function(request,status,error){
+ 					
+ 					alert('ERROR : ' +request + ' ' + status + ' ' + error);
+ 				}
+ 			});
+ 		});
+ 		
+	});  
 
 	$(function(){
 		category01();
