@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javamuk.mapper.ProductReplyMapper">
+
+	<insert id="insertProductReply" parameterType="com.javamuk.domain.Product_Reply">
+		<selectKey resultType="int" keyProperty="pro_re_p_num"
+			order="BEFORE">
+			SELECT ifnull(max(pro_re_p_num),0)+1 from
+			`exchange`.product_reply
+		</selectKey>
+
+		INSERT INTO
+		`exchange`.`product_reply`(`pro_re_p_num`,`pro_re_s_num`,`pro_re_level`,`pro_re_contents`,`pro_idx`,`mem_idx`)
+		VALUES(#{pro_re_p_num},1,0,#{pro_re_contents},#{pro_idx},#{mem_idx})
+	</insert>
+
+	<update id="updateProductReWrite" parameterType="com.javamuk.domain.Product_Reply">
+		update
+		`exchange`.`product_reply`
+		set pro_re_s_num=pro_re_s_num+1
+		where
+		pro_re_p_num=#{pro_re_p_num} and pro_re_s_num>#{pro_re_s_num}
+	</update>
+
+	<insert id="insertProductReWrite" parameterType="com.javamuk.domain.Product_Reply">
+		INSERT INTO
+		`exchange`.`product_reply`(`pro_re_p_num`,`pro_re_s_num`,`pro_re_level`,`pro_re_contents`,`pro_idx`,`mem_idx`)
+		VALUES(#{pro_re_p_num},(#{pro_re_s_num}+1),(#{pro_re_level}+1),#{pro_re_contents},#{pro_idx},#{mem_idx})
+
+	</insert>
+
+ 	<delete id="deleteProductReply" parameterType="com.javamuk.domain.Product_Reply">
+		delete from `exchange`.product_reply where pro_re_p_num=#{pro_re_p_num} and 2>(select * from(select count(pro_re_p_num) from `exchange`.product_reply where pro_re_p_num=#{pro_re_p_num})as a);
+	</delete> 
+
+	<select id="selectProductAll" resultType="com.javamuk.domain.Product_Reply">
+		select * from
+		product_reply order by pro_re_p_num desc, pro_re_s_num asc
+	</select>
+
+
+
+</mapper>

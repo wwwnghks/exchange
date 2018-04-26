@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javamuk.mapper.ProductMapper">
+
+	<select id="selectFirstCategory" resultType="com.javamuk.domain.First_Category">
+		select * from `exchange`.first_category
+	</select>
+
+	 <select id="selectSecondCategory" parameterType="com.javamuk.domain.Second_Category" resultType="com.javamuk.domain.Second_Category">
+		select sec_idx,sec_name from `exchange`.second_category inner join `exchange`.first_category on second_category.fir_idx=first_category.fir_idx where first_category.fir_name=#{fir_name}
+	</select> 
+
+</mapper>
