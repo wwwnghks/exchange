@@ -109,16 +109,25 @@
 									<input type="file" name="photofile">
 								</div>
 								<div class="col-md-7">
-									카테고리 : <select id="fir_name" name="fir_name" style="width: 10ems">
-										<option selected="selected">1차 분류</option>
+								<table><tr>
+									<td nowrap="nowrap">카테고리 <td> <select id="fir_name" name="fir_name" style="width: 10ems">
+										<option selected="selected" disabled="disabled" >1차 분류</option>
 									</select> <select id="sec_name" name="sec_name" style="width: 16em">
-										<option selected="selected">2차 분류</option>
-									</select> <br>
-									브랜드 : <select id="brand" name="brand" style="width: 10em">
-										<option selected="selected">브랜드 분류</option>
+										<option selected="selected" >2차 분류</option>
+									</select>
+									</td><tr>
+									<td>브랜드 </td><td> <select id="brand" name="brand" style="width: 10em">
+										<option selected="selected" disabled="disabled">브랜드 분류</option>
 									</select> 
 									<input type="text" name="bra_name" id="bra_name">
-									<input type="submit" value="등록">
+									<input type="button" value="브랜드등록" id="createBrand"></td><tr>
+									<td>거래지역</td><td>aaa</td><tr>
+									<td>제목 </td><td> <input type="text" name="title" size="67"></td><tr>
+									<td style='vertical-align:top'>설명 </td> <td> <textarea rows="5" cols="67"></textarea></td><tr>
+									<td>연관태그</td><td><input type="text" name="tag"  size="67"></td><tr>
+									<td colspan="2" align="right"><input type="submit" value="상품등록"></td>
+									</table>
+									
 								</div>
 							</div>
 							<!-- End Icon Size -->
@@ -131,79 +140,53 @@
 		<!-- === END CONTENT === -->
 		<%@include file="../include/footer.jsp"%>
 		<%@include file="../include/jsFile.jsp"%>
-		<script>
-	function category01(){
-		$.ajax({
-			type:'GET',
-			url:'category01',
-			dataType : "json",
-			cache : false,
-			success:function(data){
-				$.each(data.first_Category, function(index, first_Category) {
-					$('#fir_name').append('<option value='+first_Category.fir_name+'>'+first_Category.fir_name+'</option>');
-				});
-			},
-			error:function(request,status,error){
-				alert('ERROR : ' +request + ' ' + status + ' ' + error);
-			}
-		});
-	};
- 	$(function category02(){
- 		$('#fir_name').change(function(){
- 			$("#sec_name").find("option").remove();
- 			$("#sec_name").append("<option selected='selected'>2차분류</option>");
- 			$.ajax({
- 				type:'GET',
- 				url:'category02',
- 				dataType : "json",
- 				cache : false,
- 				data : {
- 					fir_name : this.value
- 				},
- 				success:function(data){
- 					$.each(data.second_Category, function(index, second_Category) {	
- 						$('#sec_name').append('<option value='+second_Category.sec_name+'>'+second_Category.sec_name+'</option>');
- 					});
- 				},
- 				error:function(request,status,error){
- 					
- 					alert('ERROR : ' +request + ' ' + status + ' ' + error);
- 				}
- 			});
- 		});
- 		
-	}); 
- 	
- 	$(function brand(){
- 		$('#sec_name').change(function(){
- 			$("#brand").find("option").remove();
- 			$("#brand").append("<option selected='selected'>2차분류</option>");
- 			$.ajax({
- 				type:'GET',
- 				url:'brand',
- 				dataType : "json",
- 				cache : false,
- 				data : {
- 					sec_name : this.value
- 				},
- 				success:function(data){
- 					$.each(data.brand_Category, function(index, brand_Category) {	
- 						$('#brand').append('<option value='+brand_Category.bra_name+'>'+brand_Category.bra_name+'</option>');
- 					});
- 				},
- 				error:function(request,status,error){
- 					
- 					alert('ERROR : ' +request + ' ' + status + ' ' + error);
- 				}
- 			});
- 		});
- 		
-	});  
-
-	$(function(){
-		category01();
-	});
-</script>
+		<script src="<%=request.getContextPath()%>/resources/js/category.js">
+		</script>
+		
+		<script type="text/javascript">  
+   jQuery(function($) {  
+        var tocken = ""; /* Access Tocken 입력 */  
+        var count = "6";  
+        $.ajax({  
+            type: "GET",  
+            dataType: "jsonp",  
+            cache: false,  
+            url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + tocken + "&count=" + count,  
+            success: function(response) {  
+             if ( response.data.length > 0 ) {  
+                  for(var i = 0; i < response.data.length; i++) {  
+                       var insta = '<div class="insta-box">';  
+                       insta += "<a target='_blank' href='" + response.data[i].link + "'>";  
+                       insta += "<div class'image-layer'>";  
+                       //insta += "<img src='" + response.data[i].images.thumbnail.url + "'>";  
+                       insta += '<img src="' + response.data[i].images.thumbnail.url + '">';  
+                       insta += "</div>";  
+                       //console.log(response.data[i].caption.text);  
+                       if ( response.data[i].caption !== null ) {  
+                            insta += "<div class='caption-layer'>";  
+                            if ( response.data[i].caption.text.length > 0 ) {  
+                                 insta += "<p class='insta-caption'>" + response.data[i].caption.text + "</p>"  
+                            }  
+                            insta += "<span class='insta-likes'>" + response.data[i].likes.count + " Likes</span>";  
+                            insta += "</div>";  
+                       }  
+                       insta += "</a>";  
+                       insta += "</div>";  
+                       $("#instaPics").append(insta);  
+                  }  
+             }  
+             $(".insta-box").hover(function(){  
+                  $(this).find(".caption-layer").css({"backbround" : "rgba(255,255,255,0.7)", "display":"block"});  
+             }, function(){  
+                  $(this).find(".caption-layer").css({"display":"none"});  
+             });  
+            }  
+           });  
+   });  
+   </script>  
+		
+		<%-- <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+		<script src="<%=request.getContextPath()%>/resources/js/daumAdressAPI.js"></script> --%>
 	</div>
 </body>
 </html>

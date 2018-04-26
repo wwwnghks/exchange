@@ -32,9 +32,25 @@ public class ProductCreateDAO {
 
 	public List<Brand> readBrand(Second_Category second_Category) {
 		// TODO Auto-generated method stub
-		System.out.println(second_Category);
+
 		return session.selectList(namespace+".selectBrandCategory", second_Category);
 	}
-	
+
+	public int createBrand(Brand brand) {
+		// TODO Auto-generated method stub
+		return session.insert(namespace+".insertBrand", brand);
+	}
+
+	public Brand searchBrand(Brand brand) {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace+".brandSearch",brand);
+	}
+
+	public List<Brand> brandSelect(Brand brand) {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace+".brandSelect", brand);
+	}
+
+
 
 }

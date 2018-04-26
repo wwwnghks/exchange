@@ -66,6 +66,26 @@ public class ProductCreateController {
 		return jsonObject;
 	}
 	
+	@RequestMapping(value = "/product/createBrand", method = RequestMethod.GET)
+	@ResponseBody
+	public int createBrand(Brand brand) {
+		System.out.println(brand);
+		return service.createBrand(brand);
+	}
 	
+	
+	@RequestMapping(value = "/product/brandSelect", method = RequestMethod.GET)
+	@ResponseBody
+	public JSONObject brandSelect(Brand brand) {
+		List<Brand> list = service.brandSelect(brand);
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("brandSelect", list);
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.putAll(map);
+		return jsonObject;
+	}
+	
+	
+
 
 }

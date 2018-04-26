@@ -33,4 +33,20 @@ public class ProductCreateService {
 		return dao.readBrand(second_Category);
 	}
 
+	public int createBrand(Brand brand) {
+		// TODO Auto-generated method stub
+		if(dao.searchBrand(brand)==null) {
+			return dao.createBrand(brand);
+		}else {
+			return 0;
+		}
+	}
+
+	public List<Brand> brandSelect(Brand brand) {
+		// TODO Auto-generated method stub
+		return dao.brandSelect(brand);
+	}
+
+
+
 }

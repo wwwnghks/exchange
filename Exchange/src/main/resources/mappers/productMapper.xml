@@ -14,7 +14,7 @@
 		select sec_idx,sec_name from `exchange`.second_category
 		inner join `exchange`.first_category on
 		second_category.fir_idx=first_category.fir_idx where
-		first_category.fir_name=#{fir_name}
+		first_category.fir_idx=#{fir_idx}
 	</select>
 
 	<select id="selectBrandCategory" parameterType="com.javamuk.domain.Second_Category"
@@ -22,9 +22,24 @@
 		select bra_idx,bra_name from `exchange`.brand inner join
 		`exchange`.second_category on brand.sec_idx= second_category.sec_idx
 		inner join `exchange`.first_category on second_category.fir_idx=
-		first_category.fir_idx where second_category.sec_name=#{sec_name};
+		first_category.fir_idx where second_category.sec_idx=#{sec_idx}
 	</select>
 
+	<select id="brandSearch" parameterType="com.javamuk.domain.Brand"
+		resultType="com.javamuk.domain.Brand">
+		select bra_idx,bra_name from `exchange`.brand inner join 
+		`exchange`.second_category on brand.sec_idx= second_category.sec_idx 
+		inner join `exchange`.first_category on second_category.fir_idx=first_category.fir_idx 
+		where bra_name=#{bra_name} and brand.sec_idx=#{sec_idx}
+	</select>
+	
+	<select id="brandSelect" resultType="com.javamuk.domain.Brand">
+		select bra_idx,bra_name from `exchange`.brand where bra_idx=#{bra_idx}
+	</select>
+	
+	<insert id="insertBrand" parameterType="com.javamuk.domain.Brand">
+		insert into `exchange`.brand(bra_name,sec_idx) values(#{bra_name},#{sec_idx})
+	</insert>
 
 
 </mapper>
