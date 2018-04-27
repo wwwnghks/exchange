@@ -18,7 +18,7 @@ public class MyProductCreateDAO {
 	@Inject
 	private SqlSession session;
 	
-	private static String namespace="com.javamuk.mapper.ProductMapper";
+	private static String namespace="com.javamuk.mapper.CreateProductMapper";
 
 	public List<First_Category> readFirst_category() {
 		// TODO Auto-generated method stub
