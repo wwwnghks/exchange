@@ -27,6 +27,11 @@ public class MyProductReadDAO {
 		// TODO Auto-generated method stub
 		return session.selectOne(namespace+".selectProductOne",product);
 	}
+
+	public Member ownerMember(Product product) {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace+".selectOwner", product);
+	}
 	
 	
 	

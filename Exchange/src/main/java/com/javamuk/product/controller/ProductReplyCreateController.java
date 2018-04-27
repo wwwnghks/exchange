@@ -22,7 +22,6 @@ public class ProductReplyCreateController {
 	@RequestMapping(value = "/reply/write", method = RequestMethod.POST)
 	@ResponseBody
 	public int replycreate(Product_Reply product_Reply) {
-		System.out.println(product_Reply);
 		int result = service.createReply(product_Reply);
 		return result;
 	}
@@ -30,7 +29,6 @@ public class ProductReplyCreateController {
 	@RequestMapping(value = "/reply/rewrite", method = RequestMethod.POST)
 	@ResponseBody
 	public int rewritecreate(Product_Reply product_Reply) {
-		System.out.println(product_Reply);
 		int result = service.createReWrite(product_Reply);
 		return result;
 	}

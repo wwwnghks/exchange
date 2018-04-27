@@ -26,4 +26,9 @@ public class MyProductReadService {
 		return dao.myProductOne(product);
 	}
 
+	public Member ownerMember(Product product) {
+		// TODO Auto-generated method stub
+		return dao.ownerMember(product);
+	}
+
 }

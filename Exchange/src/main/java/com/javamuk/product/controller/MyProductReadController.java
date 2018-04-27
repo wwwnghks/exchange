@@ -33,6 +33,8 @@ public class MyProductReadController {
 	@RequestMapping(value = "/product/myProductRead", method = RequestMethod.GET)
 	public String myProductReadGET(Model model,Product product) {
 		Product resultProduct= service.myProductOne(product);
+		Member ownerMember = service.ownerMember(product);
+		model.addAttribute("ownerMember", ownerMember);
 		model.addAttribute("productOne", resultProduct);
 		return "product/myProductRead";
 	}
