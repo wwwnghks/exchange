@@ -20,6 +20,12 @@ public class MemberLoginController {
 		return "member/loginMember";
 	}
 	
+	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "member/logout";
+	}
+	
 	@RequestMapping(value = "/member/loginMember", method = RequestMethod.POST)
 	public String loginMemeberPost(Member login_member,HttpSession session) {
 		

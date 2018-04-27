@@ -1,26 +1,30 @@
 package com.javamuk.product.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.javamuk.domain.Brand;
 import com.javamuk.domain.First_Category;
+import com.javamuk.domain.Product;
 import com.javamuk.domain.Second_Category;
-import com.javamuk.product.service.ProductCreateService;
+import com.javamuk.product.service.MyProductCreateService;
 
 @Controller
-public class ProductCreateController {
+public class MyProductCreateController {
 	
 	@Inject
-	private ProductCreateService service;
+	private MyProductCreateService service;
 	
 	@RequestMapping(value = "/product/newProduct", method = RequestMethod.GET)
 	public String newProductGET() {
@@ -28,8 +32,12 @@ public class ProductCreateController {
 	}
 	
 	@RequestMapping(value = "/product/newProduct", method = RequestMethod.POST)
-	public String newProductPOST() {
-		return "redirect:../";
+	public String newProductPOST(Product product,HttpServletRequest request) throws IllegalStateException, IOException {
+		
+		int result = service.createProduct(product,request);
+		
+		
+		return "product/createProductSuccess";
 	}
 	
 	@RequestMapping(value = "/product/category01", method = RequestMethod.GET)
@@ -84,6 +92,20 @@ public class ProductCreateController {
 		jsonObject.putAll(map);
 		return jsonObject;
 	}
+	
+/*	@RequestMapping(value = "/product/photofiles", method = RequestMethod.GET)
+	@ResponseBody
+	public JSONObject photofiles(MultipartFile files[]) {
+		System.out.println(files);
+		List<Brand> list = service.brandSelect(brand);
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("brandSelect", list);
+		JSONObject jsonObject = new JSONObject();
+		//jsonObject.putAll(map);
+		return jsonObject;
+	}*/
+	
+	
 	
 	
 

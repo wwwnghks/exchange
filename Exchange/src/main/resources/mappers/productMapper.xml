@@ -40,6 +40,16 @@
 	<insert id="insertBrand" parameterType="com.javamuk.domain.Brand">
 		insert into `exchange`.brand(bra_name,sec_idx) values(#{bra_name},#{sec_idx})
 	</insert>
+	
+	<insert id="createProduct" parameterType="com.javamuk.domain.Product">
+		<selectKey resultType="int" keyProperty="pro_idx"
+			order="BEFORE">
+			SELECT ifnull(max(pro_idx),0)+1 from
+			`exchange`.product_reply
+		</selectKey>
+		INSERT INTO `exchange`.`product`(`pro_name`,`pro_contents`,`pro_photo_01`,`pro_photo_02`,`pro_photo_03`,`pro_location`,`pro_hash`,`mem_idx`,`bra_idx`) 
+		VALUES(#{pro_name},#{pro_contents},#{pro_photo_01},#{pro_photo_02},#{pro_photo_03},#{pro_location},#{pro_hash},#{mem_idx},#{bra_idx})
+	</insert>
 
 
 </mapper>

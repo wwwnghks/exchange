@@ -19,10 +19,7 @@ public class MemberCreateController {
 	
 	@RequestMapping(value="/",method=RequestMethod.POST)
 	public String create(Member member,HttpServletRequest request) throws IllegalStateException, IOException {
-		
-		int result =service.createMember(member, request);
-		System.out.println(result);
-		
+		service.createMember(member, request);	
 		return "home";
 	}
 }

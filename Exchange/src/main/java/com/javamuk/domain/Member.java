@@ -55,6 +55,18 @@ public class Member {
 		this.mem_score = mem_score;
 	}
 
+	
+
+	@Override
+	public String toString() {
+		return "Member [mem_idx=" + mem_idx + ", mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_name=" + mem_name
+				+ ", mem_birth=" + mem_birth + ", mem_nickname=" + mem_nickname + ", mem_phone=" + mem_phone
+				+ ", mem_email=" + mem_email + ", address_post=" + address_post + ", address_01=" + address_01
+				+ ", address_02=" + address_02 + ", mem_address=" + mem_address + ", mem_photo=" + mem_photo
+				+ ", mem_birth1=" + mem_birth1 + ", mem_birth2=" + mem_birth2 + ", mem_birth3=" + mem_birth3
+				+ ", photofile=" + photofile + ", mem_score=" + mem_score + "]";
+	}
+
 
 	public String getAddress_post() {
 		return address_post;

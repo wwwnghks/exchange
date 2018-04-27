@@ -107,9 +107,12 @@
 						<!-- Icon Size -->
 						<h3 class="margin-bottom-20">상품 등록</h3>
 						<form method="post" enctype="multipart/form-data">
+						<input type="hidden" name ="mem_idx" value="${session_member.mem_idx }">
 							<div class="row">
 								<div class="col-md-3">
-									<input type="file" name="photofile" id="inputGroupFile02">
+									<input type="file" name="photofile01" id="inputGroupFile01">
+									<input type="file" name="photofile02" id="inputGroupFile02">
+									<input type="file" name="photofile03" id="inputGroupFile03">
 									 <div id="imgbox" draggable="auto">
 										<img id="preview_img" height="200" style="max-width:300px; max-height:300px; width: 210px; height: 210px;"
                                      src="" />
@@ -125,15 +128,15 @@
 										<option selected="selected" >2차 분류</option>
 									</select>
 									</td><tr>
-									<td>브랜드 </td><td> <select id="brand" name="brand" style="width: 10em">
+									<td>브랜드 </td><td> <select id="brand" name="bra_idx" style="width: 10em">
 										<option selected="selected" disabled="disabled">브랜드 분류</option>
 									</select> 
 									<input type="text" name="bra_name" id="bra_name">
 									<input type="button" value="브랜드등록" id="createBrand"></td><tr>
-									<td>거래지역</td><td>aaa</td><tr>
-									<td>제목 </td><td> <input type="text" name="title" size="67"></td><tr>
-									<td style='vertical-align:top'>설명 </td> <td> <textarea rows="5" cols="67"></textarea></td><tr>
-									<td>연관태그</td><td><input type="text" name="tag"  size="67"></td><tr>
+									<td>거래지역</td><td><input type="text" name="pro_location" size="67"></td><tr>
+									<td>제목 </td><td> <input type="text" name="pro_name" size="67"></td><tr>
+									<td style='vertical-align:top'>설명 </td> <td> <textarea name="pro_contents" rows="5" cols="67"></textarea></td><tr>
+									<td>연관태그</td><td><input type="text" name="pro_hash"  size="67"></td><tr>
 									<td colspan="2" align="right"><input type="submit" value="상품등록"></td>
 									</table>
 									
@@ -152,9 +155,10 @@
 		<script src="<%=request.getContextPath()%>/resources/js/category.js">
 		</script>
 
-        	<script type="text/javascript">  
+    <!--     	<script type="text/javascript">  
         $(document).ready(function() {
         	var cnt=0;
+        	var files=new Array();
             var upload = $('#inputGroupFile02')[0],
                 imgbox = document.getElementById('imgbox'),
                 state = $('#inputGroupFile02');
@@ -170,7 +174,49 @@
                     reader = new FileReader();
                 reader.onload = function(event) {
                 	cnt+=1;
-                	alert(cnt);
+                	if(cnt>=4){
+                		alert('사진은 3장만 등록가능합니다.');
+                		return;
+                	}
+                	files[cnt]=file;
+                	$('#imgbox ul').append(
+                		    $('<li>').append(
+                		        $('<a>').attr("href","/user/messages").append(
+                		            $('<span>').attr({'class': 'tab'}).append($("<img id='img_"+cnt+"'>").attr({'src':event.target.result,'style':'width:55px; height:55px'})
+                		            ))));  
+                    $("#preview_img").attr("src",event.target.result);
+                };
+                reader.readAsDataURL(file);
+                return false;
+            };
+        });
+
+    </script>   -->
+    
+        	<script type="text/javascript">  
+        $(document).ready(function() {
+        	var cnt=0;
+        	var files=new Array();
+            var upload = $('#inputGroupFile01')[0],
+                imgbox = document.getElementById('imgbox'),
+                state = $('#inputGroupFile01');
+
+            if (typeof window.FileReader === 'undefined') {
+                state.className = 'fail';
+            } else {
+                state.className = 'success';
+            }
+            upload.onchange = function(e) {
+                e.preventDefault();
+                var file = upload.files[0],
+                reader = new FileReader();
+                reader.onload = function(event) {
+                	cnt+=1;
+                	if(cnt>=4){
+                		alert('사진은 3장만 등록가능합니다.');
+                		return;
+                	}
+                	files[cnt]=file;
                 	$('#imgbox ul').append(
                 		    $('<li>').append(
                 		        $('<a>').attr("href","/user/messages").append(
@@ -185,8 +231,8 @@
 
     </script>  
 
-		
-		<%-- <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+		<%-- 
+		 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 		<script src="<%=request.getContextPath()%>/resources/js/daumAdressAPI.js"></script> --%>
 	</div>
 </body>

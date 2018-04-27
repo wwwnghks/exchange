@@ -9,10 +9,11 @@ import org.springframework.stereotype.Repository;
 
 import com.javamuk.domain.Brand;
 import com.javamuk.domain.First_Category;
+import com.javamuk.domain.Product;
 import com.javamuk.domain.Second_Category;
 
 @Repository
-public class ProductCreateDAO {
+public class MyProductCreateDAO {
 	
 	@Inject
 	private SqlSession session;
@@ -49,6 +50,11 @@ public class ProductCreateDAO {
 	public List<Brand> brandSelect(Brand brand) {
 		// TODO Auto-generated method stub
 		return session.selectList(namespace+".brandSelect", brand);
+	}
+
+	public int createProduct(Product product) {
+		// TODO Auto-generated method stub
+		return session.insert(namespace+".createProduct", product);
 	}
 
 
