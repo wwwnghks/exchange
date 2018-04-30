@@ -17,4 +17,7 @@
 	FROM `exchange`.`product` inner join `exchange`.`member` on product.mem_idx = member.mem_idx where product.pro_idx=#{pro_idx}
 </select>
 	
+<select id="locationProduct" parameterType="com.javamuk.domain.Product" resultType="com.javamuk.domain.Product">
+	select * from `exchange`.`product` where pro_location like CONCAT('%',#{pro_location},'%')
+</select>
 </mapper>

@@ -2,6 +2,20 @@
 	pageEncoding="UTF-8"%>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta charset="UTF-8">
+<style>
+
+#location{
+	width : 320px;
+	overflow: auto;
+}
+
+#location > li{
+	width : 75px!important; 
+	border-left: 1px solid rgba(0, 0, 0, 0.05);
+	border-top: 1px solid rgba(0, 0, 0, 0.05);
+	float:left!important;
+}
+</style>
 <div id="pre-header" class="background-gray-lighter">
 	<div class="container no-padding">
 		<div class="row hidden-xs">
@@ -69,16 +83,28 @@
 								<li><a href="pages-404.html">404 Error Page</a></li>
 							</ul>
 						</li>
-						<li><span class="fa-search ">지역별</span>
-							<ul>
-								<li><a href="portfolio-2-column.html">2 Column</a></li>
-								<li><a href="portfolio-3-column.html">3 Column</a></li>
-								<li><a href="portfolio-4-column.html">4 Column</a></li>
-								<li><a href="portfolio-6-column.html">6 Column</a></li>
-							</ul></li>
-						<li><a
-							href="<%=request.getContextPath()%>/product/newProduct"
-							class="fa-pencil ">상품등록</a></li>
+						<li><span class="fa-search">지역별</span>
+							<ul id="location">
+								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=경기">경기</a></li>
+								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=서울">서울</a></li>
+								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=부산">부산</a></li>
+								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=강원">강원</a></li>
+								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=경남">경남</a></li>
+								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=경북">경북</a></li>
+								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=광주">광주</a></li>
+								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=대구">대구</a></li>
+								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=대전">대전</a></li>
+								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=세종">세종</a></li>
+								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=울산">울산</a></li>
+								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=인천">인천</a></li>
+								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=전남">전남</a></li>
+								<li style="border-bottom: 1px solid rgba(0, 0, 0, 0.05);"><a href="<%=request.getContextPath()%>/product/locationRead?location=전북">전북</a></li>
+								<li style="border-bottom: 1px solid rgba(0, 0, 0, 0.05);"><a href="<%=request.getContextPath()%>/product/locationRead?location=제주">제주</a></li>
+								<li style="border-bottom: 1px solid rgba(0, 0, 0, 0.05);"><a href="<%=request.getContextPath()%>/product/locationRead?location=충남">충남</a></li>
+								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=충북">충북</a></li>
+							</ul>
+							</li>
+						<li><a href="<%=request.getContextPath()%>/product/newProduct" class="fa-pencil ">상품등록</a></li>
 						<li><a href="<%=request.getContextPath()%>/product/myProduct" class="fa-folder">내 상품</a></li>
 						<li><a href="contact.html" class="fa-bullhorn">공지사항</a></li>
 						<li><a href="contact.html" class="fa-question-circle">Q&A</a>

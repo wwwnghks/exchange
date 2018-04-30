@@ -20,6 +20,8 @@ public class Product {
 	private int pro_cnt;
 	private int mem_idx;
 	private int bra_idx;
+	
+	
 
 	public Product() {
 		super();

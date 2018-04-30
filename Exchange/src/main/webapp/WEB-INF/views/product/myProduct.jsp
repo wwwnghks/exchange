@@ -130,24 +130,32 @@
                         	<option selected="selected">카테고리별</option>
                         </select>
                         </div>
+                          <table style="margin-right: 10px">
+                        <tr>
+                         <c:forEach items="${productList}" var="productList" varStatus="status">
+                         <c:if test="${status.index%4==0 }"><tr></c:if>
+                        <td style="padding: 10px">
+                        <a href="myProductRead?pro_idx=${productList.pro_idx }"> <img alt="${productList.pro_name }님의 사진" height="150px" width="150px"  
+                       		src="<%=request.getContextPath() %>/uploadfile/memberproduct/${productList.pro_photo_01 }"><br> ${productList.pro_name } </a>
+                        </td>
+                		 </c:forEach>
+                        </table> 
+                       <%--  <div id="categoryBox">
+                        <select id="category">
+                        	<option selected="selected">카테고리별</option>
+                        </select>
+                        </div>
+                       
+                        
                         <ul id = "product_List">
                         <c:forEach items="${productList}" var="productList">
-                       		<li style="text-align: center;"><a href="myProductRead?pro_idx=${productList.pro_idx }"> <img alt="${productList.pro_name }님의 사진" height="150px" width="150px"  
+                       		<li style="text-align: center; margin-right: 10px"><a href="myProductRead?pro_idx=${productList.pro_idx }"> <img alt="${productList.pro_name }님의 사진" height="150px" width="150px"  
                        		src="<%=request.getContextPath() %>/uploadfile/memberproduct/${productList.pro_photo_01 }"><br> ${productList.pro_name } </a></li>
                       
                        
                         </c:forEach>
-                        </ul>
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
+                        </ul> --%>
+            
                     </div>
                 </div>
             </div>

@@ -22,7 +22,6 @@ public class ProductReplyCreateDAO {
 	public int createReWrite(Product_Reply product_Reply) {
 		// TODO Auto-generated method stub
 		int result = session.update(namespace+".updateProductReWrite",product_Reply);
-		System.out.println("업데이트결과값"+result);
 		return session.insert(namespace+".insertProductReWrite",product_Reply);
 	}
 
