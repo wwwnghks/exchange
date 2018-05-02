@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.javamuk.domain.Manager;
 import com.javamuk.domain.Member;
 
 @Repository
@@ -19,6 +20,11 @@ public class MemberLoginDAO {
 		// TODO Auto-generated method stub
 		return session.selectOne(namespace+".loginMember", login_member);
 		
+	}
+
+	public Manager loginManager(Manager manager) {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace + ".loginManager", manager);
 	}
 
 }

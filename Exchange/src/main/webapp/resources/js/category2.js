@@ -54,6 +54,7 @@
 				$.each(data.first_Category, function(index, first_Category) {
 					$('#fir_name').append('<option value='+first_Category.fir_idx+'>'+first_Category.fir_name+'</option>');
 				});
+				load_fir_Select();
 			},
 			error:function(request,status,error){
 				alert('ERROR : ' +request + ' ' + status + ' ' + error);
@@ -77,6 +78,7 @@
  					$.each(data.second_Category, function(index, second_Category) {	
  						$('#sec_name').append('<option value='+second_Category.sec_idx+'>'+second_Category.sec_name+'</option>');
  					});
+ 					load_sec_Select();
  				},
  				error:function(request,status,error){
  					
@@ -103,6 +105,7 @@
  					$.each(data.brand_Category, function(index, brand_Category) {	
  						$('#brand').append('<option value='+brand_Category.bra_idx+'>'+brand_Category.bra_name+'</option>');
  					});
+ 					load_bra_Select();
  				},
  				error:function(request,status,error){
  					

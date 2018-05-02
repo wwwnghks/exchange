@@ -23,15 +23,23 @@
 				<!--  <strong>Phone:</strong>&nbsp;1-800-123-4567 -->
 			</div>
 			<div class="col-sm-6 text-right padding-vert-5">
-				<c:if test="${session_member==null }">
+				<c:if test="${session_member eq null && session_manager eq null}">
 				<strong>
 				<a href="<%=request.getContextPath()%>/member/loginMember">로그인</a>&nbsp;&nbsp;
 				<a href="<%=request.getContextPath()%>/member/newMember">회원가입</a>&nbsp;&nbsp;
 				<a href="customer">고객지원센터</a></strong>
 				</c:if>
-				<c:if test="${session_member!=null }">
+				<c:if test="${session_member ne null }">
 				<strong>
 				${session_member.mem_name }님 환영합니다.
+				<a href="<%=request.getContextPath()%>/member/logout">로그아웃</a>&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/member/mypage">마이페이지</a>&nbsp;&nbsp;
+				<a href="customer">고객지원센터</a></strong>
+				</c:if>
+				
+				<c:if test="${session_manager ne null }">
+				<strong>
+				${session_manager.man_name }님 환영합니다.
 				<a href="<%=request.getContextPath()%>/member/logout">로그아웃</a>&nbsp;&nbsp;
 				<a href="<%=request.getContextPath()%>/member/mypage">마이페이지</a>&nbsp;&nbsp;
 				<a href="customer">고객지원센터</a></strong>

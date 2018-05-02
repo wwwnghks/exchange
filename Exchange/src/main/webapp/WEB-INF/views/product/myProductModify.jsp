@@ -123,9 +123,9 @@
 								<div class="col-md-7">
 								<table><tr>
 									<td nowrap="nowrap">카테고리 <td> <select id="fir_name" name="fir_name" style="width: 10ems">
-										<option selected="selected" disabled="disabled" >1차 분류</option>
+									<option selected="selected" disabled="disabled">1차 분류</option>
 									</select> <select id="sec_name" name="sec_name" style="width: 16em">
-										<option selected="selected" >2차 분류</option>
+										<option selected="selected" disabled="disabled">2차 분류</option>
 									</select>
 									</td><tr>
 									<td>브랜드 </td><td> <select id="brand" name="bra_idx" style="width: 10em">
@@ -133,11 +133,11 @@
 									</select> 
 									<input type="text" name="bra_name" id="bra_name">
 									<input type="button" value="브랜드등록" id="createBrand"></td><tr>
-									<td>거래지역</td><td><input type="text" name="pro_location" size="67"></td><tr>
-									<td>제목 </td><td> <input type="text" name="pro_name" size="67"></td><tr>
-									<td style='vertical-align:top'>설명 </td> <td> <textarea name="pro_contents" rows="5" cols="67"></textarea></td><tr>
-									<td>연관태그</td><td><input type="text" name="pro_hash"  size="67"></td><tr>
-									<td colspan="2" align="right"><input type="submit" value="상품등록"></td>
+									<td>거래지역</td><td><input type="text" name="pro_location" size="67" value="${myProduct.pro_location }"></td><tr>
+									<td>제목 </td><td> <input type="text" name="pro_name" size="67" value="${myProduct.pro_name }"></td><tr>
+									<td style='vertical-align:top'>설명 </td> <td> <textarea name="pro_contents" rows="5" cols="67">${myProduct.pro_contents }</textarea></td><tr>
+									<td>연관태그</td><td><input type="text" name="pro_hash"  size="67" value="${myProduct.pro_hash }"></td><tr>
+									<td colspan="2" align="right"><input type="submit" value="수정완료"></td>
 									</table>
 									
 								</div>
@@ -145,6 +145,7 @@
 							<!-- End Icon Size -->
 							<hr>
 						</form>
+						
 					</div>
 				</div>
 			</div>
@@ -152,9 +153,10 @@
 		<!-- === END CONTENT === -->
 		<%@include file="../include/footer.jsp"%>
 		<%@include file="../include/jsFile.jsp"%>
-		<script src="<%=request.getContextPath()%>/resources/js/category.js">
+		
+		<script src="<%=request.getContextPath()%>/resources/js/category2.js">
 		</script>
-
+	   
     
         	<script type="text/javascript">  
         $(document).ready(function() {
@@ -198,6 +200,21 @@
 		 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 		<script src="<%=request.getContextPath()%>/resources/js/daumAdressAPI.js"></script> --%>
 	</div>
+	 <script>
+		    	function load_fir_Select(){
+		    		 $("#fir_name").val("${myProduct.fir_idx}").trigger('change');
+		    	}
+		    	function load_sec_Select(){
+		    		 $("#sec_name").val("${myProduct.sec_idx}").trigger('change');
+		    	}
+		    	function load_bra_Select(){
+		    		 $("#brand").val("${myProduct.bra_idx}").trigger('change');
+		    	}
+		    	 
+		   		
+	    	
+
+		</script> 
 </body>
 </html>
 <!-- === END FOOTER === -->

@@ -84,8 +84,7 @@
 								<c:if test="${productOne.mem_idx eq session_member.mem_idx}">
 									<div id="buttons">
 										<input type="button" value="수정" id="modify" onclick="location='myProductModify?pro_idx=${productOne.pro_idx}'">
-										<!-- <input type="submit" value="수정" id="modify"> --> 
-										<input type="submit" value="삭제" id="delete">
+										<input type="submit" value="삭제" id="delete"  onclick="location='myProductDelete?pro_idx=${productOne.pro_idx}'">
 									</div>
 								</c:if>
 								<div class="clearfix"></div>

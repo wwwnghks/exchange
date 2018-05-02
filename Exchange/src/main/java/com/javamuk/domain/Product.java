@@ -20,6 +20,11 @@ public class Product {
 	private int pro_cnt;
 	private int mem_idx;
 	private int bra_idx;
+	private String bra_name;
+	private String sec_name;
+	private String fir_name;
+	private int sec_idx;
+	private int fir_idx;
 	
 	
 
@@ -27,10 +32,12 @@ public class Product {
 		super();
 	}
 
+	
+
 	public Product(int pro_idx, String pro_name, String pro_contents, MultipartFile photofile01,
 			MultipartFile photofile02, MultipartFile photofile03, String pro_photo_01, String pro_photo_02,
 			String pro_photo_03, Date pro_regdate, String pro_location, String pro_hash, int pro_cnt, int mem_idx,
-			int bra_idx) {
+			int bra_idx, String bra_name, String sec_name, String fir_name, int sec_idx, int fir_idx) {
 		super();
 		this.pro_idx = pro_idx;
 		this.pro_name = pro_name;
@@ -47,7 +54,14 @@ public class Product {
 		this.pro_cnt = pro_cnt;
 		this.mem_idx = mem_idx;
 		this.bra_idx = bra_idx;
+		this.bra_name = bra_name;
+		this.sec_name = sec_name;
+		this.fir_name = fir_name;
+		this.sec_idx = sec_idx;
+		this.fir_idx = fir_idx;
 	}
+
+
 
 	@Override
 	public String toString() {
@@ -55,8 +69,72 @@ public class Product {
 				+ ", photofile01=" + photofile01 + ", photofile02=" + photofile02 + ", photofile03=" + photofile03
 				+ ", pro_photo_01=" + pro_photo_01 + ", pro_photo_02=" + pro_photo_02 + ", pro_photo_03=" + pro_photo_03
 				+ ", pro_regdate=" + pro_regdate + ", pro_location=" + pro_location + ", pro_hash=" + pro_hash
-				+ ", pro_cnt=" + pro_cnt + ", mem_idx=" + mem_idx + ", bra_idx=" + bra_idx + "]";
+				+ ", pro_cnt=" + pro_cnt + ", mem_idx=" + mem_idx + ", bra_idx=" + bra_idx + ", bra_name=" + bra_name
+				+ ", sec_name=" + sec_name + ", fir_name=" + fir_name + ", sec_idx=" + sec_idx + ", fir_idx=" + fir_idx
+				+ "]";
 	}
+
+
+
+	public String getBra_name() {
+		return bra_name;
+	}
+
+
+
+	public void setBra_name(String bra_name) {
+		this.bra_name = bra_name;
+	}
+
+
+
+	public String getSec_name() {
+		return sec_name;
+	}
+
+
+
+	public void setSec_name(String sec_name) {
+		this.sec_name = sec_name;
+	}
+
+
+
+	public String getFir_name() {
+		return fir_name;
+	}
+
+
+
+	public void setFir_name(String fir_name) {
+		this.fir_name = fir_name;
+	}
+
+
+
+	public int getSec_idx() {
+		return sec_idx;
+	}
+
+
+
+	public void setSec_idx(int sec_idx) {
+		this.sec_idx = sec_idx;
+	}
+
+
+
+	public int getFir_idx() {
+		return fir_idx;
+	}
+
+
+
+	public void setFir_idx(int fir_idx) {
+		this.fir_idx = fir_idx;
+	}
+
+
 
 	public MultipartFile getPhotofile01() {
 		return photofile01;

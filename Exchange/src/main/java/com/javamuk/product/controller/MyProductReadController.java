@@ -54,12 +54,7 @@ public class MyProductReadController {
 		return "product/locationRead";
 	}
 	
-	@RequestMapping(value = "/product/myProductModify", method = RequestMethod.GET)
-	public String myProductUpdateGET(Product product) {
-		Product resultProduct= service.myProductOne(product);
-		System.out.println(resultProduct);
-		return "product/myProductModify";
-	}
+
 	
 	
 
