@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+	
 <meta charset="UTF-8">
 <style>
 
@@ -16,6 +19,11 @@
 	float:left!important;
 }
 </style>
+<script>
+	function productSearch(){
+		location.href="<%=request.getContextPath()%>/product/productSearch?pro_name="+$("#pro_name").val();	 
+	}
+</script>
 <div id="pre-header" class="background-gray-lighter">
 	<div class="container no-padding">
 		<div class="row hidden-xs">
@@ -64,8 +72,15 @@
 			</div>
 			<!-- End Logo -->
 		</div>
+		<br>
+		<br>
+		<br><table style="margin-left: auto; margin-right: auto;"><tr><td>
+		<input type="text" id="pro_name" class="form-control" style="width: 450px;margin: 0 auto; display: inline;" required class="search_box_input" placeholder="검색어를 입력하세요.">
+					<a href="javascript:void(0)" onclick="productSearch()" class="glyphicon glyphicon-search"></a></td></table>
 	</div>
 </div>
+<br>
+<br>
 <!-- End Header -->
 <!-- Top Menu -->
 <div id="hornav" class="bottom-border-shadow">

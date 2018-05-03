@@ -53,6 +53,15 @@ public class MyProductReadController {
 		return "product/locationRead";
 	}
 	
+	@RequestMapping(value = "/product/productSearch", method = RequestMethod.GET)
+	public String productSearchGET(Product product,Model model) {
+		List<Product> search_list= service.productSearch(product);
+		model.addAttribute("search_list", search_list);
+		model.addAttribute("search_product", product);
+		return "product/productSearch";
+	}
+	
+	
 
 	
 	
