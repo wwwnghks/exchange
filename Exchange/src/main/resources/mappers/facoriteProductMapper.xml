@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javamuk.mapper.FavoriteProductMapper">
+
+	<insert id="favoriteCreate" parameterType="com.javamuk.domain.Favorite_Product">
+		insert into `exchange`.favorite_product(pro_idx,mem_idx)
+		values(#{pro_idx},#{mem_idx})
+	</insert>
+
+
+	<select id="readOneSelect" parameterType="com.javamuk.domain.Favorite_Product"
+		resultType="com.javamuk.domain.Favorite_Product">
+		select * from `exchange`.favorite_product where pro_idx=#{pro_idx} and
+		mem_idx=#{mem_idx}
+	</select>
+
+	<select id="readAllSelect" parameterType="com.javamuk.domain.Member"
+		resultType="com.javamuk.domain.Favorite_Product">
+		select
+		favorite_product.fav_pro_idx,m1.mem_nickname,product.pro_photo_01,product.pro_name,product.pro_regdate,product.pro_idx
+		from `exchange`.favorite_product inner join `exchange`.product on
+		favorite_product.pro_idx=product.pro_idx
+		inner join `exchange`.member m1 on product.mem_idx = m1.mem_idx where
+		m1.mem_idx in(
+		select product.mem_idx
+		from `exchange`.favorite_product inner join `exchange`.member m2 on
+		favorite_product.mem_idx=m2.mem_idx
+		inner join `exchange`.product on favorite_product.pro_idx = product.pro_idx
+		where favorite_product.mem_idx=#{mem_idx});
+	</select>
+	
+	<delete id= "favoriteDelete" parameterType="hashmap">
+	 	delete from `exchange`.favorite_product where fav_pro_idx in 
+	 	<foreach collection="fav_pro_idx" item="idx" open="(" close=")" separator=",">
+	 		#{idx.value}
+	 	</foreach>
+	</delete>
+
+</mapper>

@@ -33,15 +33,15 @@
 				<strong>
 				${session_member.mem_name }님 환영합니다.
 				<a href="<%=request.getContextPath()%>/member/logout">로그아웃</a>&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/member/mypage">마이페이지</a>&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/product/myProduct">마이페이지</a>&nbsp;&nbsp;
 				<a href="customer">고객지원센터</a></strong>
 				</c:if>
 				
 				<c:if test="${session_manager ne null }">
 				<strong>
-				${session_manager.man_name }님 환영합니다.
+				${session_manager.man_name }님 환영합니다.관리자입니다.
 				<a href="<%=request.getContextPath()%>/member/logout">로그아웃</a>&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/member/mypage">마이페이지</a>&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/product/myProduct">마이페이지</a>&nbsp;&nbsp;
 				<a href="customer">고객지원센터</a></strong>
 				</c:if>
 				
@@ -91,6 +91,7 @@
 								<li><a href="pages-404.html">404 Error Page</a></li>
 							</ul>
 						</li>
+						
 						<li><span class="fa-search">지역별</span>
 							<ul id="location">
 								<li><a href="<%=request.getContextPath()%>/product/locationRead?location=경기">경기</a></li>

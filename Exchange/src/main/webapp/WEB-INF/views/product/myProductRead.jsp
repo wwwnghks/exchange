@@ -10,16 +10,6 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-<meta property="fb:app_id" content="935663549947890" />
-<meta property="og:title" content="지금바꾸러갑니다" />
-<meta property="og:type" content="website" />
-<meta property="og:image"
-	content="<%=request.getContextPath() %>/uploadfile/memberproduct/${productOne.pro_photo_01 }" />
-<meta property="og:site_name" content="C.m.A API 이야기 [chongmoa.com]" />
-<meta property="og:url"
-	content="http://localhost:8080/exchange/product/myProductRead?pro_idx=${productOne.pro_idx }" />
-<meta property="og:description" content="${productOne.pro_contents }" />
-
 <style>
 #product_List li {
 	float: left;
@@ -35,10 +25,19 @@
 	text-align: right;
 	vertical-align: bottom;
 }
+
 </style>
 <!-- Title -->
 <title>Habitat - A Professional Bootstrap Template</title>
 <%@include file="../include/style.jsp"%>
+<meta property="og:title" content="지금바꾸러갑니다" />
+<meta property="og:type" content="website"/>
+<meta property="og:image"
+	content="<%=request.getContextPath() %>/uploadfile/memberproduct/${productOne.pro_photo_01 }" />
+<meta property="og:url"
+	content="http://localhost:8080/exchange/product/myProductRead?pro_idx=${productOne.pro_idx }" />
+<meta property="og:description" content="${productOne.pro_contents }" />
+
 </head>
 <body>
 	<div id="body-bg">
@@ -69,24 +68,48 @@
 									</c:if>
 								</ul>
 								<br>
-								<div class="fb-share-button"
-									data-href="https://www.your-domain.com/your-page.html"
-									data-layout="button_count"></div>
+						
 								<h3>상세 설명</h3>
 								<p style="border: solid; 1px; ">${productOne.pro_contents }</p>
 							</div>
 							<div class="col-md-6 margin-bottom-10 animate fadeInRight">
 								<h2 class="padding-top-10 pull-left">${productOne.pro_name }
 								</h2>
-								<a href='javascript:goFacebook();'>공유하기</a>
-								<br>
+								<div id="fb-root"></div>
+								<script>
+									(function(d, s, id) {
+										var js, fjs = d.getElementsByTagName(s)[0];
+										if (d.getElementById(id))
+											return;
+										js = d.createElement(s);
+										js.id = id;
+										js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.0&appId=935663549947890&autoLogAppEvents=1';
+										fjs.parentNode.insertBefore(js, fjs);
+									}(document, 'script', 'facebook-jssdk'));
+								</script>
+
+									<div class="fb-share-button"
+										data-href="http://localhost:8080/exchange/product/myProductRead?pro_idx=${productOne.pro_idx }"
+										data-layout="button_count" data-size="small"
+										data-mobile-iframe="true">
+									</div>
+									
 								
+								<br>
+
 								<c:if test="${productOne.mem_idx eq session_member.mem_idx}">
 									<div id="buttons">
-										<input type="button" value="수정" id="modify" onclick="location='myProductModify?pro_idx=${productOne.pro_idx}'">
-										<input type="submit" value="삭제" id="delete"  onclick="location='myProductDelete?pro_idx=${productOne.pro_idx}'">
+										<input type="button" value="수정" id="modify"
+											onclick="location='myProductModify?pro_idx=${productOne.pro_idx}'">
+										<input type="submit" value="삭제" id="delete"
+											onclick="location='myProductDelete?pro_idx=${productOne.pro_idx}'">
 									</div>
 								</c:if>
+								
+								<c:if test="${productOne.mem_idx ne session_member.mem_idx}">
+									<input type="button" value="관심상품 추가" style="position: absolute; right: 0" onclick="location='favoriteProduct?pro_idx=${productOne.pro_idx}'">
+								</c:if>
+								
 								<div class="clearfix"></div>
 								<h5>
 									등록일 :
@@ -118,15 +141,9 @@
 		<%@include file="../include/jsFile.jsp"%>
 		<!-- 댓글 기능 스크립트 -->
 		<%@include file="../include/myProductReply.jsp"%>
-		
-		
-		<script>
-		function goFacebook(){
-			var url = "http://g-y-e-o-m.tistory.com/";
-			var encodeURL = encodeURIComponent(url);
-			location.href = "https://www.facebook.com/sharer/sharer.php?u+"+encodeURL;
-		}
-		</script>
+
+
+
 
 	</div>
 </body>

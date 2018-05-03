@@ -38,6 +38,7 @@ $.ajax({
 		},
 	cache : false,
 	success : function(data) {
+		if(data["replyList"][0]!=null){
 		var key = Object.keys(data["replyList"][0]);
 		str += "<table border='1' style='width: 450px'><tr>";
 		$.each(data.replyList, function(index, replyList) {
@@ -63,6 +64,7 @@ $.ajax({
 		});
 		str += "</table>";
 		table.innerHTML = str;
+		}
 	},
 	error : function(request, status, error) {
 		alert("code:" + request.status + "\n" + "error:" + error);

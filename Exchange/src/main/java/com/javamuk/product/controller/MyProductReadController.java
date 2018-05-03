@@ -49,7 +49,6 @@ public class MyProductReadController {
 		location_product.setPro_location(location);
 		List<Product> location_list = service.locationProduct(location_product);
 		model.addAttribute("location_list", location_list);
-		System.out.println(location_list);
 		model.addAttribute("location",location);
 		return "product/locationRead";
 	}
