@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javamuk.mapper.MyProductMapper">
+
+<select id="selectProductAll" parameterType="com.javamuk.domain.Member" resultType="com.javamuk.domain.Product">
+	select * from `exchange`.`product` where mem_idx=#{mem_idx}
+</select>
+
+<select id="selectProductOne" parameterType="com.javamuk.domain.Product" resultType="com.javamuk.domain.Product">
+	select * from `exchange`.`product` inner join `exchange`.brand on product.bra_idx=brand.bra_idx 
+	inner join `exchange`.second_category on brand.sec_idx = second_category.sec_idx 
+	inner join `exchange`.first_category on second_category.fir_idx = first_category.fir_idx  
+	where pro_idx=#{pro_idx};
+</select>
+
+<select id="selectOwner" parameterType="com.javamuk.domain.Product" resultType="com.javamuk.domain.Member">
+	SELECT `member`.`mem_idx`, `member`.`mem_id`,`member`.`mem_pw`,`member`.`mem_name`,`member`.`mem_birth`,`member`.`mem_nickname`,`member`.`mem_phone`,`member`.`mem_email`,`member`.`mem_address`,`member`.`mem_photo`,`member`.`mem_score` 
+	FROM `exchange`.`product` inner join `exchange`.`member` on product.mem_idx = member.mem_idx where product.pro_idx=#{pro_idx}
+</select>
+	
+<select id="locationProduct" parameterType="com.javamuk.domain.Product" resultType="com.javamuk.domain.Product">
+	select * from `exchange`.`product` where pro_location like CONCAT('%',#{pro_location},'%')
+</select>
+
+<select id="searchProduct" parameterType="com.javamuk.domain.Product" resultType="com.javamuk.domain.Product">
+	select * from `exchange`.`product` where pro_name like CONCAT('%',#{pro_name},'%')
+</select>
+
+<update id="updateMyProduct" parameterType="com.javamuk.domain.Product">
+	update `exchange`.`product` set pro_name=#{pro_name},pro_contents=#{pro_contents},pro_photo_01=#{pro_photo_01}, 
+	pro_photo_02=#{pro_photo_02},pro_photo_03=#{pro_photo_03},pro_location=#{pro_location},pro_hash=#{pro_hash},bra_idx=#{bra_idx} 
+	where pro_idx=#{pro_idx}
+
+</update>
+
+<delete id="myProductDelete" parameterType="com.javamuk.domain.Product">
+	delete from `exchange`.`product` where pro_idx=#{pro_idx}
+</delete>
+
+</mapper>

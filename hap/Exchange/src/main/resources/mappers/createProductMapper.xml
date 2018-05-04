@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javamuk.mapper.CreateProductMapper">
+
+	<select id="selectFirstCategory" resultType="com.javamuk.domain.First_Category">
+		select * from
+		`exchange`.first_category
+	</select>
+
+	<select id="selectSecondCategory" parameterType="com.javamuk.domain.First_Category"
+		resultType="com.javamuk.domain.Second_Category">
+		select sec_idx,sec_name from `exchange`.second_category
+		inner join `exchange`.first_category on
+		second_category.fir_idx=first_category.fir_idx where
+		first_category.fir_idx=#{fir_idx}
+	</select>
+
+	<select id="selectBrandCategory" parameterType="com.javamuk.domain.Second_Category"
+		resultType="com.javamuk.domain.Brand">
+		select bra_idx,bra_name from `exchange`.brand inner join
+		`exchange`.second_category on brand.sec_idx= second_category.sec_idx
+		inner join `exchange`.first_category on second_category.fir_idx=
+		first_category.fir_idx where second_category.sec_idx=#{sec_idx}
+	</select>
+
+	<select id="brandSearch" parameterType="com.javamuk.domain.Brand"
+		resultType="com.javamuk.domain.Brand">
+		select bra_idx,bra_name from `exchange`.brand inner join 
+		`exchange`.second_category on brand.sec_idx= second_category.sec_idx 
+		inner join `exchange`.first_category on second_category.fir_idx=first_category.fir_idx 
+		where bra_name=#{bra_name} and brand.sec_idx=#{sec_idx}
+	</select>
+	
+	<select id="brandSelect" resultType="com.javamuk.domain.Brand">
+		select bra_idx,bra_name from `exchange`.brand where bra_idx=#{bra_idx}
+	</select>
+	
+	<insert id="insertBrand" parameterType="com.javamuk.domain.Brand">
+		insert into `exchange`.brand(bra_name,sec_idx) values(#{bra_name},#{sec_idx})
+	</insert>
+	
+	<insert id="createProduct" parameterType="com.javamuk.domain.Product">
+		<selectKey resultType="int" keyProperty="pro_idx"
+			order="BEFORE">
+			SELECT ifnull(max(pro_idx),0)+1 from
+			`exchange`.product_reply
+		</selectKey>
+		INSERT INTO `exchange`.`product`(`pro_name`,`pro_contents`,`pro_photo_01`,`pro_photo_02`,`pro_photo_03`,`pro_location`,`pro_hash`,`mem_idx`,`bra_idx`) 
+		VALUES(#{pro_name},#{pro_contents},#{pro_photo_01},#{pro_photo_02},#{pro_photo_03},#{pro_location},#{pro_hash},#{mem_idx},#{bra_idx})
+	</insert>
+
+
+</mapper>

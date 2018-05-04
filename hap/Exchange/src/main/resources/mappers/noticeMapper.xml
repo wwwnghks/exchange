@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javamuk.mapper.noticeMapper">
+
+	<select id="listNotice" resultType="com.javamuk.domain.Notice">
+		select
+		n.not_idx,n.not_title,n.not_regdate,m.man_name from notice n, manager
+		m where m.man_name in(select m.man_name from manager m, notice n where
+		n.man_idx=m.man_idx ) order by n.not_regdate <!--  limit #{firstRow},10 -->
+	</select>
+	
+	<select id="readNotice" resultType="com.javamuk.domain.Notice">
+	select not_idx,not_title,not_regdate,not_contents from notice
+		where not_idx=#{not_idx}
+	</select>
+
+	<insert id="createNotice" parameterType="com.javamuk.domain.Notice" useGeneratedKeys="true" keyProperty="idx">
+		insert into
+		notice(not_title,not_contents,man_idx)
+		values(#{not_title},#{not_contents},#{man_idx})
+	</insert>
+
+	<update id="updateNotice" parameterType="com.javamuk.domain.Notice">
+		update notice set not_title=#{not_title}, not_contents=#{not_contents} where
+		not_idx=#{not_idx}
+	</update>
+
+	<delete id="deleteNotice" parameterType="com.javamuk.domain.Notice">
+		delete from notice where not_idx=#{not_idx}
+	</delete>
+	
+	<select id="countNotice" resultType="com.javamuk.domain.Notice">
+		select count(*) from notice
+	</select>
+
+</mapper>
