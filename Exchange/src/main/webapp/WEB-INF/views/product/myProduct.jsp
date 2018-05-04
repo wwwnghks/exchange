@@ -12,7 +12,14 @@
 <style>
 #product_List li {float:left; list-style:none; display: inline;}
 #categoryBox {text-align: right;}
-#main_div {margin-right: 0px;}
+/* #main_div {
+
+ 	height: 1000px;
+} */
+#bspace{
+	height:500px;
+	width: 80px;
+}
 </style>
 <!-- Title -->
 <title>Habitat - A Professional Bootstrap Template</title>
@@ -21,7 +28,7 @@
 <body>
 	<div id="body-bg">
 		<%@include file="../include/header.jsp"%>
-		 <!-- === BEGIN CONTENT === -->
+		 <!-- === BEGIN CONTENT == -->
             <div id="content">
                 <div class="container background-white">
                     <div class="row margin-vert-40">
@@ -29,14 +36,10 @@
                         <div class="col-md-2">
                            <%@include file="../include/myPageSide.jsp"%>
                         </div>
+                         <div id="bspace" class="col-md-2"></div>
                         <div id="main_div">
                         <!-- End Sidebar Menu -->
                         <h1>내 상품</h1>
-                       <!--  <div id="categoryBox">
-                       <select id="fir_name" name="fir_name" style="width: 10ems">
-										<option selected="selected">전체보기</option>
-										</select>
-                        </div> -->
                           <table style="margin-right: 10px">
                         <tr>
                          <c:forEach items="${productList}" var="productList" varStatus="status">
@@ -54,29 +57,6 @@
             <!-- === END CONTENT === -->
 		<%@include file="../include/footer.jsp"%>
 		<%@include file="../include/jsFile.jsp"%>
-		
-	<!-- 	<script>
-		function category01(){
-			$.ajax({
-				type:'GET',
-				url:'category01',
-				dataType : "json",
-				cache : false,
-				success:function(data){
-					$.each(data.first_Category, function(index, first_Category) {
-						$('#fir_name').append('<option value='+first_Category.fir_idx+'>'+first_Category.fir_name+'</option>');
-					});
-				},
-				error:function(request,status,error){
-					alert('ERROR : ' +request + ' ' + status + ' ' + error);
-				}
-			});
-		};
-		
-		$(function(){
-			category01();
-		});
-		</script> -->
 		
 	</div>
 </body>
