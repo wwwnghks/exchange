@@ -5,7 +5,7 @@
 <head>
 <script type="text/javascript">
 
-/* aaa */
+/* bbb */
 alert('상품이 수정되었습니다.');
 document.location.href = 'myProductModifyGood';
 </script>
