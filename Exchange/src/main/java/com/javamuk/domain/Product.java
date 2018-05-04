@@ -15,6 +15,9 @@ public class Product {
 	private String pro_photo_02;
 	private String pro_photo_03;
 	private Date pro_regdate;
+	private String address_post;	
+	private String address_01;	
+	private String address_02;	
 	private String pro_location;
 	private String pro_hash;
 	private int pro_cnt;
@@ -34,10 +37,15 @@ public class Product {
 
 	
 
+	
+
+
+
 	public Product(int pro_idx, String pro_name, String pro_contents, MultipartFile photofile01,
 			MultipartFile photofile02, MultipartFile photofile03, String pro_photo_01, String pro_photo_02,
-			String pro_photo_03, Date pro_regdate, String pro_location, String pro_hash, int pro_cnt, int mem_idx,
-			int bra_idx, String bra_name, String sec_name, String fir_name, int sec_idx, int fir_idx) {
+			String pro_photo_03, Date pro_regdate, String address_post, String address_01, String address_02,
+			String pro_location, String pro_hash, int pro_cnt, int mem_idx, int bra_idx, String bra_name,
+			String sec_name, String fir_name, int sec_idx, int fir_idx) {
 		super();
 		this.pro_idx = pro_idx;
 		this.pro_name = pro_name;
@@ -49,6 +57,9 @@ public class Product {
 		this.pro_photo_02 = pro_photo_02;
 		this.pro_photo_03 = pro_photo_03;
 		this.pro_regdate = pro_regdate;
+		this.address_post = address_post;
+		this.address_01 = address_01;
+		this.address_02 = address_02;
 		this.pro_location = pro_location;
 		this.pro_hash = pro_hash;
 		this.pro_cnt = pro_cnt;
@@ -63,16 +74,85 @@ public class Product {
 
 
 
+
+
+
+
 	@Override
 	public String toString() {
 		return "Product [pro_idx=" + pro_idx + ", pro_name=" + pro_name + ", pro_contents=" + pro_contents
 				+ ", photofile01=" + photofile01 + ", photofile02=" + photofile02 + ", photofile03=" + photofile03
 				+ ", pro_photo_01=" + pro_photo_01 + ", pro_photo_02=" + pro_photo_02 + ", pro_photo_03=" + pro_photo_03
-				+ ", pro_regdate=" + pro_regdate + ", pro_location=" + pro_location + ", pro_hash=" + pro_hash
+				+ ", pro_regdate=" + pro_regdate + ", address_post=" + address_post + ", address_01=" + address_01
+				+ ", address_02=" + address_02 + ", pro_location=" + pro_location + ", pro_hash=" + pro_hash
 				+ ", pro_cnt=" + pro_cnt + ", mem_idx=" + mem_idx + ", bra_idx=" + bra_idx + ", bra_name=" + bra_name
 				+ ", sec_name=" + sec_name + ", fir_name=" + fir_name + ", sec_idx=" + sec_idx + ", fir_idx=" + fir_idx
 				+ "]";
 	}
+
+
+
+
+
+
+
+	public String getAddress_post() {
+		return address_post;
+	}
+
+
+
+
+
+
+
+	public void setAddress_post(String address_post) {
+		this.address_post = address_post;
+	}
+
+
+
+
+
+
+
+	public String getAddress_01() {
+		return address_01;
+	}
+
+
+
+
+
+
+
+	public void setAddress_01(String address_01) {
+		this.address_01 = address_01;
+	}
+
+
+
+
+
+
+
+	public String getAddress_02() {
+		return address_02;
+	}
+
+
+
+
+
+
+
+	public void setAddress_02(String address_02) {
+		this.address_02 = address_02;
+	}
+
+
+
+
 
 
 

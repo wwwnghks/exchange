@@ -140,5 +140,4 @@
 
 	$(function(){
 		category01();
-
 	});

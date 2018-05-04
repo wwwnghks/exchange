@@ -75,6 +75,9 @@ public class MyProductCreateService {
 			product.setPro_photo_03(fileName);
 		}
 
+		String fullAddress= product.getAddress_01()+ " " +product.getAddress_02() + " , " + product.getAddress_post();
+		product.setPro_location(fullAddress);
+		
 		return dao.createProduct(product);
 	}
 

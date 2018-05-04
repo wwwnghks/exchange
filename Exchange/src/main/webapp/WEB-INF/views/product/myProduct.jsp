@@ -12,6 +12,7 @@
 <style>
 #product_List li {float:left; list-style:none; display: inline;}
 #categoryBox {text-align: right;}
+#main_div {margin-right: 0px;}
 </style>
 <!-- Title -->
 <title>Habitat - A Professional Bootstrap Template</title>
@@ -25,16 +26,17 @@
                 <div class="container background-white">
                     <div class="row margin-vert-40">
                         <!-- Begin Sidebar Menu -->
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                            <%@include file="../include/myPageSide.jsp"%>
                         </div>
+                        <div id="main_div">
                         <!-- End Sidebar Menu -->
                         <h1>내 상품</h1>
-                        <div id="categoryBox">
-                        <select id="category">
-                        	<option selected="selected">카테고리별</option>
-                        </select>
-                        </div>
+                       <!--  <div id="categoryBox">
+                       <select id="fir_name" name="fir_name" style="width: 10ems">
+										<option selected="selected">전체보기</option>
+										</select>
+                        </div> -->
                           <table style="margin-right: 10px">
                         <tr>
                          <c:forEach items="${productList}" var="productList" varStatus="status">
@@ -45,30 +47,37 @@
                         </td>
                 		 </c:forEach>
                         </table> 
-                       <%--  <div id="categoryBox">
-                        <select id="category">
-                        	<option selected="selected">카테고리별</option>
-                        </select>
                         </div>
-                       
-                        
-                        <ul id = "product_List">
-                        <c:forEach items="${productList}" var="productList">
-                       		<li style="text-align: center; margin-right: 10px"><a href="myProductRead?pro_idx=${productList.pro_idx }"> <img alt="${productList.pro_name }님의 사진" height="150px" width="150px"  
-                       		src="<%=request.getContextPath() %>/uploadfile/memberproduct/${productList.pro_photo_01 }"><br> ${productList.pro_name } </a></li>
-                      
-                       
-                        </c:forEach>
-                        </ul> --%>
-            
                     </div>
                 </div>
             </div>
             <!-- === END CONTENT === -->
-		
-
 		<%@include file="../include/footer.jsp"%>
 		<%@include file="../include/jsFile.jsp"%>
+		
+	<!-- 	<script>
+		function category01(){
+			$.ajax({
+				type:'GET',
+				url:'category01',
+				dataType : "json",
+				cache : false,
+				success:function(data){
+					$.each(data.first_Category, function(index, first_Category) {
+						$('#fir_name').append('<option value='+first_Category.fir_idx+'>'+first_Category.fir_name+'</option>');
+					});
+				},
+				error:function(request,status,error){
+					alert('ERROR : ' +request + ' ' + status + ' ' + error);
+				}
+			});
+		};
+		
+		$(function(){
+			category01();
+		});
+		</script> -->
+		
 	</div>
 </body>
 </html>
