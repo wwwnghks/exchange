@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.javamuk.domain.Member;
 import com.javamuk.domain.Product;
 import com.javamuk.product.service.MyProductReadService;
+import com.javamuk.product.service.MyProductUpdateService;
 
 
 @Controller
@@ -22,6 +23,9 @@ public class MyProductReadController {
 
 	@Inject
 	private MyProductReadService service;
+	
+	@Inject
+	private MyProductUpdateService updateservice;
 	
 	@RequestMapping(value = "/product/myProduct", method = RequestMethod.GET)
 	public String myProductGET(Model model,HttpSession session) {
@@ -34,9 +38,10 @@ public class MyProductReadController {
 	
 	
 	@RequestMapping(value = "/product/myProductRead", method = RequestMethod.GET)
-	public String myProductReadGET(Model model,Product product) {
+	public String myProductReadGET(Model model,Product product,HttpSession session) {
 		Product resultProduct= service.myProductOne(product);
 		Member ownerMember = service.ownerMember(product);
+		updateservice.updateCnt(product,session);
 		model.addAttribute("ownerMember", ownerMember);
 		model.addAttribute("productOne", resultProduct);
 		return "product/myProductRead";

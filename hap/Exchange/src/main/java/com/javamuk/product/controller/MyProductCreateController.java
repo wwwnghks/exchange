@@ -46,6 +46,7 @@ public class MyProductCreateController {
 		List<First_Category> list = service.readFirst_category();
 		HashMap<String,Object> map=new HashMap<String,Object>();
 		map.put("first_Category", list);
+		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.putAll(map);
 		return jsonObject;

@@ -42,6 +42,11 @@ public class MyProductReadDAO {
 		// TODO Auto-generated method stub
 		return session.selectList(namespace+".searchProduct", product);
 	}
+
+	public List<Product> productReadAll() {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace+".productReadAll");
+	}
 	
 	
 	

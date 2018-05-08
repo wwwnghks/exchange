@@ -20,6 +20,11 @@ public class MyProductUpdateDAO {
 		// TODO Auto-generated method stub
 		session.update(namespace+".updateMyProduct", product);
 	}
+
+	public void updateCnt(Product product) {
+		// TODO Auto-generated method stub
+		session.update(namespace+".updateCnt", product);
+	}
 	
 	
 }

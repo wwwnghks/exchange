@@ -41,7 +41,7 @@
 <body>
 	<div id="body-bg">
 		<%@include file="../include/header.jsp"%>
-		<!-- === BEGIN CONTENT === -->
+		<!-- === BEGIN CONTENT == -->
 		<div id="content">
 			<div class="container background-white">
 				<div class="row margin-vert-30">
@@ -92,7 +92,6 @@
 									data-layout="button_count" data-size="small"
 									data-mobile-iframe="true"></div>
 
-
 								<br>
 
 								<c:if test="${productOne.mem_idx eq session_member.mem_idx}">
@@ -112,6 +111,7 @@
 
 								<div class="clearfix"></div>
 								<h5>
+									조회수 : ${productOne.pro_cnt }<br>
 									등록일 :
 									<fmt:formatDate value="${productOne.pro_regdate }"
 										pattern="yyyy.MM.dd" />
@@ -122,8 +122,13 @@
 								<h5>
 									닉네임 : ${ownerMember.mem_nickname }<br> 이메일 :
 									${ownerMember.mem_email }<br> 전화번호 :
-									${ownerMember.mem_phone } &nbsp; <input type=button
-										value="쪽지보내기" onclick="openWin();"> <br>
+									${ownerMember.mem_phone } &nbsp; 
+									<c:if test="${productOne.mem_idx ne session_member.mem_idx}">
+									<input type="button" value="쪽지보내기" onclick="openWin();"> 
+									<input type="button" id="follow_btn" value="팔로우" onclick="javascript:follow();">
+									<br>
+									
+									</c:if>
 								</h5>
 								<hr>
 								댓글달기<br>
@@ -142,7 +147,8 @@
 		<%@include file="../include/jsFile.jsp"%>
 		<!-- 댓글 기능 스크립트 -->
 		<%@include file="../include/myProductReply.jsp"%>
-
+		<!-- 팔로우 기능 스크립트 -->
+		<%@include file="../include/follow.jsp" %>
 
 		<script>
 			function openWin() {

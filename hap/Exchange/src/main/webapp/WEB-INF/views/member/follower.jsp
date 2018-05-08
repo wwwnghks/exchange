@@ -1,4 +1,4 @@
-followerRead<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- === BEGIN HEADER === -->
 <!DOCTYPE html>
@@ -25,13 +25,13 @@ table {
 				<div class="row margin-vert-30">
 					<div class="col-md-12">
 						
-						<h2>&nbsp;&nbsp;&nbsp; ${location } </h2>
+						<h2>&nbsp;&nbsp;&nbsp; ${mem_nickname }님의 상품</h2>
 						 <table>
-						 <c:forEach items="${location_list}" var="location_list" varStatus="status">
+						 <c:forEach items="${follower_list}" var="list" varStatus="status">
                          <c:if test="${status.index%5==0 }"><tr></c:if>
                        		 <td style="padding: 10px">
-                        <a href="myProductRead?pro_idx=${location_list.pro_idx }"> <img alt="${location_list.pro_name }님의 사진" height="150px" width="150px"  
-                       		src="<%=request.getContextPath() %>/uploadfile/memberproduct/${location_list.pro_photo_01 }"><br> ${location_list.pro_name } </a>
+                        <a href="../product/myProductRead?pro_idx=${list.pro_idx }"> <img alt="${list.pro_name }님의 사진" height="150px" width="150px"  
+                       		src="<%=request.getContextPath() %>/uploadfile/memberproduct/${list.pro_photo_01 }"><br> ${list.pro_name } </a>
                         </td>
                         </c:forEach>
                         </table>

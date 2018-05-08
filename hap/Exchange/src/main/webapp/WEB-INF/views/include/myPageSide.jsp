@@ -57,7 +57,7 @@
 	<!-- End Testimonials -->
 	<!-- Accordion and Tabs -->
 	<li class="list-group-item"><a
-		href="features-accordions-tabs.html">Accordions & Tabs</a></li>
+		href="<%=request.getContextPath()%>/member/following">팔로윙</a></li>
 	<!-- End Accordion and Tabs -->
 	<!-- Buttons -->
 	<li class="list-group-item"><a href="../message/gMessageList">받은쪽지함</a></li>

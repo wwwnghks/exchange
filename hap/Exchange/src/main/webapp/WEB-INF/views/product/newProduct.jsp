@@ -24,7 +24,7 @@
 					<div class="col-md-2">
 						<%@include file="../include/myPageSide.jsp"%>
 					</div>
-					<!-- End Sidebar Menu -->
+					<!-- End Sidebar Menu . -->
 					<div class="col-md-10">
 						<!-- Icon Size -->
 						<h3 class="margin-bottom-20">상품 등록</h3>
@@ -71,7 +71,7 @@
 								name="address_02" id="sample4_jibunAddress" placeholder="상세주소"><span id="guide" style="color: #999"></span></td><tr>
 									<td>제목 </td><td> <input type="text" name="pro_name" size="67"></td><tr>
 									<td style='vertical-align:top'>설명 </td> <td> <textarea name="pro_contents" rows="5" cols="67"></textarea></td><tr>
-									<td>연관태그</td><td><input type="text" name="pro_hash"  size="67"></td><tr>
+									<td>연관태그</td><td><input type="text" id="tag" name="pro_hash"  size="67"><input type="button" value="검색" onclick="javascript:hash();"></td><tr>
 									<td colspan="2" align="right"><input type="submit" value="상품등록"></td>
 									</table>
 									
@@ -87,8 +87,57 @@
 		<!-- === END CONTENT === -->
 		<%@include file="../include/footer.jsp"%>
 		<%@include file="../include/jsFile.jsp"%>
-		
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+			
+		<script>
+		$(function(){
+			
+			var languages = ["ACtionScript"];
+			
+			$("#tag").keypress(function(event){
+				if($("#tag").val().length>2){
+				$.ajax({
+					type:'GET',
+					url:'https://api.instagram.com/v1/tags/search?q='+$("#tag").val()+'&access_token=7406779993.50c2d62.138a3d4bef004d0d8950cc6468f3a4b6',
+					dataType : "json",
+					cache : false,
+					success:function(data){
+						$.each(data.data, function(index, data) {	
+							languages.push(data.name);
+						});
+					},
+					error:function(request,status,error){
+						alert('ERROR : ' +request + ' ' + status + ' ' + error);
+					}
+				})
+				}
+			})
+			$("#tag").autocomplete({
+				source : languages
+			});
+			
+		});
+		
+		/* function hash(){
+			$.ajax({
+				type:'GET',
+				url:'https://api.instagram.com/v1/tags/search?q=snowy&access_token=7406779993.50c2d62.138a3d4bef004d0d8950cc6468f3a4b6',
+				dataType : "json",
+				cache : false,
+				success:function(data){
+					$.each(data.data, function(index, data) {	
+						alert(data.name);
+					});
+				},
+				error:function(request,status,error){
+					alert('ERROR : ' +request + ' ' + status + ' ' + error);
+				}
+			})
+		} */
+		
+		</script>
 		<script src="<%=request.getContextPath()%>/resources/js/daumAdressAPI.js">
 		</script>
 		

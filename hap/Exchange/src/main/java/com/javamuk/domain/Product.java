@@ -15,10 +15,11 @@ public class Product {
 	private String pro_photo_02;
 	private String pro_photo_03;
 	private Date pro_regdate;
-	private String address_post;	
-	private String address_01;	
-	private String address_02;	
+	private String address_post;
+	private String address_01;
+	private String address_02;
 	private String pro_location;
+	private String loc_sub;
 	private String pro_hash;
 	private int pro_cnt;
 	private int mem_idx;
@@ -28,24 +29,16 @@ public class Product {
 	private String fir_name;
 	private int sec_idx;
 	private int fir_idx;
-	
-	
 
 	public Product() {
 		super();
 	}
 
-	
-
-	
-
-
-
 	public Product(int pro_idx, String pro_name, String pro_contents, MultipartFile photofile01,
 			MultipartFile photofile02, MultipartFile photofile03, String pro_photo_01, String pro_photo_02,
 			String pro_photo_03, Date pro_regdate, String address_post, String address_01, String address_02,
-			String pro_location, String pro_hash, int pro_cnt, int mem_idx, int bra_idx, String bra_name,
-			String sec_name, String fir_name, int sec_idx, int fir_idx) {
+			String pro_location, String loc_sub, String pro_hash, int pro_cnt, int mem_idx, int bra_idx,
+			String bra_name, String sec_name, String fir_name, int sec_idx, int fir_idx) {
 		super();
 		this.pro_idx = pro_idx;
 		this.pro_name = pro_name;
@@ -61,6 +54,7 @@ public class Product {
 		this.address_01 = address_01;
 		this.address_02 = address_02;
 		this.pro_location = pro_location;
+		this.loc_sub = loc_sub;
 		this.pro_hash = pro_hash;
 		this.pro_cnt = pro_cnt;
 		this.mem_idx = mem_idx;
@@ -72,149 +66,89 @@ public class Product {
 		this.fir_idx = fir_idx;
 	}
 
-
-
-
-
-
-
 	@Override
 	public String toString() {
 		return "Product [pro_idx=" + pro_idx + ", pro_name=" + pro_name + ", pro_contents=" + pro_contents
 				+ ", photofile01=" + photofile01 + ", photofile02=" + photofile02 + ", photofile03=" + photofile03
 				+ ", pro_photo_01=" + pro_photo_01 + ", pro_photo_02=" + pro_photo_02 + ", pro_photo_03=" + pro_photo_03
 				+ ", pro_regdate=" + pro_regdate + ", address_post=" + address_post + ", address_01=" + address_01
-				+ ", address_02=" + address_02 + ", pro_location=" + pro_location + ", pro_hash=" + pro_hash
-				+ ", pro_cnt=" + pro_cnt + ", mem_idx=" + mem_idx + ", bra_idx=" + bra_idx + ", bra_name=" + bra_name
-				+ ", sec_name=" + sec_name + ", fir_name=" + fir_name + ", sec_idx=" + sec_idx + ", fir_idx=" + fir_idx
-				+ "]";
+				+ ", address_02=" + address_02 + ", pro_location=" + pro_location + ", loc_sub=" + loc_sub
+				+ ", pro_hash=" + pro_hash + ", pro_cnt=" + pro_cnt + ", mem_idx=" + mem_idx + ", bra_idx=" + bra_idx
+				+ ", bra_name=" + bra_name + ", sec_name=" + sec_name + ", fir_name=" + fir_name + ", sec_idx="
+				+ sec_idx + ", fir_idx=" + fir_idx + "]";
 	}
 
+	public String getLoc_sub() {
+		return loc_sub;
+	}
 
-
-
-
-
+	public void setLoc_sub(String loc_sub) {
+		this.loc_sub = loc_sub;
+	}
 
 	public String getAddress_post() {
 		return address_post;
 	}
 
-
-
-
-
-
-
 	public void setAddress_post(String address_post) {
 		this.address_post = address_post;
 	}
-
-
-
-
-
-
 
 	public String getAddress_01() {
 		return address_01;
 	}
 
-
-
-
-
-
-
 	public void setAddress_01(String address_01) {
 		this.address_01 = address_01;
 	}
-
-
-
-
-
-
 
 	public String getAddress_02() {
 		return address_02;
 	}
 
-
-
-
-
-
-
 	public void setAddress_02(String address_02) {
 		this.address_02 = address_02;
 	}
-
-
-
-
-
-
 
 	public String getBra_name() {
 		return bra_name;
 	}
 
-
-
 	public void setBra_name(String bra_name) {
 		this.bra_name = bra_name;
 	}
-
-
 
 	public String getSec_name() {
 		return sec_name;
 	}
 
-
-
 	public void setSec_name(String sec_name) {
 		this.sec_name = sec_name;
 	}
-
-
 
 	public String getFir_name() {
 		return fir_name;
 	}
 
-
-
 	public void setFir_name(String fir_name) {
 		this.fir_name = fir_name;
 	}
-
-
 
 	public int getSec_idx() {
 		return sec_idx;
 	}
 
-
-
 	public void setSec_idx(int sec_idx) {
 		this.sec_idx = sec_idx;
 	}
-
-
 
 	public int getFir_idx() {
 		return fir_idx;
 	}
 
-
-
 	public void setFir_idx(int fir_idx) {
 		this.fir_idx = fir_idx;
 	}
-
-
 
 	public MultipartFile getPhotofile01() {
 		return photofile01;
