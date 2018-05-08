@@ -129,7 +129,7 @@
 						<li><a href="<%=request.getContextPath()%>/product/newProduct" class="fa-pencil ">상품등록</a></li>
 						<li><a href="<%=request.getContextPath()%>/product/myProduct" class="fa-folder">내 상품</a></li>
 						<li><a href="<%=request.getContextPath()%>/notice/noticeList" class="fa-bullhorn">공지사항</a></li>
-						<li><a href="contact.html" class="fa-question-circle">Q&A</a>
+						<li><a href="<c:url value='/qna/list'/>" class="fa-question-circle">Q&A</a>
 						</li>
 
 					</ul>
