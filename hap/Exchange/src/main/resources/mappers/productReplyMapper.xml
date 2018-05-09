@@ -24,21 +24,29 @@
 		pro_re_p_num=#{pro_re_p_num} and pro_re_s_num>#{pro_re_s_num}
 	</update>
 
-	<insert id="insertProductReWrite" parameterType="com.javamuk.domain.Product_Reply">
+ 	 <insert id="insertProductReWrite" parameterType="com.javamuk.domain.Product_Reply">
 		INSERT INTO
 		`exchange`.`product_reply`(`pro_re_p_num`,`pro_re_s_num`,`pro_re_level`,`pro_re_contents`,`pro_idx`,`mem_idx`)
 		VALUES(#{pro_re_p_num},(#{pro_re_s_num}+1),(#{pro_re_level}+1),#{pro_re_contents},#{pro_idx},#{mem_idx})
-
-	</insert>
+	</insert>   
+ 	<!--  <insert id="insertProductReWrite" parameterType="com.javamuk.domain.Product_Reply">
+		INSERT INTO
+		`exchange`.`product_reply`(`pro_re_p_num`,`pro_re_s_num`,`pro_re_level`,`pro_re_contents`,`pro_idx`,`mem_idx`)
+		select #{pro_re_p_num}, (max(pro_re_s_num)+1) ,(#{pro_re_level}+1),#{pro_re_contents},#{pro_idx},#{mem_idx} from `exchange`.product_reply where pro_re_p_num=#{pro_re_p_num};
+	</insert>   -->
 
  	<delete id="deleteProductReply" parameterType="com.javamuk.domain.Product_Reply">
 		delete from `exchange`.product_reply where pro_re_p_num=#{pro_re_p_num} and 2>(select * from(select count(pro_re_p_num) from `exchange`.product_reply where pro_re_p_num=#{pro_re_p_num})as a);
 	</delete> 
 
-	<select id="selectProductAll" resultType="com.javamuk.domain.Product_Reply" parameterType="com.javamuk.domain.Product">
+	 <select id="selectProductAll" resultType="com.javamuk.domain.Product_Reply" parameterType="com.javamuk.domain.Product">
 		select * from
 		`exchange`.product_reply inner join `exchange`.member on product_reply.mem_idx = member.mem_idx where pro_idx=#{pro_idx} order by pro_re_p_num desc, pro_re_s_num asc
-	</select>
+	</select> 
+	<!-- <select id="selectProductAll" resultType="com.javamuk.domain.Product_Reply" parameterType="com.javamuk.domain.Product">
+		select * from
+		`exchange`.product_reply inner join `exchange`.member on product_reply.mem_idx = member.mem_idx where pro_idx=#{pro_idx} order by pro_re_p_num asc, pro_re_s_num asc
+	</select> -->
 
 
 

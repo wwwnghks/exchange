@@ -33,6 +33,11 @@
 	select * from `exchange`.`product` where pro_name like CONCAT('%',#{pro_name},'%')
 </select>
 
+<select id="tagSearch" parameterType="com.javamuk.domain.Product" resultType="com.javamuk.domain.Product">
+	select * from `exchange`.`product` where pro_hash like CONCAT('%',#{pro_hash},'%')
+</select>
+
+
 <update id="updateMyProduct" parameterType="com.javamuk.domain.Product">
 	update `exchange`.`product` set pro_name=#{pro_name},pro_contents=#{pro_contents},pro_photo_01=#{pro_photo_01}, 
 	pro_photo_02=#{pro_photo_02},pro_photo_03=#{pro_photo_03},pro_location=#{pro_location},pro_hash=#{pro_hash},bra_idx=#{bra_idx} 

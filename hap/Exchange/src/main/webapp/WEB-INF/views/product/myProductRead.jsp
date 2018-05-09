@@ -70,6 +70,7 @@
 
 								<h3>상세 설명</h3>
 								<p style="border: solid; 1px; ">${productOne.pro_contents }</p>
+								<br> 해시태그 : ${productOne.pro_hash }
 							</div>
 							<div class="col-md-6 margin-bottom-10 animate fadeInRight">
 								<h2 class="padding-top-10 pull-left">${productOne.pro_name }
@@ -116,6 +117,7 @@
 									<fmt:formatDate value="${productOne.pro_regdate }"
 										pattern="yyyy.MM.dd" />
 									<br> 교환장소 : ${productOne.pro_location }
+									
 								</h5>
 								<hr>
 								<h4>등록자 정보</h4>

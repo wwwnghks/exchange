@@ -46,4 +46,9 @@ public class MyProductReadService {
 		return dao.productReadAll();
 	}
 
+	public List<Product> tagSearch(Product product) {
+		// TODO Auto-generated method stub
+		return dao.tagSearch(product);
+	}
+
 }

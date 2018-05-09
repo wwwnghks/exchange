@@ -67,6 +67,16 @@ public class MyProductReadController {
 	}
 	
 	
+	@RequestMapping(value = "/product/productHashSearch", method = RequestMethod.GET)
+	public String tagSearchGET(Product product,Model model) {
+		List<Product> tag_list= service.tagSearch(product);
+		model.addAttribute("tag_list", tag_list);
+		model.addAttribute("search_product", product);
+		return "product/productHashSearch";
+	}
+	
+	
+	
 
 	
 	
