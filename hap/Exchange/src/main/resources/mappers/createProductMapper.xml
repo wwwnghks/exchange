@@ -11,7 +11,7 @@
 
 	<select id="selectSecondCategory" parameterType="com.javamuk.domain.First_Category"
 		resultType="com.javamuk.domain.Second_Category">
-		select sec_idx,sec_name from `exchange`.second_category
+		select sec_idx,sec_name,first_category.fir_idx,first_category.fir_name from `exchange`.second_category
 		inner join `exchange`.first_category on
 		second_category.fir_idx=first_category.fir_idx where
 		first_category.fir_idx=#{fir_idx}
@@ -19,7 +19,7 @@
 
 	<select id="selectBrandCategory" parameterType="com.javamuk.domain.Second_Category"
 		resultType="com.javamuk.domain.Brand">
-		select bra_idx,bra_name from `exchange`.brand inner join
+		select bra_idx,bra_name,second_category.sec_idx,second_category.sec_name from `exchange`.brand inner join
 		`exchange`.second_category on brand.sec_idx= second_category.sec_idx
 		inner join `exchange`.first_category on second_category.fir_idx=
 		first_category.fir_idx where second_category.sec_idx=#{sec_idx}

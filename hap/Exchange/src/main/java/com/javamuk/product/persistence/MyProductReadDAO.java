@@ -7,8 +7,11 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.javamuk.domain.Brand;
+import com.javamuk.domain.First_Category;
 import com.javamuk.domain.Member;
 import com.javamuk.domain.Product;
+import com.javamuk.domain.Second_Category;
 
 @Repository
 public class MyProductReadDAO {
@@ -51,6 +54,26 @@ public class MyProductReadDAO {
 	public List<Product> tagSearch(Product product) {
 		// TODO Auto-generated method stub
 		return session.selectList(namespace+".tagSearch", product);
+	}
+
+	public List<Product> menuProduct(Product menu_product) {
+      // TODO Auto-generated method stub
+      return session.selectList(namespace+".menuProduct", menu_product);
+   }
+
+	public List<Product> fir_search(First_Category fir) {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace+".firSearch", fir);
+	}
+
+	public List<Product> sec_search(Second_Category sec) {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace+".secSearch", sec);
+	}
+
+	public List<Product> bra_search(Brand bra) {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace+".braSearch", bra);
 	}
 	
 	

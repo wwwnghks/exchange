@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.javamuk.domain.Brand;
+import com.javamuk.domain.First_Category;
 import com.javamuk.domain.Member;
 import com.javamuk.domain.Product;
+import com.javamuk.domain.Second_Category;
 import com.javamuk.product.service.MyProductReadService;
 import com.javamuk.product.service.MyProductUpdateService;
 
@@ -34,8 +37,6 @@ public class MyProductReadController {
 		model.addAttribute("productList", list);
 		return "product/myProduct";
 	}
-
-	
 	
 	@RequestMapping(value = "/product/myProductRead", method = RequestMethod.GET)
 	public String myProductReadGET(Model model,Product product,HttpSession session) {
@@ -46,7 +47,6 @@ public class MyProductReadController {
 		model.addAttribute("productOne", resultProduct);
 		return "product/myProductRead";
 	}
-	
 	
 	@RequestMapping(value = "/product/locationRead", method = RequestMethod.GET)
 	public String productLocationRead(@RequestParam("location") String location,Model model) {
@@ -74,6 +74,31 @@ public class MyProductReadController {
 		model.addAttribute("search_product", product);
 		return "product/productHashSearch";
 	}
+	
+	@RequestMapping(value = "/product/productCateSearch", method = RequestMethod.GET)
+	public String productCateSearch(@RequestParam("type") String type,@RequestParam("product") String idx,@RequestParam("search") String search,Model model) {
+		First_Category fir = new First_Category();
+		Second_Category sec = new Second_Category();
+		Brand bra = new Brand();
+		if(type.equals("first")) {
+			fir.setFir_idx(Integer.parseInt(idx));
+			List<Product> list = service.fir_search(fir);
+			model.addAttribute("search_list", list);
+			model.addAttribute("searchName", search);
+		}else if(type.equals("second")) {
+			sec.setSec_idx(Integer.parseInt(idx));
+			List<Product> list = service.sec_search(sec);
+			model.addAttribute("search_list", list);
+			model.addAttribute("searchName", search);
+		}else if(type.equals("brand")){
+			bra.setBra_idx(Integer.parseInt(idx));
+			List<Product> list = service.bra_search(bra);
+			model.addAttribute("search_list", list);
+			model.addAttribute("searchName", search);
+		}
+		return "product/productCateSearch";
+	}
+	
 	
 	
 	
