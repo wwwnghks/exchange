@@ -28,17 +28,21 @@
 							<!-- 공지사항 목록 부분 -->
 							<br>
 							<div id="message">
+							<c:if test="${!empty following_list }">
+							<form id="followDelete" action="followDelete" method="POST">
 								<input type="hidden" name="mem_idx"
 									value="${session_member.mem_idx}">
-								<c:if test="${!empty following_list }">
 								<table border="1" style="width: 600px">
 									<tr align="center">
+										 <th><input type="checkbox" id="checkall" name="checkall"></th> 
 										<th>번호 </th>
 										<th>팔로윙</th>
 										<th>팔로윙 날짜</th>
 									</tr>
 									<c:forEach var="list" items="${following_list}">
 										<tr>
+										 <td><input type="checkbox" name="follow_arr"
+											value="${list.follow_idx }"></td> 
 											<td>${list.num}<input type="hidden"
 												name="msg_idx" value="${message.msg_idx}"></td>
 											<td><a href="follower?follower_mem=${list.follower_mem }&mem_nickname=${list.mem_nickname }">${list.mem_nickname}</a></td>
@@ -47,29 +51,12 @@
 										</tr>
 									</c:forEach>
 								</table>
+								</form>
+								<input type="submit" value="삭제"
+						onclick="Javascript:followDelete();">
 								</c:if>
 							</div>
-
-							<!-- 페이지 넘버 부분 -->
 							<br>
-							<%-- 	<div id="pageForm">
-								<c:if test="${startPage != 1}">
-									<a href='BoardListAction.bo?page=${startPage-1}'>[ 이전 ]</a>
-								</c:if>
-
-								<c:forEach var="pageNum" begin="${startPage}" end="${endPage}">
-									<c:if test="${pageNum == spage}"> ${pageNum}&nbsp;
-           						 </c:if>
-									<c:if test="${pageNum != spage}">
-										<a href='BoardListAction.bo?page=${pageNum}'>${pageNum}&nbsp;</a>
-									</c:if>
-								</c:forEach>
-
-								<c:if test="${endPage != maxPage }">
-									<a href='BoardListAction.bo?page=${endPage+1 }'>[다음]</a>
-								</c:if>
-							</div> --%>
-
 						</div>
 					</div>
 				</div>
@@ -79,6 +66,26 @@
 		<!-- === BEGIN FOOTER === -->
 		<%@include file="../include/footer.jsp"%>
 		<%@include file="../include/jsFile.jsp"%>
+		
+		<script>
+			function followDelete() {
+				if (confirm('삭제 하시겠습니까?')) {
+					$("#followDelete").submit();
+				}
+			}
+		</script>
+
+		<script>
+			$(document).ready(function() {
+				$("#checkall").click(function() {
+					if ($("#checkall").prop("checked")) {
+						$("input[name=follow_arr]").prop("checked", true);
+					} else {
+						$("input[name=follow_arr]").prop("checked", false);
+					}
+				})
+			})
+		</script>
 	</div>
 </body>
 </html>

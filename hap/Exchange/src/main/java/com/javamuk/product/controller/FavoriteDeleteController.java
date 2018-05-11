@@ -23,10 +23,7 @@ public class FavoriteDeleteController {
 	public String favoriteProductDelete(@RequestParam("fav_pro_arr") List<Integer> fav_pro_idx) {
 		HashMap<String, Object> fpi = new HashMap<String,Object>();
 		fpi.put("fav_pro_idx",fav_pro_idx);
-	
 		service.favoriteDelete(fpi);
-		
-		
 		return "product/favoriteRead";
 	}
 }

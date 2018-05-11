@@ -13,6 +13,13 @@
 		delete from `exchange`.follow where follower_mem=#{follower_mem} and following_mem=#{following_mem}
 	</delete>
 	
+	<delete id="followDelete_idx" parameterType="com.javamuk.domain.Follow">
+		delete from `exchange`.follow where follow_idx in 
+		<foreach collection="follow_idx" item="idx" open="(" close=")" separator=",">
+	 		#{idx.value}
+	 	</foreach>
+	</delete>
+	
 	<select id="follow_read" parameterType="com.javamuk.domain.Follow" resultType="com.javamuk.domain.Follow">
 		select * from `exchange`.follow where follower_mem=#{follower_mem} and following_mem=#{following_mem}
 	</select>
