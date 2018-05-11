@@ -5,7 +5,14 @@
 <html lang="en">
 <head>
 <style>
-#imgbox li {float:left; list-style:none; display: inline;}
+#imgbox li {
+	float:left; list-style:none; display: inline;
+}
+
+button{
+	border-radius: 5px;
+}
+
 </style>
 <!-- Title -->
 <title>Habitat - A Professional Bootstrap Template</title>
@@ -46,39 +53,39 @@
                    					 </ul>
       								  </div>
 								</div>
-								<div class="col-md-7">
+								<div class="col-md-8">
 								<table><tr>
-									<td nowrap="nowrap">카테고리 <td> <select id="fir_name" name="fir_name" style="width: 10ems">
+									<td nowrap="nowrap">카테고리 <td> <select class="form-control" id="fir_name" name="fir_name" style="width: 190px; display: inline; font-size: 13px;">
 										<option selected="selected" disabled="disabled" >1차 분류</option>
-									</select> <select id="sec_name" name="sec_name" style="width: 16em">
+									</select> <select id="sec_name" name="sec_name" class="form-control" style="width: 230px; display: inline; font-size: 13px;">
 										<option selected="selected" >2차 분류</option>
 									</select>
 									</td><tr>
-									<td>브랜드 </td><td> <select id="brand" name="bra_idx" style="width: 10em">
+									<td>브랜드 </td><td> <select id="brand" name="bra_idx" style="width: 150px; display: inline;" class="form-control">
 										<option selected="selected" disabled="disabled">브랜드 분류</option>
 									</select> 
-									<input type="text" name="bra_name" id="bra_name">
-									<input type="button" value="브랜드등록" id="createBrand"></td><tr>
+									<input type="text" name="bra_name" id="bra_name" class="form-control" style="width: 190px; display: inline;">
+									<input type="button" value="브랜드등록" id="createBrand" class="btn btn-primary" style="border-radius: 7px;"></td><tr>
 									<td>거래지역</td><td><input
-								type="text" style="width: 30%; white-space: nowrap;"
+								type="text" style="width: 100px; display: inline; width: 30%; white-space: nowrap;"
 								name="address_post" id="sample4_postcode"
-								onclick="sample4_execDaumPostcode(1)" placeholder="우편번호">
+								onclick="sample4_execDaumPostcode(1)" class="form-control" placeholder="우편번호">
 							<input type="button" onclick="sample4_execDaumPostcode(1);"
-								value="우편번호 찾기"> <br> <input type="text"
+								value="우편번호 찾기" style="display: inline; border-radius: 7px;" class="btn"> <br> <input type="text"
 								class="form-control margin-bottom-0" name="address_01"
 								id="sample4_roadAddress" placeholder="도로명주소"> <input
 								type="text" class="form-control margin-bottom-0"
 								name="address_02" id="sample4_jibunAddress" placeholder="상세주소"><span id="guide" style="color: #999"></span></td><tr>
-									<td>제목 </td><td> <input type="text" name="pro_name" size="67"></td><tr>
-									<td style='vertical-align:top'>설명 </td> <td> <textarea name="pro_contents" rows="5" cols="67"></textarea></td><tr>
-									<td>태그검색</td><td><input type="text" id="tag" name="hashTag"  size="55"><input type="button" value="추가" onclick="javascript:hashPut();"></td><tr>
-									<td>연관태그</td><td><div id='hash_result' style="display: inline;"></div> <input type="button" value="초기화" onclick="javascript:resetHash();"></td><tr>
-									<td colspan="2" align="right"><input type="submit" value="상품등록"></td>
+									<td>제목 </td><td> <input type="text" name="pro_name" size="67" class="form-control"></td><tr>
+									<td style='vertical-align:top'>설명 </td> <td> <textarea name="pro_contents" rows="5" cols="67" class="form-control"></textarea></td><tr>
+									<td>태그검색</td><td><input type="text" id="tag" name="hashTag"  style="width: 410px; display: inline;" class="form-control"><input type="button" class="btn btn-primary" style="border-radius: 7px;" value="추가" onclick="javascript:hashPut();"></td><tr>
+									<td>연관태그</td><td><div id='hash_result' style="display: inline;"></div> <input type="button" value="초기화" style="border-radius: 7px;" class="btn btn-warning" onclick="javascript:resetHash();"></td><tr>
+									<td colspan="2" align="right"><input type="submit" value="상품등록" class="btn btn-primary" style="border-radius: 7px;"></td>
 									</table>
 									<input type="hidden" id="hidden_hash" name="pro_hash" value=''>
 								</div>
 							</div>
-							<!-- End Icon Size! -->
+							<!-- End Icon Size!!! -->
 							<hr>
 						</form>
 					</div>

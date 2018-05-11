@@ -78,7 +78,6 @@ public class MyProductCreateController {
 	@RequestMapping(value = "/product/createBrand", method = RequestMethod.GET)
 	@ResponseBody
 	public int createBrand(Brand brand) {
-		System.out.println(brand);
 		return service.createBrand(brand);
 	}
 	
@@ -94,21 +93,5 @@ public class MyProductCreateController {
 		return jsonObject;
 	}
 	
-/*	@RequestMapping(value = "/product/photofiles", method = RequestMethod.GET)
-	@ResponseBody
-	public JSONObject photofiles(MultipartFile files[]) {
-		System.out.println(files);
-		List<Brand> list = service.brandSelect(brand);
-		HashMap<String,Object> map=new HashMap<String,Object>();
-		map.put("brandSelect", list);
-		JSONObject jsonObject = new JSONObject();
-		//jsonObject.putAll(map);
-		return jsonObject;
-	}*/
-	
-	
-	
-	
-
 
 }

@@ -30,7 +30,6 @@ public class FollowDeleteController {
 	
 	@RequestMapping(value = "/member/followDelete", method = RequestMethod.POST)
 	public String followDelete(@RequestParam("follow_arr") List<Integer> follow_idx) {
-		System.out.println(follow_idx);
 		HashMap<String, Object> fi = new HashMap<String,Object>();
 		fi.put("follow_idx",follow_idx);
 		service.followDelete(fi);
