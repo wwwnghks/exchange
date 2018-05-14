@@ -19,5 +19,16 @@
 	<select id="loginManager" resultType="com.javamuk.domain.Manager">
 		select * from manager where man_id=#{man_id} and man_pw=#{man_pw}
 	</select>
+	
+	<select id="idCheck" resultType="int" parameterType="com.javamuk.domain.Member">
+		select count(*) from `exchange`.member where mem_id=#{mem_id}
+	</select>
+	
+		<select id="nickCheck" resultType="int" parameterType="com.javamuk.domain.Member">
+		select count(*) from `exchange`.member where mem_nickname=#{mem_nickname}
+	</select>
+	
+	
+	
 </mapper>
 

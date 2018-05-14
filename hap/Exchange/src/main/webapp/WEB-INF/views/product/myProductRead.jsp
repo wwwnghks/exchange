@@ -48,20 +48,20 @@
 					<div class="col-md-12">
 						<div class="row">
 							<div class="col-md-5 animate fadeIn">
-								<img width="350px" height="250px"
+								<img width="350px" height="250px" id="preview_img"
 									src="<%=request.getContextPath() %>/uploadfile/memberproduct/${productOne.pro_photo_01 }"
 									alt="about-me" class="margin-top-10">
 								<ul class="list-inline about-me-icons margin-vert-20">
-									<li><a href="#"> <img width="100px" height="70px"
+									<li><a href="javascript:img01_change();" id="li_img01" > <img width="100px" height="70px" id="img01" 
 											src="<%=request.getContextPath() %>/uploadfile/memberproduct/${productOne.pro_photo_01 }">
 									</a></li>
 									<c:if test="${productOne.pro_photo_02 ne null}">
-										<li><a href="#"> <img width="100px" height="70px"
+										<li><a href="javascript:img02_change();" id="li_img01" > <img width="100px" height="70px" id="img02" 
 												src="<%=request.getContextPath() %>/uploadfile/memberproduct/${productOne.pro_photo_02 }">
 										</a></li>
 									</c:if>
 									<c:if test="${productOne.pro_photo_03 ne null}">
-										<li><a href="#"> <img width="100px" height="70px"
+										<li><a href="javascript:img03_change();" id="li_img01" > <img width="100px" height="70px" id="img03" 
 												src="<%=request.getContextPath() %>/uploadfile/memberproduct/${productOne.pro_photo_03 }">
 										</a></li>
 									</c:if>
@@ -151,7 +151,19 @@
 		<%@include file="../include/myProductReply.jsp"%>
 		<!-- 팔로우 기능 스크립트 -->
 		<%@include file="../include/follow.jsp" %>
-
+		
+		<script>
+		function img01_change(){
+   			$("#preview_img").attr("src",$("#img01").attr("src"));
+   		 }
+   		 function img02_change(){
+   			$("#preview_img").attr("src",$("#img02").attr("src"));
+   		 }
+   		 function img03_change(){
+   			$("#preview_img").attr("src",$("#img03").attr("src"));
+   		 }
+		</script>
+		
 		<script>
 			function openWin() {
 				window.open("http://localhost:8080/exchange/message/messageCreate?mem_nickname=${ownerMember.mem_nickname }&pro_idx=${productOne.pro_idx}","쪽지 보내기",
