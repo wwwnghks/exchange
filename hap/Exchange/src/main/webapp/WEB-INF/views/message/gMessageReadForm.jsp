@@ -45,17 +45,17 @@
 									<td colspan="2" align="center" id="msg_contents">
 									${read_message.msg_contents }</td>
 								</tr>
-								<tr align="center" valign="middle">
+								<!-- <tr align="center" valign="middle">
 									<td colspan="5">
-										<!-- <input type="button"
+										<input type="button"
 										value="수정" onclick="location='noticeUpdate'"> <input
 										type="button" value="목록" onclick="location='noticeList'">
 										<input type="button" value="삭제"
-										onclick="location='noticeDelete'"> -->
+										onclick="location='noticeDelete'">
 
 
 									</td>
-								</tr>
+								</tr> -->
 							</table>
 						</form>
 						<div class="col-md-3"></div>

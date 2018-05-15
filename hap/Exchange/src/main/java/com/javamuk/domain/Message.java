@@ -12,13 +12,15 @@ public class Message {
 	private int mem_idx;
 	private String mem_id;
 	private String mem_nickname;
+	private int start;
+	private int end;
 
 	public Message() {
 
 	}
 
 	public Message(int msg_idx, String msg_title, String msg_contents, Date msg_regdate, int pro_idx, int mem_idx,
-			String mem_id, String mem_nickname) {
+			String mem_id, String mem_nickname, int start, int end) {
 		super();
 		this.msg_idx = msg_idx;
 		this.msg_title = msg_title;
@@ -28,6 +30,8 @@ public class Message {
 		this.mem_idx = mem_idx;
 		this.mem_id = mem_id;
 		this.mem_nickname = mem_nickname;
+		this.start = start;
+		this.end = end;
 	}
 
 	public int getMsg_idx() {
@@ -94,11 +98,28 @@ public class Message {
 		this.mem_nickname = mem_nickname;
 	}
 
+	public int getStart() {
+		return start;
+	}
+
+	public void setStart(int start) {
+		this.start = start;
+	}
+
+	public int getEnd() {
+		return end;
+	}
+
+	public void setEnd(int end) {
+		this.end = end;
+	}
+
 	@Override
 	public String toString() {
 		return "Message [msg_idx=" + msg_idx + ", msg_title=" + msg_title + ", msg_contents=" + msg_contents
 				+ ", msg_regdate=" + msg_regdate + ", pro_idx=" + pro_idx + ", mem_idx=" + mem_idx + ", mem_id="
-				+ mem_id + ", mem_nickname=" + mem_nickname + "]";
+				+ mem_id + ", mem_nickname=" + mem_nickname + ", start=" + start + ", end=" + end + "]";
 	}
+
 
 }

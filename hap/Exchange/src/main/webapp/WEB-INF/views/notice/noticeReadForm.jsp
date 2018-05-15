@@ -11,6 +11,11 @@
 <!-- 각 서브밋 버튼에 따른 페이지이동 -->
 
 <%@include file="../include/style.jsp"%>
+<style type="text/css">
+.layer {
+	text-align: center;
+}
+</style>
 </head>
 <body>
 	<div id="body-bg">
@@ -18,54 +23,64 @@
 		<!-- === BEGIN CONTENT === -->
 		<div id="content">
 			<div class="container background-white">
-				<div class="row margin-vert-30">
-					<div class="col-md-12">
-						<h2>공지사항</h2>
-						<br>
-						<hr class="margin-vert-40">
+				<div class="row margin-vert-40">
+					<div class="col-md-2">
+						<ul class="list-group sidebar-nav" id="sidebar-nav">
+							<!-- Buttons -->
+							<li class="list-group-item"><a
+								href="<%=request.getContextPath()%>/notice/noticeList">공지사항</a></li>
+							<!-- End Buttons -->
+							<!-- Carousels -->
+							<li class="list-group-item"><a
+								href="<%=request.getContextPath()%>/qna/list">Q&A</a></li>
+							<!-- End Accordion and Tabs -->
+						</ul>
+					</div>
+					<div class="col-md-1" style="height: 400px"></div>
+					<h2>공지사항</h2>
+					<br>
+					<div id="wrap">
+					<div class="col-md-2"></div>
 						<form role="form" method="get">
 							<input type="hidden" name="man_idx"
 								value="${session_manager.man_idx}"> <input type="hidden"
 								name="not_idx" value="${read_notice.not_idx}">
-								<div class="col-md-1"></div>
-							<table style="width: 820px" border="2" bordercolor="lightgray">
-								<tr align="center">
-									<td id="not_title" colspan="5">
-									${read_notice.not_title}</td>
+							<div class="col-md-1"></div>
+							<table style="width: 700px" class="table table-striped">
+							<thead>
+								<tr>
+								<th id="not_title" style="text-align: center" colspan="5">${read_notice.not_title}</th>
 								</tr>
+								</thead>
 								<tr align="center">
-								
-								<td id="man_idx" align="left">작성자&nbsp;&nbsp;
-									${session_manager.man_name}</td>
-							
-									<td id="not_regdate" align="right">날짜&nbsp;
-									<fmt:formatDate value="${read_notice.not_regdate}"
-													pattern="yyyy.MM.dd" /></td>
-								</tr>
-								<tr align="center">
-									<td id="not_contents" colspan="5">
-									${read_notice.not_contents }</td>
-								</tr>
-								<tr align="center" valign="middle">
-									<td colspan="5">
-										<!-- <input type="button"
-										value="수정" onclick="location='noticeUpdate'"> <input
-										type="button" value="목록" onclick="location='noticeList'">
-										<input type="button" value="삭제"
-										onclick="location='noticeDelete'"> -->
-
-
+									<td id="man_idx" align="left">작성자&nbsp;&nbsp; <c:if
+											test="${session_manager.man_id !=null && session_manager.man_id=='admin'}">
+							${session_manager.man_name}
+							</c:if> <c:if test="${session_member.mem_idx !=null}">
+							관리자
+							</c:if> <%-- ${read_notice.man_name} --%>
 									</td>
+
+									<td id="not_regdate" align="right">날짜&nbsp; <fmt:formatDate
+											value="${read_notice.not_regdate}" pattern="yyyy.MM.dd" /></td>
+
+
+									<%-- <td id="not_viewcnt" align="right">조회수&nbsp;&nbsp;
+										${read_notice.not_viewcnt }</td> --%>
+								</tr>
+
+								<tr>
+									<td id="not_contents" colspan="5">
+										${read_notice.not_contents }</td>
 								</tr>
 							</table>
 						</form>
 						<br>
-						<div class="col-md-5"></div>
+						<div class="col-md-3"></div>
+						<button type="submit" class="btn btn-primary">목록</button>
 						<c:if
 							test="${session_manager.man_id !=null && session_manager.man_id=='admin'}">
-
 							<button type="submit" class="btn btn-warning">수정</button>
-							<button type="submit" class="btn btn-primary">목록</button>
 							<button type="submit" class="btn btn-danger">삭제</button>
 						</c:if>
 

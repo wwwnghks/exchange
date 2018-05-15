@@ -15,12 +15,16 @@ public class NoticeReadDAO {
 	
 	private static String namespace="com.javamuk.mapper.noticeMapper";
 	
-	public Notice readNotice(Notice notice) {
+/*	public Notice readNotice(Notice notice) {
 		return session.selectOne(namespace+".readNotice",notice);
+	}*/
+	
+	public Notice readNotice(int not_idx) {
+		return session.selectOne(namespace+".readNotice",not_idx);
 	}
 	
-
-	public Notice readNoticeIdx(int not_idx) {
-		return session.selectOne(namespace+".readNotice",not_idx);
+	// 06. 게시글 조회수 증가
+	public void increaseViewcnt(int not_idx) throws Exception {
+		session.update(namespace + ".increaseViewcnt", not_idx);
 	}
 }

@@ -4,17 +4,35 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javamuk.mapper.noticeMapper">
 
-	<select id="listNotice" resultType="com.javamuk.domain.Notice">
+	<!-- <select id="listNotice" resultType="com.javamuk.domain.Notice">
 		select
 		n.not_idx,n.not_title,n.not_regdate,m.man_name from notice n, manager
 		m where m.man_name in(select m.man_name from manager m, notice n where
-		n.man_idx=m.man_idx ) order by n.not_regdate <!--  limit #{firstRow},10 -->
+		n.man_idx=m.man_idx ) order by n.not_regdate  limit #{firstRow},10
 	</select>
-	
-	<select id="readNotice" resultType="com.javamuk.domain.Notice">
+	 -->
+	<!-- <select id="readNotice" resultType="com.javamuk.domain.Notice">
 	select not_idx,not_title,not_regdate,not_contents from notice
 		where not_idx=#{not_idx}
+	</select> -->
+	
+	<select id="readNotice" resultType="com.javamuk.domain.Notice">
+	select <!-- not_idx,not_title,not_regdate,not_contents,not_viewcnt, from notice
+		where not_idx=#{not_idx} -->
+		n.not_idx,n.not_title,n.not_regdate,not_contents,n.not_viewcnt,m.man_name
+		from notice n, manager
+		m where m.man_name in(select m.man_name from manager m, notice n where
+		n.man_idx=m.man_idx) and not_idx=#{not_idx}
 	</select>
+	
+	<!-- 04. 게시글 조회수 증가처리 -->
+	<update id="increaseViewcnt" parameterType="com.javamuk.domain.Notice">
+		UPDATE
+		`exchange`.`notice` SET
+		not_viewcnt = not_viewcnt + 1
+		WHERE not_idx =
+		#{not_idx}
+	</update>
 
 	<insert id="createNotice" parameterType="com.javamuk.domain.Notice" useGeneratedKeys="true" keyProperty="idx">
 		insert into
@@ -34,5 +52,57 @@
 	<select id="countNotice" resultType="com.javamuk.domain.Notice">
 		select count(*) from notice
 	</select>
+	
+	<!-- 01. 게시글 전체 목록 조회 -->
+	<select id="listNotice" parameterType="com.javamuk.domain.Notice"
+		resultType="com.javamuk.domain.Notice">
+
+		<!-- 목록 조회 및 페이징 전체 쿼리 -->
+		SELECT
+		n.not_idx,n.not_title,n.not_regdate,m.man_name,n.not_viewcnt
+		from notice n, manager
+		m where m.man_name in(select m.man_name from manager m, notice n where
+		n.man_idx=m.man_idx)
+		<include refid="search" />
+		 order by n.not_regdate DESC
+		<include refid="paging" />
+	</select>
+
+	<!-- 01_02. 게시글 레코드 갯수 -->
+	<select id="countArticle" resultType="int">
+		SELECT COUNT(n.not_idx)
+		FROM
+		notice n,
+		manager m
+		WHERE
+		n.man_idx = m.man_idx
+		<!-- WHERE절을 include 태그로 삽입 -->
+		<include refid="search" />
+	</select>
+
+	<!-- 검색 조건 sql -->
+	<sql id="search">
+		<choose>
+			<!-- 검색옵션이 전체 검색일 경우 -->
+			<when test="searchOption == 'all'">
+				AND
+				not_contents like
+				concat('%' , #{keyword} , '%')
+				OR
+				not_title like concat('%' ,
+				#{keyword} , '%'))
+			</when>
+			<!-- 전체 검색이 아닐 경우 -->
+			<otherwise>
+				AND
+				${searchOption} like concat('%' , #{keyword} , '%')
+			</otherwise>
+		</choose>
+	</sql>
+
+	<!-- 페이징 sql -->
+	<sql id="paging">
+		LIMIT #{start}, #{end}
+	</sql>
 
 </mapper>

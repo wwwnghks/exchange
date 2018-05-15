@@ -8,45 +8,93 @@
 		values(#{msg_title},#{msg_contents},#{pro_idx},#{mem_idx})
 	</insert>
 
-	<select id="gListMessage" resultType="com.javamuk.domain.Message">
+
+	<!-- 01. 받은 쪽지 전체 목록 조회 -->
+	<select id="sListMessage" parameterType="hashmap"
+		resultType="com.javamuk.domain.Message">
+
+		<!-- 목록 조회 및 페이징 전체 쿼리 -->
 		select
-		mg.msg_idx,mg.msg_title,mg.msg_contents, mg.msg_regdate,mb.mem_nickname from
+		mg.msg_idx,mg.msg_title,mg.msg_contents,
+		mg.msg_regdate,mb.mem_nickname from
 		exchange.message mg inner join
 		exchange.product p on mg.pro_idx =
-		p.pro_idx inner join exchange.member mb on
+		p.pro_idx inner join exchange.member
+		mb on
 		mb.mem_idx = p.mem_idx where
-		mg.mem_idx in(select mg2.mem_idx from exchange.message mg2,
-		exchange.member mb2 where mg2.mem_idx=mb2.mem_idx and
-		mb2.mem_idx=#{mem_idx});
+		mg.mem_idx in(select mg2.mem_idx from
+		exchange.message mg2,
+		exchange.member mb2 where mg2.mem_idx=mb2.mem_idx
+		and mb2.mem_idx=#{mem_idx})    
+		order by mg.msg_regdate DESC LIMIT #{start}, #{end};
+
 	</select>
 
-	<select id="sListMessage" resultType="com.javamuk.domain.Message">
-		select mg.msg_idx,mg.msg_title,mg.msg_contents, mg.msg_regdate,mb.mem_nickname from
+	<!-- 01. 보낸 쪽지 전체 목록 조회 -->
+	<select id="gListMessage" parameterType="hashmap"
+		resultType="com.javamuk.domain.Message">
+
+		<!-- 목록 조회 및 페이징 전체 쿼리 -->
+		select mg.msg_idx,mg.msg_title,mg.msg_contents,
+		mg.msg_regdate,mb.mem_nickname from
 		exchange.message mg inner join
 		exchange.member mb on
-		mg.mem_idx=mb.mem_idx where mg.pro_idx in(select mg2.pro_idx from
+		mg.mem_idx=mb.mem_idx where mg.pro_idx in(select
+		mg2.pro_idx from
 		exchange.message mg2 inner join
-		exchange.product p2 on mg2.pro_idx =
+		exchange.product p2 on
+		mg2.pro_idx =
 		p2.pro_idx inner join exchange.member mb2 on
 		mb2.mem_idx = p2.mem_idx
-		and mb2.mem_idx=#{mem_idx});
+		and mb2.mem_idx=#{mem_idx})
+		order by mg.msg_regdate DESC LIMIT #{start}, #{end};
+
+	</select>
+
+	<!-- 01_02. 게시글 레코드 갯수 -->
+	<select id="sCountArticle" resultType="int">
+		SELECT COUNT(mg.msg_idx)
+		from `exchange`.message mg inner join
+		`exchange`.product p on mg.pro_idx = p.pro_idx inner join
+		`exchange`.member mb on
+		mb.mem_idx = p.mem_idx where mg.mem_idx
+		in(select mg2.mem_idx from `exchange`.message mg2, `exchange`.member
+		mb2 where mg2.mem_idx=mb2.mem_idx and mb2.mem_idx=#{mem_idx})
+
+	</select>
+	
+		<!-- 01_02. 게시글 레코드 갯수 -->
+	<select id="gCountArticle" resultType="int">
+		SELECT COUNT(mg.msg_idx)
+		from `exchange`.message mg inner join
+		`exchange`.member mb on mg.mem_idx=mb.mem_idx where mg.pro_idx in(select mg2.pro_idx from `exchange`.message mg2 inner join
+		`exchange`.product p2 on mg2.pro_idx = p2.pro_idx inner join `exchange`.member mb2 on
+		mb2.mem_idx = p2.mem_idx and mb2.mem_idx=#{mem_idx})
+
 	</select>
 
 	<select id="gReadMessage" resultType="com.javamuk.domain.Message">
-		select mg.msg_idx,mg.msg_title,
-		mg.msg_regdate, mg.msg_contents, mb.mem_nickname from
+		select
+		mg.msg_idx,mg.msg_title,
+		mg.msg_regdate, mg.msg_contents,
+		mb.mem_nickname from
 		exchange.message mg inner join
-		exchange.member mb on
+		exchange.member mb
+		on
 		mg.mem_idx=mb.mem_idx where mg.msg_idx=#{msg_idx};
 	</select>
-	
+
 	<select id="sReadMessage" resultType="com.javamuk.domain.Message">
-		select mg.msg_idx,mg.msg_title,
-		mg.msg_regdate, mg.msg_contents, mb.mem_nickname from
+		select
+		mg.msg_idx,mg.msg_title,
+		mg.msg_regdate, mg.msg_contents,
+		mb.mem_nickname from
 		exchange.message mg inner join
-		exchange.product p on mg.pro_idx =
+		exchange.product p
+		on mg.pro_idx =
 		p.pro_idx inner join exchange.member mb on
-		mb.mem_idx = p.mem_idx where mg.msg_idx=#{msg_idx};
+		mb.mem_idx =
+		p.mem_idx where mg.msg_idx=#{msg_idx};
 	</select>
 
 	<delete id="deleteMessage" parameterType="com.javamuk.domain.Message">

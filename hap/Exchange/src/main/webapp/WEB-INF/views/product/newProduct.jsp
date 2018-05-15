@@ -8,11 +8,9 @@
 #imgbox li {
 	float:left; list-style:none; display: inline;
 }
-
 button{
 	border-radius: 5px;
 }
-
 </style>
 <!-- Title -->
 <title>Habitat - A Professional Bootstrap Template</title>

@@ -23,7 +23,7 @@ public class NoticeUpdateController {
 	
 	@RequestMapping(value="/notice/noticeUpdate", method=RequestMethod.GET)
 	public String updateForm(@RequestParam(name="not_idx") int not_idx, Model model) {
-		Notice result_notice = noticeReadService.readNoticeIdx(not_idx);
+		Notice result_notice = noticeReadService.readNotice(not_idx);
 		model.addAttribute("update_notice",result_notice);
 		return "notice/noticeUpdateForm";
 	}

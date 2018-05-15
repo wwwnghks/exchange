@@ -16,10 +16,11 @@
 			<div class="container background-white">
 				<div class="row margin-vert-30">
 					<div class="col-md-12">
-						<h2>공지사항</h2>
+						<h2>공지사항</h2><!-- 
 						<hr class="margin-vert-30">
 						<div class="col-md-2"></div>
-						<b><font size="4" color="gray">수정하기</font></b> <br>
+						<b><font size="4" color="gray">수정하기</font></b> <br> -->
+						<br>
 
 						<form action="noticeUpdate" method="POST" enctype="multipart/form-data">
 							<input type="hidden" name="man_idx"
@@ -44,9 +45,9 @@
 								</tr>
 								
 								<tr align="center" valign="middle">
-									<td colspan="5"><input type="reset" value="작성취소">
-										<input type="submit" value="수정완료"> 
-										<input type="button" value="목록" onclick="location='noticeList'"></td>
+									<td colspan="5"><input type="reset" value="작성취소" class="btn" style="border-radius: 5px;">
+										<input type="submit" value="수정완료" class="btn" style="border-radius: 5px;"> 
+										<input type="button" value="목록" onclick="location='noticeList'" class="btn" style="border-radius: 5px;"></td>
 								</tr>
 							</table>
 						</form>

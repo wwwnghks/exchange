@@ -41,27 +41,27 @@
 <body>
 	<div id="body-bg">
 		<%@include file="../include/header.jsp"%>
-		<!-- === BEGIN CONTENT == -->
+		<!-- === BEGIN CONTENT === -->
 		<div id="content">
 			<div class="container background-white">
 				<div class="row margin-vert-30">
 					<div class="col-md-12">
 						<div class="row">
 							<div class="col-md-5 animate fadeIn">
-								<img width="350px" height="250px" id="preview_img"
+								<img width="350px" height="250px"
 									src="<%=request.getContextPath() %>/uploadfile/memberproduct/${productOne.pro_photo_01 }"
 									alt="about-me" class="margin-top-10">
 								<ul class="list-inline about-me-icons margin-vert-20">
-									<li><a href="javascript:img01_change();" id="li_img01" > <img width="100px" height="70px" id="img01" 
+									<li><a href="#"> <img width="100px" height="70px"
 											src="<%=request.getContextPath() %>/uploadfile/memberproduct/${productOne.pro_photo_01 }">
 									</a></li>
 									<c:if test="${productOne.pro_photo_02 ne null}">
-										<li><a href="javascript:img02_change();" id="li_img01" > <img width="100px" height="70px" id="img02" 
+										<li><a href="#"> <img width="100px" height="70px"
 												src="<%=request.getContextPath() %>/uploadfile/memberproduct/${productOne.pro_photo_02 }">
 										</a></li>
 									</c:if>
 									<c:if test="${productOne.pro_photo_03 ne null}">
-										<li><a href="javascript:img03_change();" id="li_img01" > <img width="100px" height="70px" id="img03" 
+										<li><a href="#"> <img width="100px" height="70px"
 												src="<%=request.getContextPath() %>/uploadfile/memberproduct/${productOne.pro_photo_03 }">
 										</a></li>
 									</c:if>
@@ -93,6 +93,7 @@
 									data-layout="button_count" data-size="small"
 									data-mobile-iframe="true"></div>
 
+
 								<br>
 
 								<c:if test="${productOne.mem_idx eq session_member.mem_idx}">
@@ -112,25 +113,20 @@
 
 								<div class="clearfix"></div>
 								<h5>
-									조회수 : ${productOne.pro_cnt }<br>
 									등록일 :
 									<fmt:formatDate value="${productOne.pro_regdate }"
 										pattern="yyyy.MM.dd" />
 									<br> 교환장소 : ${productOne.pro_location }
-									
 								</h5>
 								<hr>
 								<h4>등록자 정보</h4>
 								<h5>
 									닉네임 : ${ownerMember.mem_nickname }<br> 이메일 :
 									${ownerMember.mem_email }<br> 전화번호 :
-									${ownerMember.mem_phone } &nbsp; 
-									<c:if test="${productOne.mem_idx ne session_member.mem_idx}">
-									<input type="button" value="쪽지보내기" onclick="openWin();"> 
+									${ownerMember.mem_phone } &nbsp; <c:if test="${productOne.mem_idx ne session_member.mem_idx}">
+									<input type=button value="쪽지보내기" onclick="openWin1();">&nbsp;
 									<input type="button" id="follow_btn" value="팔로우" onclick="javascript:follow();">
-									<br>
-									
-									</c:if>
+										<input type=button value="신고하기" onclick="openWin2();"></c:if>
 								</h5>
 								<hr>
 								댓글달기<br>
@@ -149,24 +145,15 @@
 		<%@include file="../include/jsFile.jsp"%>
 		<!-- 댓글 기능 스크립트 -->
 		<%@include file="../include/myProductReply.jsp"%>
-		<!-- 팔로우 기능 스크립트 -->
-		<%@include file="../include/follow.jsp" %>
-		
+
+
 		<script>
-		function img01_change(){
-   			$("#preview_img").attr("src",$("#img01").attr("src"));
-   		 }
-   		 function img02_change(){
-   			$("#preview_img").attr("src",$("#img02").attr("src"));
-   		 }
-   		 function img03_change(){
-   			$("#preview_img").attr("src",$("#img03").attr("src"));
-   		 }
-		</script>
-		
-		<script>
-			function openWin() {
+			function openWin1() {
 				window.open("http://localhost:8080/exchange/message/messageCreate?mem_nickname=${ownerMember.mem_nickname }&pro_idx=${productOne.pro_idx}","쪽지 보내기",
+								"width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+			}
+			function openWin2() {
+				window.open("http://localhost:8080/exchange/declaration/declarationCreate?man_idx=1&pro_idx=${productOne.pro_idx}","신고하기",
 								"width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
 			}
 		</script>

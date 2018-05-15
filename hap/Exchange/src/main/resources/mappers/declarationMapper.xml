@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javamuk.mapper.declarationMapper">
+	<insert id="createDeclaration" parameterType="com.javamuk.domain.Declaration">
+		insert into
+		declaration(dec_msg_title,dec_msg_contents,mem_idx,man_idx,pro_idx)
+		values(#{dec_msg_title},#{dec_msg_contents},#{mem_idx},#{man_idx},#{pro_idx})
+	</insert>
+	<!-- <select id="listDeclaration" parameterType="hashmap"
+		resultType="com.javamuk.mapper.Declaration">
+		select d.dec_msg_idx,d.dec_msg_title,d.dec_msg_regdate,m.man_name
+		from `exchange`.declaration_message d inner join `exchange`.manager m on
+	</select> -->
+
+</mapper>

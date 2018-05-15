@@ -18,12 +18,9 @@ $(function Mcategory01() {
        error : function(data){
        console.log('Error: ' + data);
        }
-    });
-    
-    
+    });   
     
  });
-
  	function over_fir(idx){
 		var ctx = '<%=request.getContextPath()%>';
       function getContextPath(){return ctx;}
@@ -68,5 +65,4 @@ $(function Mcategory01() {
          }
       });
  }
-
 </script>
