@@ -35,7 +35,7 @@
 									${read_message.msg_title}</td>
 								</tr>
 								<tr>
-								<td id="mem_nickname" align="left">보낸사람 &nbsp;&nbsp;
+								<td id="mem_nickname" align="left">받는사람 &nbsp;&nbsp;
 									${read_message.mem_nickname }</td>
 									
 									<td id="msg_regdate" align="right">날짜 &nbsp;
@@ -68,7 +68,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- === END CONTENT === -->
+		<!-- === END CONTENT ==.= -->
 		<!-- === BEGIN FOOTER === -->
 		<%@include file="../include/footer.jsp"%>
 		<%@include file="../include/jsFile.jsp"%>
@@ -87,7 +87,7 @@
 
 				$(".btn-primary").on("click", function() {
 					/* self.location = "noticeList"; */
-					window.location.href = 'gMessageList';
+					window.location.href = 'sMessageList';
 				});
 			});
 		</script>

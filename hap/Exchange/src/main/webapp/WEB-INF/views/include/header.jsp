@@ -21,8 +21,29 @@
 </style>
 <script>
 	function productSearch(){
-		location.href="<%=request.getContextPath()%>/product/productSearch?pro_name="+ $("#pro_name").val();
+		location.href="<%=request.getContextPath()%>/product/productSearch?pro_name="+$("#pro_name").val();	 
 	}
+	function tagSearch(){
+		location.href="<%=request.getContextPath()%>/product/productHashSearch?pro_hash="+$("#tag_name").val();	 
+	}
+	
+</script>
+<script>
+	 $(function(){
+		 $('#menu').change(function(){
+			 if($("#menu").val()=='tag'){
+				 $("#pro_name").attr('style','width: 450px;margin: 0 auto; display: none;" required class="search_box_input" placeholder="상품명을 입력하세요.');
+				 $("#tag_name").attr('style','width: 450px;margin: 0 auto; display: inline;" required class="search_box_input" placeholder="태그명을 입력하세요.');
+				 $("#tag_Atag").attr('style','display:inline;');
+				 $("#pro_Atag").attr('style','display:none;');
+			 }else{
+				 $("#pro_name").attr('style','width: 450px;margin: 0 auto; display: inline;" required class="search_box_input" placeholder="상품명을 입력하세요.');
+				 $("#tag_name").attr('style','width: 450px;margin: 0 auto; display: none;" required class="search_box_input" placeholder="태그명을 입력하세요.');
+				 $("#tag_Atag").attr('style','display:none;');
+				 $("#pro_Atag").attr('style','display:inline;');
+			 }
+		 })
+	 })
 </script>
 <div id="pre-header" class="background-gray-lighter">
 	<div class="container no-padding">
@@ -73,11 +94,19 @@
 		<br> <br> <br>
 		<table style="margin-left: auto; margin-right: auto;">
 			<tr>
-				<td><input type="text" id="pro_name" class="form-control"
+				<td nowrap="nowrap"><select id="menu"><option
+							value="name">상품명</option>
+						<option value="tag">태그명</option></select> <input type="text" id="pro_name"
+					class="form-control"
 					style="width: 450px; margin: 0 auto; display: inline;" required
-					class="search_box_input" placeholder="검색어를 입력하세요."> <a
-					href="javascript:void(0)" onclick="productSearch()"
-					class="glyphicon glyphicon-search"></a></td>
+					class="search_box_input" placeholder="상품명을 입력하세요."> <input
+					type="text" id="tag_name" class="form-control"
+					style="width: 450px; margin: 0 auto; display: none;" required
+					class="search_box_input" placeholder="태그명을 입력하세요."> <a
+					id="pro_Atag" href="javascript:void(0)" onclick="productSearch()"
+					class="glyphicon glyphicon-search" style="display: inline;"></a> <a
+					id="tag_Atag" href="javascript:void(0)" onclick="tagSearch()"
+					class="glyphicon glyphicon-search" style="display: none;"></a></td>
 		</table>
 	</div>
 </div>

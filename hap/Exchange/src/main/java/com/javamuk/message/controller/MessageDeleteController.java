@@ -16,13 +16,11 @@ public class MessageDeleteController {
 	
 	@RequestMapping("/message/sMessageDelete")
 	public String sDeleteForm(@RequestParam(name="msg_idx")int msg_idx) {
-		System.out.println(msg_idx);
 		messageDeleteService.deleteMessage(msg_idx);
 		return "redirect:sMessageList";
 	}
 	@RequestMapping("/message/gMessageDelete")
 	public String gDeleteForm(@RequestParam(name="msg_idx")int msg_idx) {
-		System.out.println(msg_idx);
 		messageDeleteService.deleteMessage(msg_idx);
 		return "redirect:gMessageList";
 	}

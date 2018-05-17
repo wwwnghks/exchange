@@ -86,7 +86,7 @@
                 </div>
             </div>
            
-            <!-- Portfolio -->
+            <!-- Portfolio2 -->
             <div id="portfolio" class="bottom-border-shadow">
                 <div class="container bottom-border">
                     <div class="row padding-top-40">
@@ -104,7 +104,7 @@
                     </div>
                 </div>
             </div>
-            <!-- End Portfolio -->
+            <!-- End Portfolioa -->
             <!-- === END CONTENT === -->
 
            <%@include file="include/footer.jsp" %>

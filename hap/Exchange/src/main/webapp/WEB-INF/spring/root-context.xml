@@ -13,13 +13,20 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean id="dataSource"
+	<!-- <bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 	    <property name="url" value="jdbc:mysql://localhost:3306/exchange?useSSL=false&amp;characterEncoding=utf8"></property> 
 			<property name="username" value="bit"></property> 
 			<property name="password" value="bit"></property> 
-	</bean>
+	</bean> -->
+	 <bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	    <property name="url" value="jdbc:mysql://exchange.cohzgr0apkoc.ap-northeast-2.rds.amazonaws.com:3306/exchange?useSSL=false&amp;characterEncoding=utf8"></property> 
+			<property name="username" value="bit"></property> 
+			<property name="password" value="bit12345"></property> 
+	</bean> 
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>

@@ -61,7 +61,7 @@
 										<%-- <td><a href="BoardDetailAction.bo?num=${notice.not_idx}&pageNum=${pageNum}">
 													${notice.board_subject} </a></td> --%>
 										<td><a
-											href="gMessageRead?msg_idx=${message.msg_idx }&mem_nickname=${message.mem_nickname}&curPage=${map.paging.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">${message.msg_title}</a></td>
+											href="sMessageRead?msg_idx=${message.msg_idx }&mem_nickname=${message.mem_nickname}&curPage=${map.paging.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">${message.msg_title}</a></td>
 										<!-- <td>{message.msg_title}</td> -->
 										<td><fmt:formatDate value="${message.msg_regdate}"
 												pattern="yyyy.MM.dd" /></td>
