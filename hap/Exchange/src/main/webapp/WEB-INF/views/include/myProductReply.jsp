@@ -42,6 +42,8 @@ $.ajax({
 			/* "<tr><td><img src="+getContextPath()+"/uploadfile/memberphoto/"+ replyList.mem_photo  + "</td>" + "<td>" */
 			var date = new Date(replyList.pro_re_regdate);
 			var a = getFormatDate(date);
+			var photoArr = replyList.mem_photo.split("http");
+			if(photoArr.length<2){
 			str += "<tr><td>"+level+"<img width='50px' height='40px' src='"+getContextPath()+"/uploadfile/memberphoto/"+ replyList.mem_photo  + "'>"
 					+ replyList.mem_nickname + "("
 					+ getFormatDate(date) + ")<br>"
@@ -53,6 +55,20 @@ $.ajax({
 					+ "<textarea id='recomment_"+replyList.pro_re_idx+"'></textarea>"
 					+ "<input type='button' value='입력' onclick='rewrite("+replyList.pro_re_idx+","+replyList.pro_re_p_num+","
 							+replyList.pro_re_s_num+","+replyList.pro_re_level+")'></td></div>";
+			}
+			else{
+				str += "<tr><td>"+level+"<img width='50px' height='40px' src='"+ replyList.mem_photo  + "'>"
+				+ replyList.mem_nickname + "("
+				+ getFormatDate(date) + ")<br>"
+				+ level+" "+ replyList.pro_re_contents + "</td>" + "<td style='width: 80px'>"
+				+ "<a href='#' class='re2ply' onclick='re2ply("+replyList.pro_re_idx+")'>답글</a>&nbsp;&nbsp;"
+				+ "<a href='#' class='delete' onclick='del("+replyList.pro_re_p_num+","+replyList.pro_re_level+");'>삭제</a></td>"
+				/* + "<div name='re2ply' id='re2ply_"+replyList.pro_re_idx+"' style='display:none;'><tr><td colspan='3'>" */
+				+ "<tr name='re2ply' id='re2ply_"+replyList.pro_re_idx+"' style='display:none;'><td colspan='3'>"
+				+ "<textarea id='recomment_"+replyList.pro_re_idx+"'></textarea>"
+				+ "<input type='button' value='입력' onclick='rewrite("+replyList.pro_re_idx+","+replyList.pro_re_p_num+","
+						+replyList.pro_re_s_num+","+replyList.pro_re_level+")'></td></div>";
+			}
 		});
 		str += "</table>";
 		table.innerHTML = str;

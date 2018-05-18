@@ -26,5 +26,15 @@ public class MemberLoginDAO {
 		return session.selectOne(namespace+ ".loginManager", manager);
 
 	}
+	
+	public int createNaverMember(Member naverMember) {
+		// TODO Auto-generated method stub
+		return session.insert(namespace+".createNaverMember", naverMember);
+	}
+
+	public int createCacaoMember(Member cacaoMember) {
+		// TODO Auto-generated method stub
+		return session.insert(namespace+".createCacaoMember", cacaoMember);
+	}
 
 }

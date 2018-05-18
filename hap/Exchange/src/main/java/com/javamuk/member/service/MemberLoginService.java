@@ -25,5 +25,15 @@ public class MemberLoginService {
 		
 		return dao.loginManager(manager);
 	}
+	
+	public int createNaverMember(Member naverMember) {
+		// TODO Auto-generated method stub
+		return dao.createNaverMember(naverMember);
+	}
+
+	public int createCacaoMember(Member cacaoMember) {
+		// TODO Auto-generated method stub
+		return dao.createCacaoMember(cacaoMember);
+	}
 
 }

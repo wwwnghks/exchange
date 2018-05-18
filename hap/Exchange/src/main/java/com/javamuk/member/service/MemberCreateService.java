@@ -36,6 +36,8 @@ public class MemberCreateService {
 		return result;
 		
 	}
+
+	
 	
 	
 

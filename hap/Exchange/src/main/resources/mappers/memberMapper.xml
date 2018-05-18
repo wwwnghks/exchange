@@ -4,6 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javamuk.mapper.memberMapper">
 
+	<insert id="createNaverMember" parameterType="com.javamuk.domain.Member">
+		insert into member(mem_id,mem_pw,mem_name,mem_nickname,mem_photo) values(#{mem_id},#{mem_pw},#{mem_name},#{mem_nickname},#{mem_photo})
+	</insert>
+	
+	
+	<insert id="createCacaoMember" parameterType="com.javamuk.domain.Member">
+		insert into member(mem_id,mem_pw,mem_name,mem_nickname,mem_photo) values(#{mem_id},#{mem_pw},#{mem_name},#{mem_nickname},#{mem_photo})
+	</insert>
+
 	<insert id="createMember" parameterType="com.javamuk.domain.Member">
 		insert into
 		member(mem_id,mem_pw,mem_name,mem_birth,mem_nickname,mem_phone,mem_email,mem_address,mem_photo)

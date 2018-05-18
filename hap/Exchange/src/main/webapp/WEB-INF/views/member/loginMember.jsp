@@ -11,6 +11,9 @@
 <head>
 <!-- Title -->
 <title>Habitat - A Professional Bootstrap Template</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
 <%@include file="../include/style.jsp"%>
 </head>
 <body>
@@ -45,25 +48,109 @@
 								<div class="col-md-6">
 									<button class="btn btn-primary pull-right" type="submit">Login</button>
 								</div>
+								<br>
 							</div>
-							<hr>
-							<h4>Forget your Password ?</h4>
-							<p>
-								<a href="#">Click here</a>to reset your password.
-							</p>
-						</form>
+							<div class="row">
+								<div id="naverIdLogin" class="col-md-6 pull-right"></div>
+								<div class="col-md-6 pull-right">
+									<a id="kakao-login-btn"></a> <a
+										href="http://developers.kakao.com/logout"></a>
+								</div>
+							</div>
 					</div>
-					<!-- End Login Box -->
+					<hr>
+					<h4>Forget your Password ?</h4>
+					<p>
+						<a href="#">Click here</a>to reset your password.
+					</p>
 
+					</form>
 				</div>
+				<!-- End Login Box -->
+
 			</div>
 		</div>
-		<!-- === END CONTENT === -->
+	</div>
+	<!-- === END CONTENT === -->
 
-		<%@include file="../include/footer.jsp"%>
+	<%@include file="../include/footer.jsp"%>
+	<!-- End Footer -->
+	<%@include file="../include/jsFile.jsp"%>
+	<script type="text/javascript"
+		src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
+		charset="utf-8"></script>
 
-		<!-- End Footer -->
-		<%@include file="../include/jsFile.jsp"%>
+
+	<script type="text/javascript">
+		var naverLogin = new naver.LoginWithNaverId(
+				{
+					clientId : "QuDRvcnM4lcWAokv8mOE",
+					callbackUrl : "http://ec2-52-78-244-162.ap-northeast-2.compute.amazonaws.com:8080/exchange/",
+					isPopup : false, /* 팝업을 통한 연동처리 여부 */
+					callbackHandle : false,
+					loginButton : {
+						color : "green",
+						type : 5,
+						height : 48
+					}
+				/* 로그인 버튼의 타입을 지정  */
+				});
+
+		/* 설정정보를 초기화하고 연동을 준비  */
+		naverLogin.init();
+	</script>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script type='text/javascript'>
+		//<![CDATA[
+		// 사용할 앱의 JavaScript 키를 설정해 주세요.
+		Kakao.init('01573e66ef996be032057b0b4df7039e');
+		// 카카오 로그인 버튼을 생성합니다.
+		Kakao.Auth.createLoginButton({
+			container : '#kakao-login-btn',
+			success : function(authObj) {
+				// 로그인 성공시, API를 호출합니다.
+				Kakao.API.request({
+					 url: '/v1/user/me',
+					success : function(res) {
+						var jsonval = JSON.parse(JSON.stringify(res));
+/* 						alert(jsonval.kaccount_email);
+						alert(jsonval.properties.thumbnail_image);
+						alert(jsonval.properties.nickname); */
+						$.ajax({
+							type : 'GET',
+							url : 'cacaocreate',
+							cache : false,
+							data : {
+								mem_id : jsonval.kaccount_email+'_KaKao',
+								mem_pw : 'KaKao',
+								mem_name : jsonval.properties.nickname,
+								mem_nickname : jsonval.properties.nickname+'_KaKao',
+								mem_photo : jsonval.properties.thumbnail_image,
+							},
+							success : function(data) {
+								window.location='/exchange';
+							},
+							error : function(request, status, error) {
+								alert('ERROR : ' + request + ' ' + status
+										+ ' ' + error);
+							}
+						});
+
+					},
+					fail : function(error) {
+						alert(JSON.stringify(error));
+					}
+				});
+
+			},
+			fail : function(err) {
+				alert(JSON.stringify(err));
+			}
+		});
+		//]]>
+	</script>
+
+
 	</div>
 </body>
 </html>
