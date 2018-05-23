@@ -37,6 +37,14 @@
 		select count(*) from `exchange`.member where mem_nickname=#{mem_nickname}
 	</select>
 	
+ 	<update id="scoreupdate" parameterType="com.javamuk.domain.Member">
+		update `exchange`.member set mem_score=(mem_score*mem_scorecnt+#{mem_score})/(mem_scorecnt+1),mem_scorecnt=mem_scorecnt+1 where mem_idx=#{mem_idx}
+	</update> 
+	
+	<select id="ownerread" parameterType="com.javamuk.domain.Product" resultType="com.javamuk.domain.Member">
+		select * from `exchange`.member inner join `exchange`.product on member.mem_idx = product.mem_idx where pro_idx=#{pro_idx}
+	</select>
+	
 	
 	
 </mapper>

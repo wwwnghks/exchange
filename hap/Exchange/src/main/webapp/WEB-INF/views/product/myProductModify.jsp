@@ -115,9 +115,9 @@
 		</script> 
 		<script>
 			var pro_address = "${myProduct.pro_location}";
-			var locationArr = pro_address.split(' ,');
+			var locationArr = pro_address.split(' , ');
 			$("#sample4_postcode").val(locationArr[1]);
-			var locationArr2 = locationArr[0].split(')');
+			var locationArr2 = locationArr[0].split(') ');
 			$("#sample4_roadAddress").val(locationArr2[0]+')');
 			$("#sample4_jibunAddress").val(locationArr2[1]);
 		</script>

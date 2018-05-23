@@ -24,16 +24,19 @@ public class Member {
 	private String mem_birth3;
 	private MultipartFile photofile;
 	private float mem_score;
+	private int mem_scorecnt;
 
 	public Member() {
 		super();
 	}
 
 	
+	
+
 	public Member(int mem_idx, String mem_id, String mem_pw, String mem_name, Date mem_birth, String mem_nickname,
 			String mem_phone, String mem_email, String address_post, String address_01, String address_02,
 			String mem_address, String mem_photo, String mem_birth1, String mem_birth2, String mem_birth3,
-			MultipartFile photofile, float mem_score) {
+			MultipartFile photofile, float mem_score, int mem_scorecnt) {
 		super();
 		this.mem_idx = mem_idx;
 		this.mem_id = mem_id;
@@ -53,9 +56,11 @@ public class Member {
 		this.mem_birth3 = mem_birth3;
 		this.photofile = photofile;
 		this.mem_score = mem_score;
+		this.mem_scorecnt = mem_scorecnt;
 	}
 
-	
+
+
 
 	@Override
 	public String toString() {
@@ -64,8 +69,24 @@ public class Member {
 				+ ", mem_email=" + mem_email + ", address_post=" + address_post + ", address_01=" + address_01
 				+ ", address_02=" + address_02 + ", mem_address=" + mem_address + ", mem_photo=" + mem_photo
 				+ ", mem_birth1=" + mem_birth1 + ", mem_birth2=" + mem_birth2 + ", mem_birth3=" + mem_birth3
-				+ ", photofile=" + photofile + ", mem_score=" + mem_score + "]";
+				+ ", photofile=" + photofile + ", mem_score=" + mem_score + ", mem_scorecnt=" + mem_scorecnt + "]";
 	}
+
+
+
+
+	public int getMem_scorecnt() {
+		return mem_scorecnt;
+	}
+
+
+
+
+	public void setMem_scorecnt(int mem_scorecnt) {
+		this.mem_scorecnt = mem_scorecnt;
+	}
+
+
 
 
 	public String getAddress_post() {

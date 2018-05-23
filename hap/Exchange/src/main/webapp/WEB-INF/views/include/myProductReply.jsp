@@ -32,14 +32,14 @@ $.ajax({
 	success : function(data) {
 		if(data["replyList"][0]!=null){
 		var key = Object.keys(data["replyList"][0]);
-		str += "<table border='1' style='width: 450px'><tr>";
+		str += "<table class='table' style='width: 450px'><tr>";
 		$.each(data.replyList, function(index, replyList) {
 			var level='';
 			for(var i=0;i<replyList.pro_re_level; i++){
 				level+='&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
 			}
 			/* if(!level==''){level+='>';} */
-			/* "<tr><td><img src="+getContextPath()+"/uploadfile/memberphoto/"+ replyList.mem_photo  + "</td>" + "<td>" */
+			/* "<tr><td><img src="+getContextPath()+"/uploadfile/memberphoto/"+ replyList.mem_photo  + "</td>" + "<td>"  */
 			var date = new Date(replyList.pro_re_regdate);
 			var a = getFormatDate(date);
 			var photoArr = replyList.mem_photo.split("http");
@@ -48,12 +48,12 @@ $.ajax({
 					+ replyList.mem_nickname + "("
 					+ getFormatDate(date) + ")<br>"
 					+ level+" "+ replyList.pro_re_contents + "</td>" + "<td style='width: 80px'>"
-					+ "<a href='#' class='re2ply' onclick='re2ply("+replyList.pro_re_idx+")'>답글</a>&nbsp;&nbsp;"
-					+ "<a href='#' class='delete' onclick='del("+replyList.pro_re_p_num+","+replyList.pro_re_level+");'>삭제</a></td>"
+					+ "<a href='javascript:void(0)' class='re2ply' onclick='re2ply("+replyList.pro_re_idx+")'>답글</a>&nbsp;&nbsp;"
+					+ "<a href='javascript:void(0)' class='delete' onclick='del("+replyList.pro_re_p_num+","+replyList.pro_re_level+");'>삭제</a></td>"
 					/* + "<div name='re2ply' id='re2ply_"+replyList.pro_re_idx+"' style='display:none;'><tr><td colspan='3'>" */
 					+ "<tr name='re2ply' id='re2ply_"+replyList.pro_re_idx+"' style='display:none;'><td colspan='3'>"
-					+ "<textarea id='recomment_"+replyList.pro_re_idx+"'></textarea>"
-					+ "<input type='button' value='입력' onclick='rewrite("+replyList.pro_re_idx+","+replyList.pro_re_p_num+","
+					+ "<textarea class='form-control' style='width:450px;' id='recomment_"+replyList.pro_re_idx+"'></textarea>"
+					+ "<input type='button' value='입력' class='btn btn-default btn-sm' onclick='rewrite("+replyList.pro_re_idx+","+replyList.pro_re_p_num+","
 							+replyList.pro_re_s_num+","+replyList.pro_re_level+")'></td></div>";
 			}
 			else{
@@ -65,8 +65,8 @@ $.ajax({
 				+ "<a href='#' class='delete' onclick='del("+replyList.pro_re_p_num+","+replyList.pro_re_level+");'>삭제</a></td>"
 				/* + "<div name='re2ply' id='re2ply_"+replyList.pro_re_idx+"' style='display:none;'><tr><td colspan='3'>" */
 				+ "<tr name='re2ply' id='re2ply_"+replyList.pro_re_idx+"' style='display:none;'><td colspan='3'>"
-				+ "<textarea id='recomment_"+replyList.pro_re_idx+"'></textarea>"
-				+ "<input type='button' value='입력' onclick='rewrite("+replyList.pro_re_idx+","+replyList.pro_re_p_num+","
+				+ "<textarea class='form-control' id='recomment_"+replyList.pro_re_idx+"'></textarea>"
+				+ "<input type='button' value='입력' class='btn btn-default btn-sm' onclick='rewrite("+replyList.pro_re_idx+","+replyList.pro_re_p_num+","
 						+replyList.pro_re_s_num+","+replyList.pro_re_level+")'></td></div>";
 			}
 		});

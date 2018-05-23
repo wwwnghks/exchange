@@ -94,7 +94,7 @@
 		<br> <br> <br>
 		<table style="margin-left: auto; margin-right: auto;">
 			<tr>
-				<td nowrap="nowrap"><select id="menu"><option
+				<td nowrap="nowrap" style="vertical-align: bottom;"><select class="form-control" id="menu" style="width: 100px; display: inline;"><option
 							value="name">상품명</option>
 						<option value="tag">태그명</option></select> <input type="text" id="pro_name"
 					class="form-control"

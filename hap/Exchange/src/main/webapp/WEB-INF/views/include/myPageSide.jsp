@@ -52,7 +52,7 @@
 		</ul></li>
 	<!-- End Icons -->
 	<!-- Testimonials -->
-	<li class="list-group-item"><a href="features-testimonials.html">Testimonials</a>
+	<li class="list-group-item"><a href="<%=request.getContextPath()%>/trade/tradeRead">거래함</a>
 	</li>
 	<!-- End Testimonials -->
 	<!-- Accordion and Tabs -->
@@ -60,10 +60,10 @@
 		href="<%=request.getContextPath()%>/member/following">팔로윙</a></li>
 	<!-- End Accordion and Tabs -->
 	<!-- Buttons -->
-	<li class="list-group-item"><a href="../message/gMessageList">받은쪽지함</a></li>
+	<li class="list-group-item"><a href="<%=request.getContextPath()%>/message/gMessageList">받은쪽지함</a></li>
 	<!-- End Buttons -->
 	<!-- Carousels -->
-	<li class="list-group-item"><a href="../message/sMessageList">보낸쪽지함</a></li>
+	<li class="list-group-item"><a href="<%=request.getContextPath()%>/message/sMessageList">보낸쪽지함</a></li>
 	<!-- End Accordion and Tabs -->
 	<!-- Animate On Scroll -->
 	<li class="list-group-item"><a

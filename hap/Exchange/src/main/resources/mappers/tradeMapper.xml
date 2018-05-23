@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javamuk.mapper.TradeMapper">
+
+	<insert id="tradecreate" parameterType="com.javamuk.domain.Trade">
+		insert into
+		`exchange`.trade(tra_mystatus,tra_opstatus,mypro_idx,oppro_idx)
+		values(#{tra_mystatus},#{tra_opstatus},#{mypro_idx},#{oppro_idx})
+	</insert>
+
+	<select id="mytraderead" parameterType="com.javamuk.domain.Member"
+		resultType="com.javamuk.domain.Trade">
+		select mypro.pro_idx as mypro_idx,mypro.pro_name as
+		mypro_name,mypro.pro_photo_01 as mypro_photo_01,oppro.pro_idx as
+		oppro_idx,
+		oppro.pro_name as oppro_name,oppro.pro_photo_01 as
+		oppro_photo_01,trade.tra_idx,trade.tra_regdate,trade.tra_mystatus,tra_opstatus 
+		from `exchange`.trade inner join `exchange`.product as mypro on
+		trade.mypro_idx = mypro.pro_idx inner join `exchange`.product as oppro
+		on trade.oppro_idx = oppro.pro_idx inner join `exchange`.member on
+		mypro.mem_idx=member.mem_idx where member.mem_idx=#{mem_idx};
+	</select>
+
+	<select id="optraderead" parameterType="com.javamuk.domain.Member"
+		resultType="com.javamuk.domain.Trade">
+		select mypro.pro_idx as mypro_idx,mypro.pro_name as
+		mypro_name,mypro.pro_photo_01 as mypro_photo_01,oppro.pro_idx as
+		oppro_idx,
+		oppro.pro_name as oppro_name,oppro.pro_photo_01 as
+		oppro_photo_01,trade.tra_idx,trade.tra_regdate,trade.tra_mystatus,tra_opstatus 
+		from `exchange`.trade inner join `exchange`.product as mypro on
+		trade.mypro_idx = mypro.pro_idx inner join `exchange`.product as oppro
+		on trade.oppro_idx = oppro.pro_idx inner join `exchange`.member on
+		oppro.mem_idx=member.mem_idx where member.mem_idx=#{mem_idx};
+	</select>
+	
+	<delete id="tradedelete" parameterType="com.javamuk.domain.Trade">
+		delete from `exchange`.trade where tra_idx=#{tra_idx}
+	</delete>
+	
+	<update id="tradeokupdate" parameterType="com.javamuk.domain.Trade">
+		update `exchange`.trade set tra_mystatus=#{tra_mystatus}, tra_opstatus=#{tra_opstatus} where tra_idx=#{tra_idx}
+	</update>
+	
+	<update id="mytradefinish" parameterType="com.javamuk.domain.Trade">
+		update `exchange`.trade set tra_mystatus=#{tra_mystatus} where tra_idx=#{tra_idx}
+	</update>
+	
+	<update id="optradefinish" parameterType="com.javamuk.domain.Trade">
+		update `exchange`.trade set tra_opstatus=#{tra_opstatus} where tra_idx=#{tra_idx}
+	</update>
+	
+</mapper>

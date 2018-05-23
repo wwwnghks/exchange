@@ -69,36 +69,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="icons" class="bottom-border-shadow">
-			<div class="container background-grey bottom-border">
-				<div class="row padding-vert-60">
-					<!-- Icons -->
-					<div class="col-md-4 text-center">
-						<i class="fa-cogs fa-4x color-primary animate fadeIn"></i>
-						<h2 class="padding-top-10 animate fadeIn">Velit esse molestie</h2>
-						<p class="animate fadeIn">Nam liber tempor cum soluta nobis
-							eleifend option congue nihil imperdiet doming id quod mazim
-							placerat facer.</p>
-					</div>
-					<div class="col-md-4 text-center">
-						<i class="fa-cloud-download fa-4x color-primary animate fadeIn"></i>
-						<h2 class="padding-top-10 animate fadeIn">Quam nunc putamus</h2>
-						<p class="animate fadeIn">Nam liber tempor cum soluta nobis
-							eleifend option congue nihil imperdiet doming id quod mazim
-							placerat facer.</p>
-					</div>
-					<div class="col-md-4 text-center">
-						<i class="fa-bar-chart fa-4x color-primary animate fadeIn"></i>
-						<h2 class="padding-top-10 animate fadeIn">Placerat facer
-							possim</h2>
-						<p class="animate fadeIn">Nam liber tempor cum soluta nobis
-							eleifend option congue nihil imperdiet doming id quod mazim
-							placerat facer.</p>
-					</div>
-					<!-- End Icons -->
-				</div>
-			</div>
-		</div>
+		
 
 		<!-- Portfolio2 -->
 		<div id="portfolio" class="bottom-border-shadow">

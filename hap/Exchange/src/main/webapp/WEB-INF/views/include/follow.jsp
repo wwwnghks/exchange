@@ -14,7 +14,7 @@
 				},
 				success:function(data){
 					if(data==0){
-						$("#follow_btn").val('팔로윙');
+						$("#follow_btn").val('✓팔로윙');
 					}else{
 						$("#follow_btn").val('팔로우');
 					}
@@ -34,10 +34,10 @@
 						following_mem : ${session_member.mem_idx}
 					},
 					success:function(data){
-						$("#follow_btn").val('팔로윙');
+						$("#follow_btn").val('✓팔로윙');
 					}
 				})
-			}else if(follow_btn=='팔로윙'){
+			}else if(follow_btn=='✓팔로윙'){
 				$.ajax({
 					type:"GET",
 					url:"follow_delete",

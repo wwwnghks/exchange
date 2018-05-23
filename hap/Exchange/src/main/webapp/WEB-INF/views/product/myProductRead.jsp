@@ -97,15 +97,15 @@
 
 								<c:if test="${productOne.mem_idx eq session_member.mem_idx}">
 									<div id="buttons">
-										<input type="button" value="수정" id="modify"
+										<input type="button" class="btn btn-warning btn-sm" value="수정" id="modify"
 											onclick="location='myProductModify?pro_idx=${productOne.pro_idx}'">
-										<input type="submit" value="삭제" id="delete"
+										<input type="submit" class="btn btn-danger btn-sm" value="삭제" id="delete"
 											onclick="location='myProductDelete?pro_idx=${productOne.pro_idx}'">
 									</div>
 								</c:if>
 
 								<c:if test="${productOne.mem_idx ne session_member.mem_idx}">
-									<input type="button" value="관심상품 추가"
+									<input type="button" value="관심상품 추가" class="btn btn-warning btn-sm"
 										style="position: absolute; right: 0"
 										onclick="location='favoriteProduct?pro_idx=${productOne.pro_idx}'">
 								</c:if>
@@ -122,18 +122,22 @@
 								<h5>
 									닉네임 : ${ownerMember.mem_nickname }<br> 이메일 :
 									${ownerMember.mem_email }<br> 전화번호 :
-									${ownerMember.mem_phone } &nbsp;
+									${ownerMember.mem_phone } &nbsp;<br>
 									<c:if test="${productOne.mem_idx ne session_member.mem_idx}">
+									<input type="button" value="거래신청" onclick="openWin3();">
+									<input type="hidden" value="" id="mypro_idx">
+									&nbsp;
 										<input type=button value="쪽지보내기" onclick="openWin1();">&nbsp;
-									<input type="button" id="follow_btn" value="팔로우"
-											onclick="javascript:follow();">
+									<input type="button" id="follow_btn" value="팔로우" style="background-color: #4368b2; width:80px; color: white; border-radius: 5px;" class="btn btn-sm"
+											onclick="javascript:follow();">&nbsp;
 										<input type=button value="신고하기" onclick="openWin2();">
 									</c:if>
 								</h5>
 								<hr>
 								댓글달기<br>
-								<textarea id="comment" name="comment" cols="70"></textarea>
-								<br> <input type="button" value="입력" id="write">
+								<textarea class='form-control' id="comment" name="comment" cols="70"></textarea>
+								 <input type="button" class="btn btn-default btn-sm" value="입력" id="write">
+								 <br><br>
 								<div id="table"></div>
 							</div>
 						</div>
@@ -150,7 +154,7 @@
 		<!-- 팔로우 기능 스크립트. -->
 		<%@include file="../include/follow.jsp"%>
 		<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-		<!-- 이미지 클릭시 이미지전환 -->
+		<!-- 이미지 클릭시 이미지전환  -->
 		<script src="<%=request.getContextPath()%>/resources/js/imageRead.js">
 			
 		</script>
