@@ -124,13 +124,13 @@
 									${ownerMember.mem_email }<br> 전화번호 :
 									${ownerMember.mem_phone } &nbsp;<br>
 									<c:if test="${productOne.mem_idx ne session_member.mem_idx}">
-									<input type="button" value="거래신청" onclick="openWin3();">
+									<input type="button" class="btn btn-default btn-sm" value="거래신청" onclick="openWin3();">
 									<input type="hidden" value="" id="mypro_idx">
 									&nbsp;
-										<input type=button value="쪽지보내기" onclick="openWin1();">&nbsp;
-									<input type="button" id="follow_btn" value="팔로우" style="background-color: #4368b2; width:80px; color: white; border-radius: 5px;" class="btn btn-sm"
+										<input type=button class="btn btn-default btn-sm" value="쪽지보내기" onclick="openWin1();">&nbsp;
+									<input type="button" id="follow_btn" value="팔로우" style="background-color: #4368b2; width:70px; color: white;" class="btn btn-sm"
 											onclick="javascript:follow();">&nbsp;
-										<input type=button value="신고하기" onclick="openWin2();">
+										<input type=button class="btn btn-danger btn-sm" value="신고하기" onclick="openWin2();">
 									</c:if>
 								</h5>
 								<hr>
@@ -145,8 +145,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- === END CONTENT2=== -->
+		</div> 
+		<!-- ===END CONTENT2===  -->
 		<%@include file="../include/footer.jsp"%>
 		<%@include file="../include/jsFile.jsp"%>
 		<!-- 댓글 기능 스크립트 -->

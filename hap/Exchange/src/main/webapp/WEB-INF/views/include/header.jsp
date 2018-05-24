@@ -89,14 +89,17 @@
 					alt="Logo" />
 				</a>
 			</div>
-			<!-- End Logo -->
+			<!-- End Logo-->
 		</div>
 		<br> <br> <br>
 		<table style="margin-left: auto; margin-right: auto;">
 			<tr>
-				<td nowrap="nowrap" style="vertical-align: bottom;"><select class="form-control" id="menu" style="width: 100px; display: inline;"><option
+				<td nowrap="nowrap" style="vertical-align: bottom; padding-right: 5px;"><select class="form-control" id="menu" style="width: 100px; display: inline;"><option
 							value="name">상품명</option>
-						<option value="tag">태그명</option></select> <input type="text" id="pro_name"
+						<option value="tag">태그명</option></select>
+						
+				</td>
+				<td nowrap="nowrap" style="vertical-align: bottom; padding-right: 5px;""> <input type="text" id="pro_name"
 					class="form-control"
 					style="width: 450px; margin: 0 auto; display: inline;" required
 					class="search_box_input" placeholder="상품명을 입력하세요."> <input
@@ -106,7 +109,8 @@
 					id="pro_Atag" href="javascript:void(0)" onclick="productSearch()"
 					class="glyphicon glyphicon-search" style="display: inline;"></a> <a
 					id="tag_Atag" href="javascript:void(0)" onclick="tagSearch()"
-					class="glyphicon glyphicon-search" style="display: none;"></a></td>
+					class="glyphicon glyphicon-search" style="display: none;"></a>
+				</td>
 		</table>
 	</div>
 </div>

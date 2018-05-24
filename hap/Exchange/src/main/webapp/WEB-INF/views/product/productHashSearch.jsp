@@ -19,7 +19,7 @@ table {
 <body>
 	<div id="body-bg">
 		<%@include file="../include/header.jsp"%>
-		<!-- === BEGIN CONTENT === -->
+		<!-- === BEGIN CONTENT == -->
 		<div id="content">
 			<div class="container background-white">
 				<div class="row margin-vert-30">
@@ -29,10 +29,10 @@ table {
 						<c:if test="${empty tag_list }">
 							 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h2>검색결과없음</h2>
 						</c:if>
-						 <table>
+						 <table style="table-layout: fixed; word-wrap:break-word;">
 						 <c:forEach items="${tag_list}" var="search_list" varStatus="status">
                          <c:if test="${status.index%5==0 }"><tr></c:if>
-                       		 <td style="padding: 10px">
+                       		 <td style="padding: 10px; width: 20%; vertical-align: top;">
                         <a href="myProductRead?pro_idx=${search_list.pro_idx }"> <img alt="${search_list.pro_name }님의 사진" height="150px" width="150px"  
                        		src="<%=request.getContextPath() %>/uploadfile/memberproduct/${search_list.pro_photo_01 }"><br> ${search_list.pro_name }[${search_list.pro_hash }] </a>
                         </td>
