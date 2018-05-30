@@ -1,15 +1,12 @@
 package com.javamuk.message.controller;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.javamuk.domain.Member;
 import com.javamuk.domain.Message;
 import com.javamuk.message.service.MessageReadService;
 

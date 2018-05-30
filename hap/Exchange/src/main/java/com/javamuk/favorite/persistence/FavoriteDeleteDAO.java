@@ -1,9 +1,7 @@
 package com.javamuk.favorite.persistence;
 
 import java.util.HashMap;
-
 import javax.inject.Inject;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 

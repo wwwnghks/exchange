@@ -10,7 +10,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.javamuk.domain.Notice;
-import com.javamuk.domain.QnA;
 
 @Repository
 public class NoticeListDAO {

@@ -1,9 +1,7 @@
 package com.javamuk.favorite.service;
 
 import javax.inject.Inject;
-
 import org.springframework.stereotype.Service;
-
 import com.javamuk.domain.Favorite_Product;
 import com.javamuk.favorite.persistence.FavoriteCreateDAO;
 

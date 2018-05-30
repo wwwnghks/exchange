@@ -14,7 +14,7 @@
 <%@include file="include/style.jsp"%>
 </head>
 <body>
-	<div id="body-bg">
+	<div id="body-bg" style="background-color: white;">
 		<!-- Phone/Email -->
 		<%@include file="include/header.jsp"%>
 		<!-- End Top Menu -->

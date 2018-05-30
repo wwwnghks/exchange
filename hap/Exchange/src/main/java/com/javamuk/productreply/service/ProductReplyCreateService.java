@@ -2,7 +2,9 @@ package com.javamuk.productreply.service;
 
 
 import javax.inject.Inject;
+
 import org.springframework.stereotype.Service;
+
 import com.javamuk.domain.Product_Reply;
 import com.javamuk.productreply.persistence.ProductReplyCreateDAO;
 

@@ -4,11 +4,11 @@ package com.javamuk.productreply.controller;
 
 import javax.inject.Inject;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.javamuk.domain.Product_Reply;
 import com.javamuk.productreply.service.ProductReplyDeleteService;
 

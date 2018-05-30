@@ -1,6 +1,5 @@
 package com.javamuk.message.persistence;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.javamuk.domain.Message;
-import com.javamuk.domain.Notice;
 
 @Repository
 public class MessageListDao {

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.javamuk.domain.Manager;
 import com.javamuk.domain.Member;
 import com.javamuk.domain.Message;
 import com.javamuk.domain.Paging;

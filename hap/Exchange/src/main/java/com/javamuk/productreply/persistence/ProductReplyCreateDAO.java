@@ -1,8 +1,10 @@
 package com.javamuk.productreply.persistence;
 
 import javax.inject.Inject;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
 import com.javamuk.domain.Product_Reply;
 
 @Repository

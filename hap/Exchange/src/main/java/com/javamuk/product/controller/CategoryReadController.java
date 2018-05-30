@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javamuk.domain.Brand;
 import com.javamuk.domain.First_Category;
-import com.javamuk.domain.Member;
 import com.javamuk.domain.Product;
 import com.javamuk.domain.Second_Category;
 import com.javamuk.product.service.MyProductCreateService;

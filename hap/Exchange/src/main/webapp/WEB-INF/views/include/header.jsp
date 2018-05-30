@@ -99,7 +99,7 @@
 						<option value="tag">태그명</option></select>
 						
 				</td>
-				<td nowrap="nowrap" style="vertical-align: bottom; padding-right: 5px;""> <input type="text" id="pro_name"
+				<td nowrap="nowrap" style="vertical-align: bottom; padding-right: 5px;"> <input type="text" id="pro_name"
 					class="form-control"
 					style="width: 450px; margin: 0 auto; display: inline;" required
 					class="search_box_input" placeholder="상품명을 입력하세요."> <input
@@ -116,7 +116,7 @@
 </div>
 <br>
 <br>
-<!-- End Headera -->
+<!-- End Headera  -->
 <!-- Top Menu -->
 <div id="hornav" class="bottom-border-shadow">
 	<div class="container no-padding border-bottom">
@@ -178,7 +178,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="col-md-4 no-padding">
+		<!-- 	<div class="col-md-4 no-padding">
 				<ul class="social-icons pull-right">
 					<li class="social-rss"><a href="#" target="_blank" title="RSS"></a>
 					</li>
@@ -189,7 +189,7 @@
 					<li class="social-googleplus"><a href="#" target="_blank"
 						title="Google+"></a></li>
 				</ul>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </div>

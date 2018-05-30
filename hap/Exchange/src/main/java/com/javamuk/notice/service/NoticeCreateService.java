@@ -1,7 +1,6 @@
 package com.javamuk.notice.service;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
