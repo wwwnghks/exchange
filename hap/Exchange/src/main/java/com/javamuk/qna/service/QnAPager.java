@@ -1,6 +1,5 @@
 package com.javamuk.qna.service;
 
-
 public class QnAPager {
 	// 페이지당 게시물 수
 	public static final int PAGE_SCALE = 10;
@@ -24,14 +23,14 @@ public class QnAPager {
 
 	// 생성자
 	// QnAPager(레코드 갯수, 현재 페이지 번호)
-	public QnAPager(int count, int curPage){
-        curBlock = 1; // 현재 페이지 블록 번호
-        this.curPage = curPage; // 현재 페이지 설정
-        setTotPage(count); // 전체 페이지 갯수 계산
-        setPageRange(); // 
-        setTotBlock(); // 전체 페이지 블록 갯수 계산  0~10 -> 1
-        setBlockRange(); // 페이지 블록의 시작, 끝 번호 계산
-    }
+	public QnAPager(int count, int curPage) {
+		curBlock = 1; // 현재 페이지 블록 번호
+		this.curPage = curPage; // 현재 페이지 설정
+		setTotPage(count); // 전체 페이지 갯수 계산
+		setPageRange(); //
+		setTotBlock(); // 전체 페이지 블록 갯수 계산 0~10 -> 1
+		setBlockRange(); // 페이지 블록의 시작, 끝 번호 계산
+	}
 
 	public void setBlockRange() {
 		// *현재 페이지가 몇번째 페이지 블록에 속하는지 계산
@@ -67,7 +66,7 @@ public class QnAPager {
 	}
 
 	public void setCurPage(int curPage) {
-		
+
 		this.curPage = curPage;
 	}
 
@@ -92,7 +91,7 @@ public class QnAPager {
 	}
 
 	public void setTotPage(int count) {
-		// Math.ceil(실수) 올림 처리 // 13개  13/10 => 1.3 => 2개
+		// Math.ceil(실수) 올림 처리 // 13개 13/10 => 1.3 => 2개
 		totPage = (int) Math.ceil(count * 1.0 / PAGE_SCALE);
 	}
 

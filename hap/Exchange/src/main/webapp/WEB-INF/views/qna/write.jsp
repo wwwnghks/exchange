@@ -16,15 +16,17 @@
 <%@include file="../include/style.jsp"%>
 <script type="text/javascript">
 	$(document).ready(function() {
-		
-		CKEDITOR.replace('qa_contents');
+
+		CKEDITOR.replace('qa_contents', {
+			width : '100%',
+			height : '300px'
+		});
 
 		CKEDITOR.editorConfig = function(config) {
 			config.language = 'ko';
-			config.height = 500;
+
 			config.toolbarCanCollapse = true;
 		};
-
 
 		$("#btnSave").click(function() {
 
@@ -52,30 +54,66 @@
 </script>
 </head>
 <body>
-	<%@include file="../include/header.jsp"%>
-	<h2>게시글 작성</h2>
-	<form name="form1" method="post" action="insert">
-		<input type="hidden" name="mem_idx" value="${session_member.mem_idx}">
-		<div>
-			제목 <input name="qa_title" id="qa_title" size="80"
-				placeholder="제목을 입력해주세요">
-		</div>
+	<div id="body-bg">
+		<%@include file="../include/header.jsp"%>
+		<div id="content">
+			<div class="container background-white">
+				<div class="row margin-vert-30">
+					<div class="col-md-2">
+						<ul class="list-group sidebar-nav" id="sidebar-nav">
+							<!-- Buttons -->
+							<li class="list-group-item"><a
+								href="<%=request.getContextPath()%>/notice/noticeList">공지사항</a></li>
+							<!-- End Buttons -->
+							<!-- Carousels -->
+							<li class="list-group-item"><a
+								href="<%=request.getContextPath()%>/qna/list">Q&A</a></li>
+							<!-- End Accordion and Tabs -->
+						</ul>
+					</div>
 
-		<div>
+					<h2>게시글 작성</h2>
+					<hr class="margin-vert-30">
+					<form name="form1" method="post" action="insert"
+						enctype="multipart/form-data">
+						<input type="hidden" name="mem_idx"
+							value="${session_member.mem_idx}">
+						<table width="800" border="2" bordercolor="lightgray"
+							align="center">
+							<tr>
 
-			이름 <input name="mem_name" id="mem_name" type="text"
-				value="${session_member.mem_name}" readonly="readonly">
+								<td><label>제목</label></td>
+								<td><input name="qa_title" id="qa_title" size="80"
+									placeholder="제목을 입력해주세요"></td>
+							</tr>
 
-		</div>
-		<div>
-			<textarea name="qa_contents" id="qa_contents"></textarea>
-		</div>
 
-		<div>
-			<button type="button" id="btnSave">확인</button>
-			<button type="button" OnClick="javascript:history.back(-1)">취소</button>
+							<tr>
+								<td><label>이름</label></td>
+								<td><input name="mem_name" id="mem_name" type="text" 
+									value="${session_member.mem_name}" readonly="readonly"></td>
+							</tr>
+							<tr>
+								<td colspan='2'><textarea name="qa_contents"
+										id="qa_contents"></textarea></td>
+							</tr>
+
+							<tr align="center" valign="middle">
+								<td colspan="5">
+
+									<button type="button" id="btnSave" style="border-radius: 5px;">확인</button>
+									<button type="button" OnClick="javascript:history.back(-1)"
+										style="border-radius: 5px;">취소</button>
+								</td>
+							</tr>
+
+
+						</table>
+					</form>
+				</div>
+			</div>
 		</div>
-	</form>
+	</div>
 	<%@include file="../include/footer.jsp"%>
 	<%@include file="../include/jsFile.jsp"%>
 </body>

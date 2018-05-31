@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javamuk.mapper.QnAReplyMapper">
+
+	<insert id="createreply" parameterType="com.javamuk.domain.QnA_Reply">
+		<selectKey resultType="int" keyProperty="qa_re_p_num" order="BEFORE">
+			SELECT ifnull(max(qa_re_p_num),0)+1 from
+			`exchange`.qna_reply
+		</selectKey>
+		INSERT INTO
+		`exchange`.`qna_reply`(`qa_re_p_num`,`qa_re_s_num`,`qa_re_level`,`qa_re_contents`,`qa_re_writer`,`qa_idx`,`man_idx`)
+		VALUES(#{qa_re_p_num},1,0,#{qa_re_contents},#{qa_re_writer},#{qa_idx},#{man_idx})
+	</insert>
+	
+	<insert id="createrereply" parameterType="com.javamuk.domain.QnA_Reply">
+		INSERT INTO 
+		`exchange`.`qna_reply`(`qa_re_p_num`,`qa_re_s_num`,`qa_re_level`,`qa_re_contents`,`qa_re_writer`,`qa_idx`,`man_idx`) 
+		VALUES(#{qa_re_p_num},(#{qa_re_s_num}+1),(#{qa_re_level}+1),#{qa_re_contents},#{qa_re_writer},#{qa_idx},#{man_idx})
+	</insert>
+
+	<update id="updateQnAReWrite" parameterType="com.javamuk.domain.QnA_Reply">
+		update
+		`exchange`.qna_reply
+		set qa_re_s_num=qa_re_s_num+1
+		where
+		qa_re_p_num=#{qa_re_p_num} and qa_re_s_num>#{qa_re_s_num}
+	</update>
+	
+	<select id="qnareplyread" parameterType="com.javamuk.domain.QnA_Reply"
+		resultType="com.javamuk.domain.QnA_Reply">
+		select * from `exchange`.manager inner join `exchange`.qna_reply
+		on manager.man_idx=qna_reply.man_idx inner join `exchange`.qna
+		on qna.qa_idx = qna_reply.qa_idx inner join `exchange`.member
+		on qna.mem_idx=member.mem_idx where qna.qa_idx=#{qa_idx} order by qa_re_p_num desc, qa_re_s_num asc
+	</select>
+	
+	<delete id="qnareplyDelete" parameterType="com.javamuk.domain.QnA_Reply">
+		delete from `exchange`.qna_reply where qa_re_p_num=#{qa_re_p_num} 
+		and 2>(select * from(select count(qa_re_p_num) from `exchange`.qna_reply where qa_re_p_num=#{qa_re_p_num})as a)
+	</delete>
+
+
+
+
+
+</mapper>

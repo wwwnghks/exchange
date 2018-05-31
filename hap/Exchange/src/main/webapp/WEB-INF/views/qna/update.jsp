@@ -16,12 +16,12 @@
 <%@include file="../include/style.jsp"%>
 <script type="text/javascript">
 	$(document).ready(function() {
-		
+
 		// ** 목록 버튼 클릭 이벤트 : 버튼 클릭시 상세보기화면에 있던 페이지, 검색옵션, 키워드 값을 가지로 목록으로 이동
-       /*  $("#btnList").click(function(){
-            location.href="exchange/qna/list?curPage=${curPage}&searchOption=${searchOption}&keyword=${keyword}";
-        }); */
-		
+		/*  $("#btnList").click(function(){
+		     location.href="exchange/qna/list?curPage=${curPage}&searchOption=${searchOption}&keyword=${keyword}";
+		 }); */
+
 		CKEDITOR.replace('qa_contents');
 		CKEDITOR.config.height = 500;
 
@@ -50,34 +50,66 @@
 </head>
 <body>
 	<%@include file="../include/header.jsp"%>
-	<h2>게시글 수정</h2>
+	<div id="content">
+		<div class="container background-white">
+			<div class="row margin-vert-40">
+				<div class="col-md-2">
+					<ul class="list-group sidebar-nav" id="sidebar-nav">
+						<!-- Buttons -->
+						<li class="list-group-item"><a
+							href="<%=request.getContextPath()%>/notice/noticeList">공지사항</a></li>
+						<!-- End Buttons -->
+						<!-- Carousels -->
+						<li class="list-group-item"><a
+							href="<%=request.getContextPath()%>/qna/list">Q&A</a></li>
+						<!-- End Accordion and Tabs -->
+					</ul>
+				</div>
 
-	<form name="form1" method="post" action="update">
-		<input type="hidden" name="mem_idx" value="${session_member.mem_idx}">
-		<div>
-			제목 <input name="qa_title" id="qa_title" value="${qna.qa_title}">
+				<h2>게시글 수정</h2>
+				<hr class="margin-vert-30">
+
+				<form name="form1" method="post" action="update"
+					enctype="multipart/form-data">
+					<table width="800" border="2" bordercolor="lightgray"
+						align="center">
+
+						<input type="hidden" name="mem_idx"
+							value="${session_member.mem_idx}">
+						<tr>
+							<td><label>제목</label></td>
+							<td><input name="qa_title" id="qa_title" size="80"
+								value="${qna.qa_title}"></td>
+						</tr>
+						<tr>
+							<td><label>이름</label></td>
+							<td><input name="mem_name" id="mem_name" type="text"
+								value="${session_member.mem_name}" readonly="readonly">
+							</td>
+						</tr>
+						<tr>
+							<td colspan='2'><textarea name="qa_contents"
+									id="qa_contents">${qna.qa_contents}</textarea></td>
+						</tr>
+
+
+						<!-- 게시물번호를 hidden으로 처리 -->
+						<input type="hidden" name="qa_idx" value="${qna.qa_idx}">
+						<tr align="center" valign="middle">
+
+							<td colspan="5"><button type="button" id="btnUpdete"
+									style="border-radius: 5px;">저장</button> <!-- **상세보기 화면에서 게시글 목록화면으로 이동 -->
+								<button type="button" id="btnList">
+									<a href="list">목록</a>
+								</button></td>
+						</tr>
+					</table>
+				</form>
+
+			</div>
 		</div>
-
-		<div>
-
-			이름 <input name="mem_name" id="mem_name" type="text"
-				value="${session_member.mem_name}" readonly="readonly">
-		</div>
-		<div>
-			<textarea name="qa_contents" id="qa_contents">${qna.qa_contents}</textarea>
-		</div>
-
-		<div style="width: 650px; text-align: center;">
-			<!-- 게시물번호를 hidden으로 처리 -->
-			<input type="hidden" name="qa_idx" value="${qna.qa_idx}">
-			
-			
-			<button type="button" id="btnUpdete">저장</button>
-			<!-- **상세보기 화면에서 게시글 목록화면으로 이동 -->
-        <button type="button" id="btnList"><a href="list">목록</a></button>
-		</div>
-
-	</form>
+	</div>
+	</div>
 	<%@include file="../include/footer.jsp"%>
 	<%@include file="../include/jsFile.jsp"%>
 </body>

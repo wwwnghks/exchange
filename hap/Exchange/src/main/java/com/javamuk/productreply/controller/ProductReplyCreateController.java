@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javamuk.domain.Product_Reply;
+import com.javamuk.domain.QnA_Reply;
 import com.javamuk.productreply.service.ProductReplyCreateService;
 
 
@@ -17,6 +18,7 @@ public class ProductReplyCreateController {
 	@Inject
 	private ProductReplyCreateService service;
 	
+
 
 	
 	@RequestMapping(value = "/reply/write", method = RequestMethod.POST)

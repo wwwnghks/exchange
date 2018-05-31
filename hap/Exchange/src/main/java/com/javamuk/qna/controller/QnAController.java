@@ -145,15 +145,14 @@ public class QnAController {
 		// 페이지 나누기 관련 처리
 		QnAPager qnaPager = new QnAPager(count, curPage);
 		int start = qnaPager.getPageBegin();
-		int end = qnaPager.getPageEnd(); //한페이지에 띄어주는 개수
+		int end = qnaPager.getPageEnd(); // 한페이지에 띄어주는 개수
 		System.out.println(curPage);
-		
-		
+
 		List<QnA> list = qnaService.listAll(start, end, searchOption, keyword);
 		System.out.println(start);
 		System.out.println(end);
 		System.out.println(list);
-		
+
 		// 데이터를 맵에 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list); // list
@@ -161,7 +160,6 @@ public class QnAController {
 		map.put("searchOption", searchOption); // 검색옵션
 		map.put("keyword", keyword); // 검색키워드
 		map.put("qnaPager", qnaPager);
-
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장

@@ -28,7 +28,6 @@ public class DeclarationCreateController {
 	@RequestMapping(value="/declaration/declarationCreate", method=RequestMethod.POST)
 	public String create(Declaration declaration) {
 		int resultCnt = declarationCreateService.createDeclaration(declaration);
-		System.out.println(resultCnt);
 		return "declaration/declarationSending";
 	}
 }

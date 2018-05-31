@@ -28,7 +28,6 @@ public class MessageCreateController {
 	@RequestMapping(value = "/message/messageCreate", method = RequestMethod.POST)
 	public String createMessage(Message message) {
 		int resultCnt = messageCreateService.createMessage(message);
-		System.out.println(resultCnt);
 		return "message/messageSending";
 	}
 }

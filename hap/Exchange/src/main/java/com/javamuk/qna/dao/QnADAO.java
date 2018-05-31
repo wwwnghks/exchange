@@ -17,9 +17,9 @@ public class QnADAO {
 	@Inject
 	private SqlSession session;
 
-	// 01. 게시글 작성
 	private static String namespace = "com.javamuk.mapper.QnAMapper";
 
+	// 01. 게시글 작성
 	public void create(QnA qna) throws Exception {
 		session.insert(namespace + ".insert", qna);
 	}

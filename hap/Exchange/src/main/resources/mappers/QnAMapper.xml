@@ -89,15 +89,16 @@
 
 	<!--03. 게시글 상세보기 조회 -->
 	<select id="view" resultType="com.javamuk.domain.QnA">
-		SELECT qa_idx,
-		qa_title,
-		qa_contents,
+		SELECT q.qa_idx,
+		q.qa_title,
+		q.qa_contents,
 		date_format(qa_regdate, '%Y-%m-%d %H:%i:%s') qa_regdate,
-		qa_viewcnt,
-		mem_idx 
-		FROM `exchange`.`qna`
-		WHERE qa_idx =
-		#{qa_idx}
+		q.qa_viewcnt,
+		q.mem_idx,
+		m.mem_name
+		FROM `exchange`.`qna` AS q,
+		`exchange`.`member` AS m
+		WHERE q.mem_idx = m.mem_idx AND q.qa_idx = #{qa_idx}
 	</select>
 
 

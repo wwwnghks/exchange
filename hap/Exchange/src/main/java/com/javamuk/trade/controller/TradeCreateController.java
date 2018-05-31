@@ -28,7 +28,6 @@ public class TradeCreateController {
 	
 	@RequestMapping(value="/trade/tradeCreate", method=RequestMethod.GET)
 	public String createForm(@RequestParam("oppro_idx") int oppro_idx,HttpSession session,Model model) {
-
 		Member session_member = (Member) session.getAttribute("session_member");
 		List<Product> myProduct = pro_service.myProductAll(session_member);
 		model.addAttribute("oppro_idx", oppro_idx);
