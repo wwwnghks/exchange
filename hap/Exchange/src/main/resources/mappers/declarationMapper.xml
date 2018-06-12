@@ -1,16 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.javamuk.mapper.declarationMapper">
-	<insert id="createDeclaration" parameterType="com.javamuk.domain.Declaration">
-		insert into
-		declaration(dec_msg_title,dec_msg_contents,mem_idx,man_idx,pro_idx)
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javamuk.mapper.declaraltionMapper">
+
+	<insert id="createDeclaration" parameterType="com.javamuk.domain.Declaration"> insert into
+		declaration_message(dec_msg_title,dec_msg_contents,mem_idx,man_idx,pro_idx)
 		values(#{dec_msg_title},#{dec_msg_contents},#{mem_idx},#{man_idx},#{pro_idx})
 	</insert>
-	<!-- <select id="listDeclaration" parameterType="hashmap"
-		resultType="com.javamuk.mapper.Declaration">
-		select d.dec_msg_idx,d.dec_msg_title,d.dec_msg_regdate,m.man_name
-		from `exchange`.declaration_message d inner join `exchange`.manager m on
-	</select> -->
 
+
+	<select id="listDeclaration" parameterType="com.javamuk.domain.Declaration"
+		resultType="com.javamuk.domain.Declaration">
+
+		<!-- select d.dec_msg_idx,m.mem_name,d.dec_msg_title,d.dec_msg_regdate 
+			from `exchange`.declaration_message d inner join `exchange`.member m on m.mem_idx=d.mem_idx -->
+
+
+		<!-- select * from `exchange`.declaration_message d inner join `exchange`.member 
+			m on m.mem_idx=d.mem_idx <include refid="search" /> order by d.dec_msg_idx 
+			desc, d.dec_msg_regdate <include refid="paging" /> -->
+
+		select * from declaration_message as d inner join member as m on
+		m.mem_idx=d.mem_idx
+		<include refid="search" />
+		ORDER BY d.dec_msg_idx DESC, d.dec_msg_regdate
+		<include refid="paging" />
+
+	</select>
+
+	<select id="MlistDeclaration" parameterType="com.javamuk.domain.Declaration"
+		resultType="com.javamuk.domain.Declaration">
+
+	</select>
+
+
+	<select id="listDeclarationRead" parameterType="com.javamuk.domain.Declaration"
+		resultType="com.javamuk.domain.Declaration"> select * from `exchange`.declaration_message d inner join
+		`exchange`.member m on m.mem_idx=d.mem_idx where
+		dec_msg_idx=#{dec_msg_idx};
+	</select>
+
+	<!-- <select id="listAll" parameterType="com.javamuk.domain.Declaration" 
+		resultType="com.javamuk.domain.Declaration"> select * from declaration_message 
+		as d, member as m where d.mem_idx = m.mem_idx <include refid="search" /> 
+		order by d.dec_msg_idx desc, d.dec_msg_regdate <include refid="paging" /> 
+		</select> -->
+
+
+	<!-- 검색 조건 -->
+
+
+	<sql id="search">
+
+		<choose>
+
+			<when test="searchOption == 'all'"> AND (m.mem_name like concat('%' , #{keyword} , '%')
+				OR d.dec_msg_title like concat('%' , #{keyword} , '%')) </when>
+
+			<otherwise> and ${searchOption} like concat ('%', #{keyword}, '%')
+			</otherwise>
+
+		</choose>
+
+	</sql>
+
+	<!-- 페이징 시작 끝 -->
+
+
+	<sql id="paging"> LIMIT #{start}, #{end} </sql>
+
+	<!-- 게시글 레코드 갯수 -->
+
+	<select id="countArticle" resultType="int">
+		select count(d.dec_msg_idx) from declaration_message as d, member as
+		m where d.mem_idx = m.mem_idx
+		<include refid="search" />
+
+	</select>
+
+	<!-- 조회수 증가 -->
+
+
+	<update id="increaseViewCnt" parameterType="com.javamuk.domain.Declaration"> update
+		declaration_message set dec_viewCnt = dec_viewCnt + 1 where
+		dec_msg_idx = #{dec_msg_idx,jdbcType=VARCHAR}
+	</update>
 </mapper>

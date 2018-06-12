@@ -47,11 +47,11 @@
 					<div id="main_div">
 						<!-- End Sidebar Menu -->
 						<h1>거래함</h1><br>
-						<h3>-거래신청발신내역-</h3>
-						
+						<h3>[ 거래신청발신내역 ]</h3>
+						<br>
 						<c:if test="${empty mytrade }">없음</c:if>
 						<c:if test="${!empty mytrade }">
-							<table class="table" style="width: 720px;">
+							<table class="table" style="width: 700px;">
 								<tr>
 									<th style="width: 100px;">내상품명</th>
 									<th style="width: 110px;">내상품사진</th>
@@ -104,10 +104,10 @@
 							</table>
 						</c:if>
 						<br>
-						<h3>-거래신청수신내역-</h3>
+						<h3>[ 거래신청수신내역 ]</h3><br>
 						<c:if test="${empty optrade }">없음</c:if>
 						<c:if test="${!empty optrade }">
-							<table class="table" style="width: 720px;">
+							<table class="table" style="width: 700px;">
 								<tr>
 									<th style="width: 100px;">내상품명</th>
 									<th style="width: 110px;">내상품사진</th>

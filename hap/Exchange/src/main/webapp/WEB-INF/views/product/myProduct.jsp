@@ -19,6 +19,22 @@
 	height:500px;
 	width: 80px;
 }
+.name{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.margin-center {
+   margin: auto;
+   width: 55%;   
+   padding: 10px;
+   padding-top: 40px;
+}
+
+
+
 </style>
 <!-- Title -->
 <title>Habitat - A Professional Bootstrap Template</title>
@@ -30,7 +46,7 @@
 		 <!-- === BEGIN CONTENT == -->
             <div id="content">
                 <div class="container background-white">
-                    <div class="row margin-vert-40">
+                    <div class="margin-center">
                         <!-- Begin Sidebar Menu -->
                         <div class="col-md-2">
                            <%@include file="../include/myPageSide.jsp"%>
@@ -43,7 +59,7 @@
                         <tr>
                          <c:forEach items="${productList}" var="productList" varStatus="status">
                          <c:if test="${status.index%4==0 }"><tr></c:if>
-                        <td style="padding: 10px">
+                        <td style="padding: 10px" class="name">
                         <a href="myProductRead?pro_idx=${productList.pro_idx }"> <img alt="${productList.pro_name }님의 사진" height="150px" width="150px"  
                        		src="<%=request.getContextPath() %>/uploadfile/memberproduct/${productList.pro_photo_01 }"><br> ${productList.pro_name } </a>
                         </td>

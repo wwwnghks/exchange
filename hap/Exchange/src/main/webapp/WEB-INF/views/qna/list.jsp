@@ -23,16 +23,26 @@
 .layer {
 	text-align: cneter;
 }
+
+.margin-center {
+   margin: auto;
+   width: 55%;  
+   padding: 10px;
+   padding-top: 40px;
+}
+
 </style>
 </head>
 <body>
 	<%@include file="../include/header.jsp"%>
 	<div id="content">
 		<div class="container background-white">
-			<div class="row margin-vert-40">
+			<div class="margin-center">
 				<div class="col-md-2">
 					<ul class="list-group sidebar-nav" id="sidebar-nav">
 						<!-- Buttons -->
+						<div class=box style="background-color: #09d2e5">
+	<li class="list-group-item"> </li></div>
 						<li class="list-group-item"><a
 							href="<%=request.getContextPath()%>/notice/noticeList">공지사항</a></li>
 						<!-- End Buttons -->
@@ -43,10 +53,9 @@
 					</ul>
 				</div>
 				<div class="col-md-1" style="height: 400px"></div>
-
-
-				<h2>Q&A 목록</h2>
-				<hr class="margin-vert-40">
+				<h2>Q&A</h2>
+				<hr class="margin-center">
+				<div id="wrap">
 				<div class="col-md-2"></div>
 				<div id="topForm">
 					<form name="form1" method="post" action="list">
@@ -61,17 +70,18 @@
 							<option value="qa_title"
 								<c:out value="${map.searchOption == 'qa_title'?'selected':''}"/>>제목</option>
 						</select> <input name="keyword" value="${map.keyword}"> <input
-							type="submit" value="조회">
+							type="submit" value="조회" class="btn btn-default btn-sm">
 						<!-- 로그인한 사용자만 글쓰기 버튼을 활성화 -->
 						<c:if test="${session_member.mem_name != null}">
-							<button type="button" onclick="btnWrite()">글쓰기</button>
+							<button type="button" class="btn btn-default btn-sm" onclick="btnWrite()">글쓰기</button>
 						</c:if>
-					</form>
+					</form></div>
 					<!-- 레코드의 갯수를 출력 -->
-					${map.count}개의 게시물이 있습니다.
-					<table id="nList" style="width: 680px" class="table table-striped">
-						
-						
+					<%-- ${map.count}개의 게시물이 있습니다. --%>
+					<br>
+					<div class="col-md-2"></div>
+					<table id="nList" style="width: 680px" class="table">
+						<thead>
 							<tr>
 								<th>번호</th>
 								<th>제목</th>
@@ -79,7 +89,7 @@
 								<th>작성일</th>
 								<th>조회수</th>
 							</tr>
-						
+						<thead>
 
 						<c:forEach varStatus="status" var="row" items="${map.list}">
 							<tr>

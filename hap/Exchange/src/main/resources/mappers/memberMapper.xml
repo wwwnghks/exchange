@@ -5,12 +5,16 @@
 <mapper namespace="com.javamuk.mapper.memberMapper">
 
 	<insert id="createNaverMember" parameterType="com.javamuk.domain.Member">
-		insert into member(mem_id,mem_pw,mem_name,mem_nickname,mem_photo) values(#{mem_id},#{mem_pw},#{mem_name},#{mem_nickname},#{mem_photo})
+		insert into
+		member(mem_id,mem_pw,mem_name,mem_nickname,mem_photo)
+		values(#{mem_id},#{mem_pw},#{mem_name},#{mem_nickname},#{mem_photo})
 	</insert>
-	
-	
+
+
 	<insert id="createCacaoMember" parameterType="com.javamuk.domain.Member">
-		insert into member(mem_id,mem_pw,mem_name,mem_nickname,mem_photo) values(#{mem_id},#{mem_pw},#{mem_name},#{mem_nickname},#{mem_photo})
+		insert into
+		member(mem_id,mem_pw,mem_name,mem_nickname,mem_photo)
+		values(#{mem_id},#{mem_pw},#{mem_name},#{mem_nickname},#{mem_photo})
 	</insert>
 
 	<insert id="createMember" parameterType="com.javamuk.domain.Member">
@@ -26,25 +30,60 @@
 	</select>
 
 	<select id="loginManager" resultType="com.javamuk.domain.Manager">
-		select * from manager where man_id=#{man_id} and man_pw=#{man_pw}
+		select * from manager where
+		man_id=#{man_id} and man_pw=#{man_pw}
 	</select>
-	
+
 	<select id="idCheck" resultType="int" parameterType="com.javamuk.domain.Member">
-		select count(*) from `exchange`.member where mem_id=#{mem_id}
+		select
+		count(*) from `exchange`.member where mem_id=#{mem_id}
 	</select>
-	
-		<select id="nickCheck" resultType="int" parameterType="com.javamuk.domain.Member">
-		select count(*) from `exchange`.member where mem_nickname=#{mem_nickname}
+
+	<select id="nickCheck" resultType="int" parameterType="com.javamuk.domain.Member">
+		select
+		count(*) from `exchange`.member where mem_nickname=#{mem_nickname}
 	</select>
-	
- 	<update id="scoreupdate" parameterType="com.javamuk.domain.Member">
-		update `exchange`.member set mem_score=(mem_score*mem_scorecnt+#{mem_score})/(mem_scorecnt+1),mem_scorecnt=mem_scorecnt+1 where mem_idx=#{mem_idx}
-	</update> 
-	
-	<select id="ownerread" parameterType="com.javamuk.domain.Product" resultType="com.javamuk.domain.Member">
-		select * from `exchange`.member inner join `exchange`.product on member.mem_idx = product.mem_idx where pro_idx=#{pro_idx}
+	<select parameterType="com.javamuk.domain.Member" id="pwcCheck"
+		resultType="int"> select count(*) from `exchange`.member where
+		mem_pw=#{mem_pwc} </select>
+
+	<select parameterType="com.javamuk.domain.Member" id="pwCheck"
+		resultType="int"> select count(*) from `exchange`.member where
+		mem_pw=#{mem_pw} </select>
+
+	<update id="scoreupdate" parameterType="com.javamuk.domain.Member">
+		update `exchange`.member
+		set
+		mem_score=(mem_score*mem_scorecnt+#{mem_score})/(mem_scorecnt+1),mem_scorecnt=mem_scorecnt+1
+		where mem_idx=#{mem_idx}
+	</update>
+
+	<select id="ownerread" parameterType="com.javamuk.domain.Product"
+		resultType="com.javamuk.domain.Member">
+		select * from `exchange`.member inner join
+		`exchange`.product on member.mem_idx = product.mem_idx where
+		pro_idx=#{pro_idx}
 	</select>
-	
-	
-	
+	<update parameterType="com.javamuk.domain.Member" id="updateMember"> UPDATE
+		member SET
+		mem_pw=#{mem_pw},mem_email=#{mem_email},mem_address=#{mem_address},mem_phone=#{mem_phone},mem_photo=#{mem_photo}
+		WHERE mem_idx=#{mem_idx} </update>
+
+	<update parameterType="com.javamuk.domain.Member" id="updateMemberTwo"> UPDATE
+		member SET
+		mem_email=#{mem_email},mem_address=#{mem_address},mem_phone=#{mem_phone},mem_photo=#{mem_photo}
+		WHERE mem_idx=#{mem_idx} </update>
+
+	<delete parameterType="com.javamuk.domain.Member" id="deleteMember"> DELETE
+		FROM member WHERE mem_idx=#{mem_idx} </delete>
+
+	<select parameterType="com.javamuk.domain.Member" id="idFind"
+		resultType="com.javamuk.domain.Member"> select * from `exchange`.member where mem_name=#{mem_name}
+		and mem_email=#{mem_email} </select>
+
+	<update parameterType="com.javamuk.domain.Member" id="PwFind"> UPDATE
+		member SET mem_pw=#{mem_pw} WHERE mem_id=#{mem_id} and
+		mem_name=#{mem_name} and mem_email=#{mem_email} </update>
+
+
 </mapper>

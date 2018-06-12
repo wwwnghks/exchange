@@ -47,30 +47,33 @@
 					<div id="main_div">
 						<!-- End Sidebar Menu -->
 						<h1>관심 상품</h1>
+						<br>
 						<c:if test="${!empty favorite_list }">
 							<form id="favoriteproduct" action="favoriteRead" method="post">
-								<table style="width: 750px;" class="table ">
-									<tr>
-										<th><input type="checkbox" id="checkall" name="checkall"></th>
-										<th>사진</th>
-										<th>상품명</th>
-										<th>판매자</th>
-										<th>상품 등록일</th>
-									</tr>
-
+								<table style="width: 700px;" class="table">
+									<thead>
+										<tr>
+											<th><input type="checkbox" id="checkall" name="checkall"></th>
+											<th>사진</th>
+											<th>상품명</th>
+											<th>판매자</th>
+											<th>상품 등록일</th>
+										</tr>
+									</thead>
 									<c:forEach items="${favorite_list }" var="list">
 										<tr>
-											<td style="vertical-align: middle;"><input type="checkbox" name="fav_pro_arr"
+											<td style="vertical-align: middle;"><input
+												type="checkbox" name="fav_pro_arr"
 												value="${list.fav_pro_idx }"></td>
-											<td style="vertical-align: middle;"><a href="myProductRead?pro_idx=${list.pro_idx }">
-													<img alt="${list.pro_name }님의 사진" height="80px"
-													width="80px"
+											<td style="vertical-align: middle;"><a
+												href="myProductRead?pro_idx=${list.pro_idx }"> <img
+													alt="${list.pro_name }님의 사진" height="80px" width="80px"
 													src="<%=request.getContextPath() %>/uploadfile/memberproduct/${list.pro_photo_01 }">
 											</a></td>
 											<td style="vertical-align: middle;">${list.pro_name }</td>
 											<td style="vertical-align: middle;">${list.mem_nickname }</td>
-											<td style="vertical-align: middle;"><fmt:formatDate value="${list.pro_regdate }"
-													pattern="yyyy.MM.dd  hh:mm" /></td>
+											<td style="vertical-align: middle;"><fmt:formatDate
+													value="${list.pro_regdate }" pattern="yyyy.MM.dd  hh:mm" /></td>
 									</c:forEach>
 								</table>
 

@@ -6,6 +6,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+.margin-center {
+   margin: auto;
+   width: 55%;  
+   padding: 10px;
+   padding-top: 40px;
+}
+</style>
+
 <!-- Title -->
 <title>Habitat - A Professional Bootstrap Template</title>
 <%@include file="../include/style.jsp"%>
@@ -16,10 +25,12 @@
 		<!-- === BEGIN CONTENT === -->
 		<div id="content">
 			<div class="container background-white">
-				<div class="row margin-vert-40">
+				<div class="margin-center">
 					<div class="col-md-2">
 						<ul class="list-group sidebar-nav" id="sidebar-nav">
 							<!-- Buttons -->
+							<div class=box style="background-color: #09d2e5">
+									<li class="list-group-item"> </li></div>
 							<li class="list-group-item"><a
 								href="<%=request.getContextPath()%>/notice/noticeList">공지사항</a></li>
 							<!-- End Buttons -->
@@ -34,7 +45,7 @@
 					<br> 저희 영이집에 오신 고객 여러분들을 진심으로 환영합니다.
 					<p>자세한 문의 사항이나 건의사항은 Q&A, 고객센터로 문의 주시면 친절하게 답변해 드리겠습니다 .</p>
 					
-					<hr class="margin-vert-40">
+					<hr class="margin-center">
 					<div id="wrap">
 						<div class="col-md-2"></div>
 						<div id="topForm">
@@ -48,11 +59,11 @@
 									<option value="not_title"
 										<c:out value="${map.searchOption == 'not_title'?'selected':''}"/>>제목</option>
 								</select> <input name="keyword" value="${map.keyword}"> <input
-									type="submit" value="조회" style="border-radius: 5px;" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;
+									type="submit" value="조회" class="btn btn-default btn-sm">&nbsp;&nbsp;&nbsp;&nbsp;
 								<c:if
 									test="${session_manager.man_id !=null && session_manager.man_id=='admin'}">
 									<input type="button" value="글쓰기"
-										onclick="location='noticeCreate'" class="btn" style="border-radius: 5px;" >
+										onclick="location='noticeCreate'" class="btn btn-default btn-sm">
 								</c:if>
 							</form>
 						</div>
@@ -61,14 +72,14 @@
 						<br>
 						<div class="col-md-2"></div>
 						<div id="notice" style="display: inline;">
-							<table id="nList" style="width: 650px" class="table table-striped">
+							<table id="nList" style="width: 670px" class="table">
 							<thead>
 								<tr>
 									<th width="40">번호</th>
 									<th width="200">제목</th>
 									<th width="80">작성자</th>
 									<th width="120">작성일</th>
-									<th width="40">조회수</th>
+									<th width="50">조회수</th>
 									
 								</tr>
 								</thead>
@@ -145,9 +156,9 @@
 									</td>
 								</tr>
 							</table>
-							<br>
+							<!-- <br>
 							<div class="col-md-7"></div>
-							<button type="submit" class="btn btn-primary">목록</button>
+							<button type="submit" class="btn btn-primary">목록</button> -->
 						</div>
 
 						<!-- 페이지 넘버 부분 -->

@@ -25,10 +25,20 @@ public class MemberReadDAO {
 		// TODO Auto-generated method stub
 		return session.selectOne(namespace+".nickCheck", ajax_member);
 	}
-
+	
 	public Member ownerRead(Product product) {
 		// TODO Auto-generated method stub
 		return session.selectOne(namespace+".ownerread", product);
+	}
+	
+	public Member IdFind(Member member) {
+		
+		return session.selectOne(namespace+".idFind", member);
+	}
+	
+	public int PwFind(Member member) {
+		
+		return session.update(namespace+".PwFind", member);
 	}
 	
 	

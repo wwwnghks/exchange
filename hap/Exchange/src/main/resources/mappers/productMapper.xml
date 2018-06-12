@@ -9,7 +9,7 @@
 </select>
 
 <select id="productReadAll" resultType="com.javamuk.domain.Product">
-	select left(pro_location,2) as loc_sub,pro_idx,pro_name,pro_contents,pro_photo_01,pro_photo_02,pro_photo_03,pro_regdate,pro_location,pro_cnt,mem_idx,bra_idx 
+	select left(pro_location,2) as loc_sub,pro_idx,pro_name,pro_contents,pro_photo_01,pro_photo_02,pro_photo_03,pro_regdate,pro_location,pro_hash,pro_cnt,mem_idx,bra_idx 
 	from `exchange`.product order by pro_regdate desc
 </select>
 

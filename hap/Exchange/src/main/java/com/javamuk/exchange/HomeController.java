@@ -30,7 +30,6 @@ public class HomeController {
 		model.addAttribute("allProduct", list);
 		return "home";
 	}
-
 	
 	@RequestMapping(value = "/member/newMember", method = RequestMethod.GET)
 	public String newMemeber() {

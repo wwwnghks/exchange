@@ -8,17 +8,18 @@ import org.springframework.stereotype.Repository;
 import com.javamuk.domain.Member;
 
 @Repository
-public class MemberUpdateDAO {
+public class MyinfoDeleteDAO {
 	
 	@Inject
 	private SqlSession session;
 	
-	private static String namespace="com.javamuk.mapper.memberMapper";
-
-	public int scoreUpdate(Member member) {
-		// TODO Auto-generated method stub
-		return session.update(namespace+".scoreupdate", member);
-	}
+	private static String namespace= "com.javamuk.mapper.memberMapper";
 	
+	public int deleteMember(Member member) {
+		
+		System.out.println("!dao!");
+		System.out.println(member);
+		return session.delete(namespace+".deleteMember",member);
+	}
 
 }

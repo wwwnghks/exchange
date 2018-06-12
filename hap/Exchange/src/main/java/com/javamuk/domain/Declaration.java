@@ -5,18 +5,22 @@ import java.util.Date;
 public class Declaration {
 
 	private int dec_msg_idx;
+	private String mem_name;
 	private String dec_msg_title;
 	private String dec_msg_contents;
 	private Date dec_msg_regdate;
 	private int mem_idx;
 	private int man_idx;
 	private int pro_idx;
+	private int dec_viewCnt;
+
+
 
 	public Declaration() {
 	}
 
-	public Declaration(int dec_msg_idx, String dec_msg_title, String dec_msg_contents, Date dec_msg_regdate,
-			int mem_idx, int man_idx, int pro_idx) {
+	public Declaration(int dec_msg_idx, String mem_name, String dec_msg_title, String dec_msg_contents,
+			Date dec_msg_regdate, int mem_idx, int man_idx, int pro_idx, int dec_viewCnt) {
 		super();
 		this.dec_msg_idx = dec_msg_idx;
 		this.dec_msg_title = dec_msg_title;
@@ -25,6 +29,15 @@ public class Declaration {
 		this.mem_idx = mem_idx;
 		this.man_idx = man_idx;
 		this.pro_idx = pro_idx;
+		this.dec_viewCnt = dec_viewCnt;
+	}
+
+	public String getMem_name() {
+		return mem_name;
+	}
+
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 
 	public int getDec_msg_idx() {
@@ -82,11 +95,20 @@ public class Declaration {
 	public void setPro_idx(int pro_idx) {
 		this.pro_idx = pro_idx;
 	}
+	
+	public int getDec_viewCnt() {
+		return dec_viewCnt;
+	}
+
+	public void setDec_viewCnt(int dec_viewCnt) {
+		this.dec_viewCnt = dec_viewCnt;
+	}
 
 	@Override
 	public String toString() {
-		return "Declaration [dec_msg_idx=" + dec_msg_idx + ", dec_msg_title=" + dec_msg_title + ", dec_msg_contents="
-				+ dec_msg_contents + ", mem_idx=" + mem_idx + ", man_idx=" + man_idx + ", pro_idx=" + pro_idx + "]";
+		return "Declaration [dec_msg_idx=" + dec_msg_idx + ", mem_name=" + mem_name + ", dec_msg_title=" + dec_msg_title
+				+ ", dec_msg_contents=" + dec_msg_contents + ", dec_msg_regdate=" + dec_msg_regdate + ", mem_idx="
+				+ mem_idx + ", man_idx=" + man_idx + ", pro_idx=" + pro_idx + ", dec_viewCnt=" + dec_viewCnt + "]";
 	}
 
 }

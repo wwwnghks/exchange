@@ -46,18 +46,20 @@
 					<div id="bspace" class="col-md-2"></div>
 					<div id="main_div">
 						<!-- End Sidebar Menu -->
-						<h1>팔로윙 목록</h1>
+						<h1>팔로윙</h1>
 						<c:if test="${!empty following_list }">
 							<form id="followDelete" action="followDelete" method="POST">
 								<input type="hidden" name="mem_idx"
 									value="${session_member.mem_idx}">
-								<table  style="width: 600px" class="table ">
+								<table style="width: 700px" class="table ">
+								<thead>
 									<tr align="center">
 										<th><input type="checkbox" id="checkall" name="checkall"></th>
 										<th>번호</th>
 										<th>팔로윙</th>
 										<th>팔로윙 날짜</th>
 									</tr>
+									<thead>
 									<c:forEach var="list" items="${following_list}">
 										<tr>
 											<td><input type="checkbox" name="follow_arr"

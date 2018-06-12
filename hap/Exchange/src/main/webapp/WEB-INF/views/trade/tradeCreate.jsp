@@ -22,9 +22,10 @@
 <body>
 <!-- 상품선택 -->
 <h2>내상품 선택</h2>
+<div>
 <form method="post">
 <input type="hidden" name="oppro_idx" value=${oppro_idx }>
-<table>
+<table border="1">
 <tr>
 <c:forEach items="${myProduct }" var="myProduct" varStatus="status">
     <c:if test="${status.index%4==0 }"><tr></c:if>
@@ -34,10 +35,12 @@
                        		<input type = "radio"  name="mypro_idx" value="${myProduct.pro_idx }"></td>          		
 </c:forEach>
 </table>
+</div>
 <br><br>
-
+<div>
 <input type="submit" value="거래신청">
 <input type="button" value="닫기" onclick="window.close();">
+</div>
 </form>
 </body>
 </html>

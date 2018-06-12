@@ -23,4 +23,11 @@
 						"거래신청",
 						"width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
 	}
+	function openMap() {
+		window
+				.open(
+						"http://localhost:8080/exchange/daumMap/daumMap?pro_location=${productOne.pro_location}",
+						"중간지점",
+						"width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+	}
 </script>

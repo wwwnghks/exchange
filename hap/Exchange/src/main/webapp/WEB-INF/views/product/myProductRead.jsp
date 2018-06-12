@@ -21,6 +21,41 @@
 	text-align: right;
 	vertical-align: bottom;
 }
+
+#hashDiv {
+	font-size: 12px;
+	line-height: 18px;
+	color: #666;
+	background: #f0f0f0;
+	border-radius: 2px;
+	display: inline-block;
+	padding: 1px 5px;
+	margin-right: 5px;
+}
+
+.right h2 {
+	line-height: 27px;
+	margin-top: 11px;
+}
+
+.right h4 {
+	line-height: 20px;
+	font-weight: 400;
+	margin-top: 5px;
+}
+
+.right {
+	width: 540px;
+	margin-left: 20px;
+	float: left;
+	position: relative;
+}
+
+.right-box {
+	float: right;
+}
+
+}
 </style>
 <!-- Title -->
 <title>Habitat - A Professional Bootstrap Template</title>
@@ -37,6 +72,12 @@
 <meta property="og:url"
 	content="http://ec2-52-78-244-162.ap-northeast-2.compute.amazonaws.com:8080/exchange/product/myProductRead?pro_idx=${productOne.pro_idx }" />
 <meta property="og:description" content="${productOne.pro_contents }" />
+
+<meta name="twitter:url"
+	content="http://localhost:8080/exchange/product/myProductRead?pro_idx=${productOne.pro_idx }" />
+<meta name="twitter:title" content="C.m.A API 이야기 [chongmoa.com]" />
+<meta name="twitter:description" content="" />
+
 </head>
 <body>
 	<div id="body-bg">
@@ -44,10 +85,10 @@
 		<!-- === BEGIN CONTENT === -->
 		<div id="content">
 			<div class="container background-white">
-				<div class="row margin-vert-30">
+				<div class="row margin-vert-40">
 					<div class="col-md-12">
 						<div class="row">
-							<div class="col-md-5 animate fadeIn">
+							<div class="col-md-4">
 								<img width="350px" height="250px" id="preview_img"
 									src="<%=request.getContextPath() %>/uploadfile/memberproduct/${productOne.pro_photo_01 }"
 									alt="about-me" class="margin-top-10">
@@ -70,74 +111,106 @@
 									</c:if>
 								</ul>
 								<br>
-
-								<h3>상세 설명</h3>
-								<p style="border: solid; 1px; ">${productOne.pro_contents }</p>
-								<br> <b>해시태그</b>
-								<div id="hashDiv"></div>
-							</div>
-							<div class="col-md-6 margin-bottom-10 animate fadeInRight">
-								<h2 class="padding-top-10 pull-left">${productOne.pro_name }
-								</h2>
+								<div id="hashDiv">${productOne.pro_hash }</div>
+								<br> <br>
 								<div class="fb-share-button"
 									data-href="http://ec2-52-78-244-162.ap-northeast-2.compute.amazonaws.com:8080/exchange/product/myProductRead?pro_idx=${productOne.pro_idx }"
 									data-layout="button_count"></div>
 								<a id="kakao-link-btn" href="javascript:sendLink();"> <img
-									src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
-									style="width: 60px; height: 23px;" />
+									src="<%=request.getContextPath()%>/resources/HTML/assets/img/blog/카카오.PNG"
+									style="width: 25px" style="width: 60px; height: 23px;" />
 								</a> <span> <script type="text/javascript"
 										src="http://share.naver.net/js/naver_sharebutton.js"></script>
 									<script type="text/javascript">
-	
-											new ShareNaver.makeButton({"type": "c" , "title":"${productOne.pro_name}"});
-
-									
+										new ShareNaver.makeButton({
+											"type" : "c",
+											"title" : "${productOne.pro_name}"
+										});
 									</script>
-								</span> <br>
+								</span> <a href="#"
+									onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20 ${productOne.pro_name }%20-%20'+ encodeURIComponent(document.URL), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+									target="_blank" alt="Share on Twitter"><img
+									src="<%=request.getContextPath()%>/resources/HTML/assets/img/blog/트위터.PNG"
+									style="width: 25px"></a> <br>
+							</div>
 
-								<c:if test="${productOne.mem_idx eq session_member.mem_idx}">
-									<div id="buttons">
-										<input type="button" class="btn btn-warning btn-sm" value="수정" id="modify"
-											onclick="location='myProductModify?pro_idx=${productOne.pro_idx}'">
-										<input type="submit" class="btn btn-danger btn-sm" value="삭제" id="delete"
-											onclick="location='myProductDelete?pro_idx=${productOne.pro_idx}'">
-									</div>
-								</c:if>
-
-								<c:if test="${productOne.mem_idx ne session_member.mem_idx}">
-									<input type="button" value="관심상품 추가" class="btn btn-warning btn-sm"
-										style="position: absolute; right: 0"
-										onclick="location='favoriteProduct?pro_idx=${productOne.pro_idx}'">
-								</c:if>
+							<div class="right">
+								<h2 class="padding-top-10 pull-left">
+									<strong>${productOne.pro_name }</strong>
+								</h2>
+								<div class='right-box'>
+									<c:if test="${productOne.mem_idx ne session_member.mem_idx}">
+										<input type="button" value="관심상품" class="btn btn-sm"
+											style="background-color: #222; color: white;"
+											onclick="location='favoriteProduct?pro_idx=${productOne.pro_idx}'">&nbsp;
+										<input type="button" id="follow_btn" value="팔로우"
+											style="background-color: #222; width: 70px; color: white;"
+											class="btn btn-sm" onclick="javascript:follow();">&nbsp;
+										<input type=button class="btn btn-sm"
+											style="background-color: #222; color: white;" value="신고하기"
+											onclick="openWin2();">
+									</c:if>
+									<c:if test="${productOne.mem_idx eq session_member.mem_idx}">
+										<div id="buttons">
+											<input type="button" class="btn btn-sm"
+												style="background-color: white; border-color: #222; color: #222;"
+												value="수정" id="modify"
+												onclick="location='myProductModify?pro_idx=${productOne.pro_idx}'">
+											<input type="submit" class="btn btn-danger btn-sm" value="삭제"
+												id="delete"
+												onclick="location='myProductDelete?pro_idx=${productOne.pro_idx}'">
+										</div>
+									</c:if>
+								</div>
+								<div class="clearfix"></div>
+								<br>
+								<h4>${productOne.pro_contents }</h4>
 
 								<div class="clearfix"></div>
-								<h5>
-									등록일 :
+								<h5 class="padding-top-10 pull-left">
+									<br> <strong>교환장소 : </strong>${productOne.pro_location }<br> <br>
+									<strong>등록일 :</strong>
 									<fmt:formatDate value="${productOne.pro_regdate }"
 										pattern="yyyy.MM.dd" />
-									<br> 교환장소 : ${productOne.pro_location }
 								</h5>
+								<div class='right-box'>
+								<c:if test="${productOne.mem_idx ne session_member.mem_idx}">
+								<input type="button" value="추천장소" class="btn btn-lm" style="background-color: #ffc044; color: white;" id="exchange"
+									 onclick="openMap();">
+								</c:if>
+								</div>
+								<div class="clearfix"></div>
 								<hr>
+
 								<h4>등록자 정보</h4>
 								<h5>
-									닉네임 : ${ownerMember.mem_nickname }<br> 이메일 :
-									${ownerMember.mem_email }<br> 전화번호 :
-									${ownerMember.mem_phone } &nbsp;<br>
-									<c:if test="${productOne.mem_idx ne session_member.mem_idx}">
-									<input type="button" class="btn btn-default btn-sm" value="거래신청" onclick="openWin3();">
-									<input type="hidden" value="" id="mypro_idx">
+									<strong>닉네임 : </strong>${ownerMember.mem_nickname }<br> <br><strong> 이메일 :</strong>
+									${ownerMember.mem_email }<br> <br><strong> 전화번호 :</strong>
+									${ownerMember.mem_phone }
+									<div class='right-box'>
+										<c:if test="${productOne.mem_idx ne session_member.mem_idx}">
+											<input type="button" class="btn btn-lm" value="거래신청"
+												style="background-color: #09d2e5; color: white;"
+												onclick="openWin3();">
+											<input type="hidden" value="" id="mypro_idx">
 									&nbsp;
-										<input type=button class="btn btn-default btn-sm" value="쪽지보내기" onclick="openWin1();">&nbsp;
-									<input type="button" id="follow_btn" value="팔로우" style="background-color: #4368b2; width:70px; color: white;" class="btn btn-sm"
-											onclick="javascript:follow();">&nbsp;
-										<input type=button class="btn btn-danger btn-sm" value="신고하기" onclick="openWin2();">
+										<input type=button class="btn btn-lm" value="쪽지보내기"
+												style="background-color: #222; color: white;"
+												onclick="openWin1();">&nbsp;
 									</c:if>
+									</div>
 								</h5>
-								<hr>
-								댓글달기<br>
-								<textarea class='form-control' id="comment" name="comment" cols="70"></textarea>
-								 <input type="button" class="btn btn-default btn-sm" value="입력" id="write">
-								 <br><br>
+								<br>
+								<br> 댓글<br>
+								<textarea class='form-control' id="comment" name="comment"
+									cols="70"></textarea>
+								<br>
+								<div class='right-box'>
+									<input type="button" class="btn btn-sm"
+										style="background-color: white; border-color: #222; color: #222;"
+										value="입력" id="write">
+								</div>
+								<br> <br>
 								<div id="table"></div>
 							</div>
 						</div>
@@ -145,7 +218,7 @@
 					</div>
 				</div>
 			</div>
-		</div> 
+		</div>
 		<!-- ===END CONTENT2===  -->
 		<%@include file="../include/footer.jsp"%>
 		<%@include file="../include/jsFile.jsp"%>
@@ -162,7 +235,6 @@
 			src="<%=request.getContextPath()%>/resources/js/facebooksharing.js">
 			
 		</script>
-
 
 		<script type='text/javascript'>
 			//<![CDATA[
