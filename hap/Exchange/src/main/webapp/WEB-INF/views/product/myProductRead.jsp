@@ -54,7 +54,6 @@
 .right-box {
 	float: right;
 }
-
 }
 </style>
 <!-- Title -->
@@ -113,13 +112,24 @@
 								<br>
 								<div id="hashDiv">${productOne.pro_hash }</div>
 								<br> <br>
+								<%-- <div class="fb-share-button"
+									data-href="http://ec2-52-78-244-162.ap-northeast-2.compute.amazonaws.com:8080/exchange/product/myProductRead?pro_idx=${productOne.pro_idx }"
+									data-layout="button_count"></div> --%>
+
 								<div class="fb-share-button"
 									data-href="http://ec2-52-78-244-162.ap-northeast-2.compute.amazonaws.com:8080/exchange/product/myProductRead?pro_idx=${productOne.pro_idx }"
-									data-layout="button_count"></div>
+									data-layout="button" data-size="small"
+									data-mobile-iframe="true">
+									<a target="_blank"
+										href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+										class="fb-xfbml-parse-ignore">공유하기</a>
+								</div>
+
 								<a id="kakao-link-btn" href="javascript:sendLink();"> <img
 									src="<%=request.getContextPath()%>/resources/HTML/assets/img/blog/카카오.PNG"
 									style="width: 25px" style="width: 60px; height: 23px;" />
-								</a> <span> <script type="text/javascript"
+								</a> 
+								<span> <script type="text/javascript"
 										src="http://share.naver.net/js/naver_sharebutton.js"></script>
 									<script type="text/javascript">
 										new ShareNaver.makeButton({
@@ -127,7 +137,8 @@
 											"title" : "${productOne.pro_name}"
 										});
 									</script>
-								</span> <a href="#"
+								</span> 
+								<a href="#"
 									onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20 ${productOne.pro_name }%20-%20'+ encodeURIComponent(document.URL), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
 									target="_blank" alt="Share on Twitter"><img
 									src="<%=request.getContextPath()%>/resources/HTML/assets/img/blog/트위터.PNG"
@@ -168,25 +179,26 @@
 
 								<div class="clearfix"></div>
 								<h5 class="padding-top-10 pull-left">
-									<br> <strong>교환장소 : </strong>${productOne.pro_location }<br> <br>
-									<strong>등록일 :</strong>
+									<br> <strong>교환장소 : </strong>${productOne.pro_location }<br>
+									<br> <strong>등록일 :</strong>
 									<fmt:formatDate value="${productOne.pro_regdate }"
 										pattern="yyyy.MM.dd" />
 								</h5>
 								<div class='right-box'>
-								<c:if test="${productOne.mem_idx ne session_member.mem_idx}">
-								<input type="button" value="추천장소" class="btn btn-lm" style="background-color: #ffc044; color: white;" id="exchange"
-									 onclick="openMap();">
-								</c:if>
+									<c:if test="${productOne.mem_idx ne session_member.mem_idx}">
+										<input type="button" value="추천장소" class="btn btn-lm"
+											style="background-color: #ffc044; color: white;"
+											id="exchange" onclick="openMap();">
+									</c:if>
 								</div>
 								<div class="clearfix"></div>
 								<hr>
 
 								<h4>등록자 정보</h4>
 								<h5>
-									<strong>닉네임 : </strong>${ownerMember.mem_nickname }<br> <br><strong> 이메일 :</strong>
-									${ownerMember.mem_email }<br> <br><strong> 전화번호 :</strong>
-									${ownerMember.mem_phone }
+									<strong>닉네임 : </strong>${ownerMember.mem_nickname }<br> <br>
+									<strong> 이메일 :</strong> ${ownerMember.mem_email }<br> <br>
+									<strong> 전화번호 :</strong> ${ownerMember.mem_phone }
 									<div class='right-box'>
 										<c:if test="${productOne.mem_idx ne session_member.mem_idx}">
 											<input type="button" class="btn btn-lm" value="거래신청"
@@ -200,8 +212,7 @@
 									</c:if>
 									</div>
 								</h5>
-								<br>
-								<br> 댓글<br>
+								<br> <br> 댓글<br>
 								<textarea class='form-control' id="comment" name="comment"
 									cols="70"></textarea>
 								<br>

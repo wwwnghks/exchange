@@ -27,7 +27,7 @@ public class MemberReadController {
 		Member ajax_member = new Member();
 		ajax_member.setMem_id(id);
 		int result = service.id_check(ajax_member);
-		if (id.length() < 8) {
+		if (id.length() < 4) {
 			model.addAttribute("result", "length");
 			return "{\"result\":\"" + "length\"}";
 		} else {
@@ -47,7 +47,7 @@ public class MemberReadController {
 		Member ajax_member = new Member();
 		ajax_member.setMem_nickname(nick);
 		int result = service.nick_check(ajax_member);
-		if (nick.length() < 4) {
+		if (nick.length() < 1) {
 			model.addAttribute("result", "length");
 			return "{\"result\":\"" + "length\"}";
 		} else {

@@ -3241,12 +3241,12 @@ ul.posts-list li {
 	font-weight: normal;
 }
 /* Sign Up */
-.signup-page {
-	background: none repeat scroll 0 0 #FEFEFE;
-	border: 1px solid #e6e6e6;
+.signup-page { /* 영의고침 */
+	background: none repeat scroll 0 0 #fff;
+	border: 2px solid #09d2e5;
 	border-radius: 5px;
 	box-shadow: 0 0 3px #EEEEEE;
-	color: #555555;
+	color: #222;
 	padding: 30px;
 }
 

@@ -16,7 +16,7 @@
 .map_wrap {
 	position: relative;
 	width: 100%;
-	height: 350px;
+	height: 670px;
 }
 
 #category {
@@ -206,7 +206,7 @@ alert(afterAddress[0])
 	<!-- <button href="#" onclick="findMidPosition();">바꾸자</button> -->
 
 	<script src="//code.jquery.com/jquery.min.js"></script>
-	<script type="text/javascript">
+	<!-- 	<script type="text/javascript">
 		$(function() {
 			//body가 다실행되면 load가 실행됩니다.
 			$(window).load(function() {
@@ -218,7 +218,18 @@ alert(afterAddress[0])
 			
 			})
 		});
-		</script>
+		</script> -->
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			setTimeout("findMidPosition()", 300); // 3000ms(3초)가 경과하면 ozit_timer_test() 함수를 실행합니다.
+
+		});
+	</script>
+
+
+
 
 
 	<script type="text/javascript"
@@ -561,174 +572,6 @@ alert(afterAddress[0])
 			}
 		}
 	</script>
-
-
-
-
-	<!-- <script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		mapOption = {
-			center : new daum.maps.LatLng(37.49794199999999, 127.02762099999995), // 지도의 중심좌표
-			level : 3
-		// 지도의 확대 레벨
-		};
-
-		var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-		
-		
-		var midPoint = [];
-		
-		var mem_address = ${afterAddress}
-		var pro_location = ${afterLocation}
-		
-		var geocoder = new daum.maps.services.Geocoder();
-
-		// 지도에 마커와 인포윈도우를 표시하는 함수입니다
-		function displayMarker(locPosition, message) {
-			// 마커를 생성합니다
-			var geoMarker = new daum.maps.Marker({
-				map : map,
-				position : locPosition
-			});
-			var geoiwContent = message// 인포윈도우에 표시할 내용
-			// 인포윈도우를 생성합니다
-			var infowindow = new daum.maps.InfoWindow({
-				content : geoiwContent
-			});
-			// 인포윈도우를 마커위에 표시합니다
-			infowindow.open(map, geoMarker);
-			// 지도 중심좌표를 접속위치로 변경합니다
-			map.setCenter(locPosition);
-		}
-
-		// 지도에 클릭 이벤트를 등록합니다
-		// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-		daum.maps.event.addListener(map, 'click', function(mouseEvent) {
-			// 클릭한 위치에 마커를 추가하는 함수
-			//addMarker(mouseEvent.latLng);
-			var length = markersPos.length;
-
-			if (length > 1) {
-				alert("두개만 찍을 수 이뜸");
-			} else {
-				// 마커를 생성합니다
-				addMarker(mouseEvent.latLng);
-			}
-		});
-
-		// 지도에 표시된 마커 객체를 가지고 있을 배열입니다
-		var markers = [];
-		var markersPos = []; // marker의 위치만을 가지고 있을 배열
-		var iwContents = []; // 인포 윈도우 객체를 가지고 있을 배열 
-
-		// 마커를 생성하고 지도위에 표시하는 함수입니다
-		function addMarker(position) {
-
-			// 마커를 생성합니다
-			var marker = new daum.maps.Marker({
-				map : map,
-				position : position,
-				draggable : true
-			});
-
-			var markerPos = { // 마커의 위치 정보
-				newLat : position.getLat().toFixed(4),
-				newLng : position.getLng().toFixed(4)
-			};
-
-			var iwContent = new daum.maps.InfoWindow({
-				position : position,
-				content : "마커의 위치는 " + position.getLat().toFixed(4) + ","
-						+ position.getLng().toFixed(4) + "입니다.",
-				removable : true
-			});
-
-			// 마커가 지도 위에 표시되도록 설정합니다
-			marker.setMap(map);
-			iwContent.open(map, marker);
-			// 생성된 마커를 배열에 추가합니다
-			markers.push(marker);
-			iwContents.push(iwContent);
-			markersPos.push(markerPos);
-
-			var draggedMarker = {};
-			var markerNum = 0;
-
-			daum.maps.event.addListener(marker, 'dragstart', function() {
-				draggedMarker.Lat = marker.getPosition().getLat().toFixed(4);
-				draggedMarker.Lng = marker.getPosition().getLng().toFixed(4);
-
-				for (var i = 0; i < markersPos.length; i++) { // 드래그 되는 마커를 알기 위해
-					if (draggedMarker.Lat == markersPos[i].newLat
-							&& draggedMarker.Lng == markersPos[i].newLng) {
-						markerNum = i;
-					}
-				}
-			});
-
-			daum.maps.event.addListener(marker, 'dragend', function() {
-				// 출발 마커의 드래그가 종료될 때 인포윈도우의 내용을 바꿔주면서 기존의 인포윈도우는 닫고 새 위치에 창을 열어줍니다
-				iwContent.close(map, marker); // 기존의 인포윈도우 닫기 
-
-				iwContent = new daum.maps.InfoWindow(
-						{ // 인포 윈도우 내용 바꾸기기
-							position : marker.getPosition(),
-							content : "마커의 위치는 "
-									+ marker.getPosition().getLat().toFixed(4)
-									+ ","
-									+ marker.getPosition().getLng().toFixed(4)
-									+ "입니다.",
-							removable : true
-						});
-
-				var newPos = { //드래그 된 마커의 새 위치 정보
-					newLat : marker.getPosition().getLat().toFixed(4),
-					newLng : marker.getPosition().getLng().toFixed(4)
-				};
-				markersPos[markerNum] = newPos;
-				iwContent.open(map, marker); //새 내용으로 오픈
-				iwContents[markerNum] = iwContent; // 새 내용 삽입
-			});
-		}
-
-		function findMidPosition() {
-			// 버튼 누르면 두 지점의 중점을 찾음
-			if (markersPos.length != 2) {
-				alert("지도에 마커를 두개 찍어주세용");
-			} else {
-				// 중점 계산하기
-				var marker1Lat = markersPos[0].newLat * 1;
-				var marker1Lng = markersPos[0].newLng * 1;
-				var marker2Lat = markersPos[1].newLat * 1;
-				var marker2Lng = markersPos[1].newLng * 1;
-				var newPosLat = ((marker1Lat + marker2Lat) / 2).toFixed(4);
-				var newPosLng = ((marker1Lng + marker2Lng) / 2).toFixed(4);
-
-				alert(newPosLat + "," + newPosLng);
-
-				// 두 마커간의 중점 찍는 거
-				var marker = new daum.maps.Marker({
-					map : map
-				});
-
-				if (midPoint.length == 1) {
-					midPoint[0].setMap(null);
-					midPoint.pop();
-				}
-				midPoint.push(marker);
-				marker.setPosition(new daum.maps.LatLng(newPosLat, newPosLng));
-				marker.setMap(map);
-
-				/* midPoint.push(marker);
-				marker.setPosition(new daum.maps.LatLng(newPosLat, newPosLng));
-				marker.setMap(map); */
-			}
-		}
-	</script>
- -->
-
-
 
 </body>
 </html>

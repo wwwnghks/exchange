@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
+
 </style>
 </head>
 <%-- <script type="text/javascript"
@@ -22,7 +23,7 @@
 <body>
 <!-- 상품선택 -->
 <h2>내상품 선택</h2>
-<div>
+
 <form method="post">
 <input type="hidden" name="oppro_idx" value=${oppro_idx }>
 <table border="1">
@@ -35,12 +36,13 @@
                        		<input type = "radio"  name="mypro_idx" value="${myProduct.pro_idx }"></td>          		
 </c:forEach>
 </table>
-</div>
+
 <br><br>
-<div>
+<div align="center" >
 <input type="submit" value="거래신청">
 <input type="button" value="닫기" onclick="window.close();">
 </div>
+
 </form>
 </body>
 </html>

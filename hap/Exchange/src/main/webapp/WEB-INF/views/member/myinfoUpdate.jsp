@@ -25,9 +25,11 @@
 #nowpw{
 color: red;
 }
-
+.signup-page{
+margin: 0 auto;
+width: 530px;
+}
 </style>	
-	
 	
 </head>
 
@@ -38,39 +40,39 @@ color: red;
 			<div class="container background-white">
 				<div class="row margin-vert-30">
 					<!-- Register Box -->
-					<div class="col-md-6 col-md-offset-3 col-sm-offset-3">
+					<div class="col-md-5 col-md-offset-3 col-sm-offset-3">
 						<form action="${pageContext.request.contextPath }/member/myinfo"
 							method="post" enctype="multipart/form-data" class="signup-page">
 							<div class="signup-header">
 								<h2>회원수정</h2>
-								<p>안녕하세요,아래의 정보를 입려해 주세요.</p>
+								<p>안녕하세요,아래의 정보를 입력해 주세요.</p>
 							</div>
 							<div style="width: 420px;">
 							<tr>
 							<input type="hidden" name="mem_idx" value="${member.mem_idx}">
-							<label>아이디</label> <br>
+							<label><strong>아이디</strong></label> <br>
 							<td>${member.mem_id}</td> <br> <br> 
 							
-							<td><label style="display: inline;">현재 비밀번호</label></td><td><div id="nowpw" style="width: 200px;"> 필수로 입력하세요.</div></td><tr>
+							<td><label style="display: inline;"><strong>현재 비밀번호</strong></label></td><td><div id="nowpw" style="width: 200px;"> 필수로 입력하세요.</div></td><tr>
 							<td colspan="2"><input class="form-control margin-bottom-20" id="nowPw" type="password" name="mem_pwc"></td> 
 							<td> <label>새 비밀번호</label></td><td><div id="pw" style="width: 200px;">8자 이상 입력하세요.</div></td><tr><td colspan='2'> <input
 								class="form-control margin-bottom-20" type="password"
-								name="mem_pw" id="pwText" oninput="pw()"> </td><tr><td><label>새 비밀번호 확인</label></td><td><div id="pwCh" style="width: 200px;">일치하지 않습니다.</div></td><tr>
+								name="mem_pw" id="pwText" oninput="pw()"> </td><tr><td><label><strong>새 비밀번호 확인</strong></label></td><td><div id="pwCh" style="width: 200px;">일치하지 않습니다.</div></td><tr>
 								<td colspan='2'> <input
 								class="form-control margin-bottom-20" type="password"
 								name="pwChect" id="pwCheck" oninput="pwCh()"></td>
 								
-								<label>이름</label><br>
-							<td>${member.mem_name}</td> <br> <br> <label>생년월일</label><br>
+								<label><strong>이름</strong></label><br>
+							<td>${member.mem_name}</td> <br> <br> <label><strong>생년월일</strong></label><br>
 							<td><fmt:formatDate value="${member.mem_birth}"
-									pattern="yyyy-MM-dd" /></td> <br> <br> <br> <label>닉네임</label><br>
+									pattern="yyyy-MM-dd" /></td> <br> <br> <br> <label><strong>닉네임</strong></label><br>
 							<td>${member.mem_nickname}</td> <br> <br> 
-							<label>핸드폰번호</label>
+							<label><strong>핸드폰번호</strong></label>
 							<input class="form-control margin-bottom-20" type="text"
-								name="mem_phone" value="${member.mem_phone}"> <label>이메일</label>
+								name="mem_phone" value="${member.mem_phone}"> <label><strong>이메일</strong></label>
 							<input class="form-control margin-bottom-20" type="text"
 								name="mem_email" value="${member.mem_email}"> 
-							<label>주소</label><br>
+							<label><strong>주소</strong></label><br>
 							<input type="text" style="width: 30%; white-space: nowrap;"
 								name="address_post" id="sample4_postcode"
 								onclick="sample4_execDaumPostcode(1)" class="form-control"
@@ -86,21 +88,24 @@ color: red;
 
 
 							<span id="guide" style="color: #999"></span> <br> <br>
-							<label onmouseover="changeImg()" onmouseout="normalImg()" class="photos">회원사진</label>
+							<label onmouseover="changeImg()" onmouseout="normalImg()" class="photos"><strong>회원사진</strong></label>
 							<td><c:if test="${member.mem_photo !=null}">
 									<img
 										src="${pageContext.request.contextPath }/uploadfile/memberphoto/${member.mem_photo}" alt="pt" id="m_photo">
 								</c:if></td> <br>
-							<td>사진수정</td>
+							<td><strong>사진수정</strong></td>
 							<td><input type="file" name="photofile"></td>
 							</div>
 							<hr>
 							<div class="row">
 								<div align="right">
-									<input type=button class="btn btn-aqua" value="뒤로가기"
-										onclick="location='../'">
-									<button class="btn btn-primary" type="submit">회원수정</button>
+									<input type=button class="btn btn-lm" value="취소"
+											style="background-color: #222; color: white;"
+										onclick="location='../'">&nbsp;
+									<button class="btn btn-lm" type="submit" style="background-color: #09d2e5; color: white;">회원수정</button>
 								</div>
+								
+								
 							</div>
 						</form>
 					</div>

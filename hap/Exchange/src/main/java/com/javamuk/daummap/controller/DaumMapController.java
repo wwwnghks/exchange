@@ -28,12 +28,13 @@ public class DaumMapController {
 			
 		Member member = (Member)session.getAttribute("session_member");
 		String[] address = member.getMem_address().split("\\s");		
-		String afterAddress = address[2].concat(address[3]);
+		String afterAddress = address[2].concat(address[3].concat(address[4]));
 		
 		String[] location = pro_location.split("\\s");
-		String afterLocation = location[2].concat(location[3]);
+		String afterLocation = location[2].concat(location[3].concat(location[4]));
 		
-		
+		System.out.println(afterLocation);
+		System.out.println(afterAddress);
 		model.addAttribute("afterAddress", afterAddress);
 		model.addAttribute("afterLocation", afterLocation);
 		

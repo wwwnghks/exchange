@@ -147,7 +147,7 @@ th {
 					<button type="submit" class="btn btn-default btn-sm">목록</button>
 					<c:if
 						test="${session_manager.man_id !=null && session_manager.man_id=='admin'}">
-						<button type="submit" class="btn btn-warning btn-sm">수정</button>
+						<button type="submit" class="btn btn-warning btn-sm" >수정</button>
 						<button type="submit" class="btn btn-danger btn-sm">삭제</button>
 					</c:if>
 
@@ -170,21 +170,13 @@ th {
 				/* formObj.attr("action", "noticeUpdate");
 				formObj.attr("method", "get");
 				formObj.submit(); */
-				window.location.href = 'noticeUpdate?not_idx=' + $
-				{
-					read_notice.not_idx
-				}
-				;
+				window.location.href = 'noticeUpdate?not_idx=' + ${read_notice.not_idx};
 			});
 
 			$(".btn-danger").on("click", function() {
 				/* formObj.attr("action", "noticeDelete");
 				formObj.submit(); */
-				window.location.href = 'noticeDelete?not_idx=' + $
-				{
-					read_notice.not_idx
-				}
-				;
+				window.location.href = 'noticeDelete?not_idx=' + ${read_notice.not_idx};
 			});
 
 			$(".btn-default").on("click", function() {

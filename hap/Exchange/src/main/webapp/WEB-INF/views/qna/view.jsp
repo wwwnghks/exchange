@@ -137,7 +137,10 @@ th {
 						</div>
 						<div id="table"></div>
 						<hr>
-						<div class="col-md-5"></div>
+						<div class="col-md-3"></div>
+						<button type="button" id="btnPre" class="btn btn-warning btn-sm">
+							수정
+						</button>
 						<button type="button" id="btnPre" class="btn btn-default btn-sm">
 							<a href="list">목록</a>
 						</button>
@@ -164,6 +167,18 @@ th {
 	<%@include file="../include/footer.jsp"%>
 	<%@include file="../include/jsFile.jsp"%>
 
+	<script>
+		$(document).ready(function() {
+
+			var formObj = $("form[role='form']");
+
+			console.log(formObj);
+
+			$(".btn-warning").on("click", function() {
+				window.location.href = 'update?qa_idx=' + ${qna.qa_idx};
+			});
+		});
+	</script>
 	<script>
 		var pre_name;
 		function getFormatDate(date) {

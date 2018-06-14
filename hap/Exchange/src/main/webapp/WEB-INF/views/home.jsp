@@ -102,7 +102,7 @@ a:link, a:visited {
 	color: #999;
 	display: inline-block;
 	/* height: 100px; */ 
-	margin: 20px 20px 0px 20px;
+	margin: 0px 20px 0px 20px;
 	border-top: 1px solid #d5d5d5;
 	width: 260px;
 }
@@ -165,16 +165,16 @@ a:link, a:visited {
 						<div class="carousel-inner">
 							<div class="item active">
 								<img
-									src="<%=request.getContextPath()%>/resources/HTML/assets/img/slideshow/photo1.jpg">
+									src="<%=request.getContextPath()%>/resources/HTML/assets/img/slideshow/baggu2.jpg" width="1235%" height="400%">
 							</div>
 							<div class="item">
 								<img
-									src="<%=request.getContextPath()%>/resources/HTML/assets/img/slideshow/photo2.jpg">
+									src="<%=request.getContextPath()%>/resources/HTML/assets/img/slideshow/photo3.jpg" width="1235%" height="400%">
 							</div>
-							<div class="item">
+							<%-- <div class="item">
 								<img
-									src="<%=request.getContextPath()%>/resources/HTML/assets/img/slideshow/photo3.jpg">
-							</div>
+									src="<%=request.getContextPath()%>/resources/HTML/assets/img/slideshow/baggu6.jpg" width="1235%" height="400%">
+							</div> --%>
 						</div>
 						<!-- End Carousel Images -->
 						<!-- Carousel Controls -->

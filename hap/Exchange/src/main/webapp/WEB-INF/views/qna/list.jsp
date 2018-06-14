@@ -54,7 +54,6 @@
 				</div>
 				<div class="col-md-1" style="height: 400px"></div>
 				<h2>Q&A</h2>
-				<hr class="margin-center">
 				<div id="wrap">
 				<div class="col-md-2"></div>
 				<div id="topForm">

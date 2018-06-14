@@ -99,7 +99,7 @@ function nick_check() {
 		dataType : 'json',
 		success : function(data) {
 			if (data.result == "length") {
-				$('#nickCh').html("4자 이상 입력하세요.");
+				$('#nickCh').html("필수정보입니다.");
 				$('#nickCh').css('color', 'red');
 				check04 = false;
 				$('#reg_btn').attr('disabled', 'disabled');

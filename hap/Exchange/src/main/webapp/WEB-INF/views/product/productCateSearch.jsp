@@ -24,8 +24,7 @@ table {
 			<div class="container background-white">
 				<div class="row margin-vert-30">
 					<div class="col-md-12">
-						
-						<h2 style="display: inline;"> &nbsp;&nbsp;&nbsp;카테고리 : ${searchName } </h2><br>
+						<%-- <h2 style="display: inline;"> &nbsp;&nbsp;&nbsp;카테고리 : ${searchName } </h2><br> --%>
 						<c:if test="${empty search_list }">
 							 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h2>검색결과없음</h2>
 						</c:if>

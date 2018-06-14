@@ -25,7 +25,7 @@ table {
 				<div class="row margin-vert-30">
 					<div class="col-md-12">
 						
-						<h2 style="display: inline;"> &nbsp;&nbsp;&nbsp;검색내용 : ${search_product.pro_name } </h2><br>
+						<h2 style="display: inline;"> &nbsp;&nbsp;&nbsp; ${search_product.pro_name } </h2><br>
 						<c:if test="${empty search_list }">
 							 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h2>검색결과없음</h2>
 						</c:if>

@@ -8,12 +8,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.javamuk.daummap.persistence.DaumMapDao;
 import com.javamuk.domain.Declaration;
 import com.javamuk.domain.Manager;
 import com.javamuk.domain.Member;
 import com.javamuk.domain.Product;
-import com.javamuk.daummap.persistence.DaumMapDao;
-import com.javamuk.declaration.persistence.DeclarationDAO;
+
 
 @Service
 public class DaumMapService {

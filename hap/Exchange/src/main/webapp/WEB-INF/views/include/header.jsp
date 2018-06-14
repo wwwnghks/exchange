@@ -18,6 +18,17 @@
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
 	float: left !important;
 }
+
+#pre1-header .header-section {
+	width: 960px;
+	margin: 0 auto;
+	position: relative;
+	padding: 15px 10px;
+}
+
+.glyphicon {
+	position: absolute;
+}
 </style>
 <script>
 	function productSearch(){
@@ -69,10 +80,10 @@
 
 		<div class="area-logo">
 			<a href="/exchange"><img
-				src="<%=request.getContextPath()%>/resources/HTML/assets/img/Supreme-logo-newyork.png"
-				alt="Logo" style="width: 104px;" /></a>
+				src="<%=request.getContextPath()%>/resources/HTML/assets/img/logo3.png"
+				alt="Logo" style="width: 140px;" /></a>
 		</div>
-		<div class="area-profile">
+		<div class="area-profile" style="height: ">
 			<c:if test="${session_member eq null && session_manager eq null}">
 				<strong> <a
 					href="<%=request.getContextPath()%>/member/loginMember">로그인</a>&nbsp;&nbsp;
@@ -101,12 +112,15 @@
 				style="width: 400px; margin: 0 auto; display: inline;" required
 				class="search_box_input" placeholder="상품명을 입력하세요."> <input
 				type="text" id="tag_name" class="form-control"
-				style="width: 450px; margin: 0 auto; display: none;" required
+				style="width: 400px; margin: 0 auto; display: none;" required
 				class="search_box_input" placeholder="태그명을 입력하세요."> <a
 				id="pro_Atag" href="javascript:void(0)" onclick="productSearch()"
-				class="glyphicon glyphicon-search" style="display: inline;"></a> <a
-				id="tag_Atag" href="javascript:void(0)" onclick="tagSearch()"
-				class="glyphicon glyphicon-search" style="display: none;"></a>
+				class="glyphicon glyphicon-search"
+				style="top: 28px; right: 310px; display: inline; color: #09D2E5;"></a>
+
+			<a id="tag_Atag" href="javascript:void(0)" onclick="tagSearch()"
+				class="glyphicon glyphicon-search"
+				style="top: 30px; right: 310px; display: none; color: #09D2E5;"></a>
 		</div>
 	</div>
 </div>
@@ -158,11 +172,27 @@
 								<li><a
 									href="<%=request.getContextPath()%>/product/locationRead?location=충북">충북</a></li>
 							</ul></li>
-						<li><a
-							href="<%=request.getContextPath()%>/product/newProduct"
-							class="fa-pencil ">상품등록</a></li>
-						<li><a href="<%=request.getContextPath()%>/product/myProduct"
-							class="fa-folder">내 상품</a></li>
+							
+							<!-- 로그인을 해야 볼 수 있는 페이지 -->
+							<c:if
+								test="${(session_manager.man_id !=null && session_manager.man_id=='admin') || session_member.mem_id ne null}">
+								<li><a
+									href="<%=request.getContextPath()%>/product/newProduct"
+									class="fa-pencil ">상품등록</a></li>
+								<li><a
+									href="<%=request.getContextPath()%>/product/myProduct"
+									class="fa-folder">내 상품</a></li>
+							</c:if>
+							<c:if
+								test="${!((session_manager.man_id !=null && session_manager.man_id=='admin') || session_member.mem_id ne null)}">
+								<li><a
+									href="<%=request.getContextPath()%>/member/loginMember" onclick="alert('로그인이 필요한 페이지 입니다.')"
+									class="fa-pencil ">상품등록</a></li>									
+								<li><a
+									href="<%=request.getContextPath()%>/member/loginMember" onclick="alert('로그인이 필요한 페이지 입니다.')"
+									class="fa-folder">내 상품</a></li>
+							</c:if>
+							
 						<li><a href="<%=request.getContextPath()%>/notice/noticeList"
 							class="fa-bullhorn">공지사항</a></li>
 						<li><a href="<%=request.getContextPath()%>/qna/list"
