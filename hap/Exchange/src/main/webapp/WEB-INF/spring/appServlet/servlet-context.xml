@@ -36,8 +36,7 @@
 
 	<!-- 메일 보내기 설정 -->
 
-	<beans:bean class="org.springframework.mail.javamail.JavaMailSenderImpl"
-		id="mailSender">
+	<beans:bean class="org.springframework.mail.javamail.JavaMailSenderImpl" id="mailSender">
 		<beans:property value="smtp.gmail.com" name="host" />
 		<beans:property value="587" name="port" />
 		<!-- 465 or 25 -->

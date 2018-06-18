@@ -48,7 +48,7 @@
 		<!-- === BEGIN CONTENT === -->
 
 		<div id="content">
-			<div class="container background-white">
+			<div class="container background-white" style="height:800px;">
 
 				<div class="row margin-vert-40">
 					<!-- Begin Sidebar Menu -->

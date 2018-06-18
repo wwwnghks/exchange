@@ -165,15 +165,19 @@ a:link, a:visited {
 						<div class="carousel-inner">
 							<div class="item active">
 								<img
-									src="<%=request.getContextPath()%>/resources/HTML/assets/img/slideshow/baggu2.jpg" width="1235%" height="400%">
+									src="<%=request.getContextPath()%>/resources/HTML/assets/img/slideshow/5.png">
 							</div>
 							<div class="item">
 								<img
-									src="<%=request.getContextPath()%>/resources/HTML/assets/img/slideshow/photo3.jpg" width="1235%" height="400%">
+									src="<%=request.getContextPath()%>/resources/HTML/assets/img/slideshow/photo2.jpg">
 							</div>
 							<%-- <div class="item">
 								<img
-									src="<%=request.getContextPath()%>/resources/HTML/assets/img/slideshow/baggu6.jpg" width="1235%" height="400%">
+									src="<%=request.getContextPath()%>/resources/HTML/assets/img/slideshow/3.jpeg">
+							</div>
+							<div class="item">
+								<img
+									src="<%=request.getContextPath()%>/resources/HTML/assets/img/slideshow/4.jpeg" >
 							</div> --%>
 						</div>
 						<!-- End Carousel Images -->
@@ -240,7 +244,7 @@ a:link, a:visited {
 				var naverLogin = new naver.LoginWithNaverId(
 						{
 							clientId : "QuDRvcnM4lcWAokv8mOE",
-							callbackUrl : "http://ec2-52-78-244-162.ap-northeast-2.compute.amazonaws.com:8080/exchange/",
+							callbackUrl : "http://localhost:8080/exchange/",
 							isPopup : false,
 							callbackHandle : false
 						});

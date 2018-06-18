@@ -3569,7 +3569,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	position: relative;
 	z-index: 2;
 	float: left;
-	width: 100%;
+	width: 120%;
 	margin-bottom: 0;
 }
 
@@ -6399,7 +6399,7 @@ button.close {
 }
 
 .input-text {
-	width: 100%;
+	width: 80%;
 	height: 40px;
 	border: solid #D5D5D5 1px;
 	font-size: 13px;
@@ -6435,7 +6435,7 @@ button.close {
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
-	width: 100%;
+	width: 80%;
 	cursor: pointer;
 	height: 40px;
 	font-size: 13px;

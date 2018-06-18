@@ -21,7 +21,7 @@
 		<%@include file="../include/header.jsp"%>
 		<!-- === BEGIN CONTENT === -->
 		<div id="content">
-			<div class="container background-white">
+			<div class="container background-white" style="height: 801px;">
 				<div class="row margin-vert-30">
 					<!-- Login Box -->
 					<div class="col-md-6 col-md-offset-3 col-sm-offset-3">
@@ -30,13 +30,13 @@
 								<h2>아이디 찾기.</h2>
 							</div>
 							<div class="input-group margin-bottom-20">
-								<span class="input-group-addon"> 
-								</span> <input placeholder="이름" class="form-control" type="text"
+								<span class="input-group-addon"> </span> 
+								<input placeholder="이름" class="form-control" type="text"
 									name="mem_name">
 							</div>
 							<div class="input-group margin-bottom-20">
-								<span class="input-group-addon"> 
-								</span> <input placeholder="이메일" class="form-control"
+								<span class="input-group-addon"> </span> 
+								<input placeholder="이메일" class="form-control"
 									type="text" name="mem_email">
 							</div>
 							<div class="row">

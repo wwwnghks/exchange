@@ -10,7 +10,6 @@
 		values(#{mem_id},#{mem_pw},#{mem_name},#{mem_nickname},#{mem_photo})
 	</insert>
 
-
 	<insert id="createCacaoMember" parameterType="com.javamuk.domain.Member">
 		insert into
 		member(mem_id,mem_pw,mem_name,mem_nickname,mem_photo)

@@ -25,9 +25,7 @@ var str = "";
 $.ajax({
 	url : "../reply/read",
 	dataType : "json",
-	data : {
-			pro_idx : ${productOne.pro_idx }
-		},
+	data : { pro_idx : ${productOne.pro_idx }},
 	cache : false,
 	success : function(data) {
 		if(data["replyList"][0]!=null){

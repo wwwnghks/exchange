@@ -21,8 +21,8 @@ table {
 		<%@include file="../include/header.jsp"%>
 		<!-- === BEGIN CONTENT === -->
 		<div id="content">
-			<div class="container background-white">
-				<div class="row margin-vert-30">
+			<div class="container background-white" style="height: 801px;">
+				<div class="row margin-vert-40">
 					<div class="col-md-12">
 						
 						<h2 style="display: inline;"> &nbsp;&nbsp;&nbsp; ${search_product.pro_name } </h2><br>

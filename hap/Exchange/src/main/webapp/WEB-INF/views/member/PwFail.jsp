@@ -4,7 +4,7 @@
 <html>
 <head>
 <script type="text/javascript">
-alert('비밀번호확인해주세요.');
+alert('현재비밀번호확인해주세요.');
 document.location.href = 'myinfo';
 </script>
 </head>

@@ -37,7 +37,7 @@
 		<%@include file="../include/header.jsp"%>
 		<!-- === BEGIN CONTENT == -->
 		<div id="content">
-			<div class="container background-white">
+			<div class="container background-white" style="height: 800px;">
 				<div class="row margin-vert-40">
 					<!-- Begin Sidebar Menu. -->
 					<div class="col-md-2">

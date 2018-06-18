@@ -21,7 +21,7 @@ table {
 		<%@include file="../include/header.jsp"%>
 		<!-- === BEGIN CONTENT === -->
 		<div id="content">
-			<div class="container background-white">
+			<div class="container background-white" style="height: 780px;">
 				<div class="row margin-vert-30">
 					<div class="col-md-12">
 						

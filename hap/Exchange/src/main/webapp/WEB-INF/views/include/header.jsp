@@ -105,15 +105,19 @@
 			</c:if>
 		</div>
 		<div class="area-search">
+		
 			<select class="form-control" id="menu"
 				style="width: 100px; display: inline;"><option value="name">상품명</option>
-				<option value="tag">태그명</option></select> <input type="text" id="pro_name"
+				<option value="tag">태그명</option></select> 
+				
+				<input type="text" id="pro_name"
 				class="form-control"
 				style="width: 400px; margin: 0 auto; display: inline;" required
 				class="search_box_input" placeholder="상품명을 입력하세요."> <input
 				type="text" id="tag_name" class="form-control"
 				style="width: 400px; margin: 0 auto; display: none;" required
-				class="search_box_input" placeholder="태그명을 입력하세요."> <a
+				class="search_box_input" placeholder="태그명을 입력하세요."> 
+				<a
 				id="pro_Atag" href="javascript:void(0)" onclick="productSearch()"
 				class="glyphicon glyphicon-search"
 				style="top: 28px; right: 310px; display: inline; color: #09D2E5;"></a>

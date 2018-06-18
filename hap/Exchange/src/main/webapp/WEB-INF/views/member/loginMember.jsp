@@ -32,7 +32,7 @@ margin: 0 auto;
    <div class="header2"><a href="/exchange"><img src="/exchange/resources/HTML/assets/img/logo3.png" alt="Logo" style="width: 140px;"></a></div>
    <div class="container2">
       <div class="row2">
-         <form id="frm_login" method="POST" action="loginMember">
+         <form id="frm_login" method="POST" action="loginMember" style="height: 710px;">
          <!-- <input name="retURL" type="hidden" value="https://www.diningcode.com/"> -->
          <div class="login">
             <div class="title bb-gray">로그인 및 회원가입</div>
@@ -44,11 +44,11 @@ margin: 0 auto;
                <input id="txt_pw" type="password" class="input-text" placeholder="비밀번호 입력" name="mem_pw">
             </div>
             <div style="padding:24px 0;">
-               <div class="fl">
+               <div class="fl" style="margin-left: 20px;">
                   <label class="checkbox"><input id="ckb_auto" type="checkbox" value="Y" checked="">
                   <i class="check-icon"></i> <span class="fs-13 fw-b">로그인상태 유지</span></label>
                </div>
-               <div class="fr" style="padding-top:3px;"><a href="<%=request.getContextPath()%>/member/memberPwFind"> |&nbsp;비밀번호 찾기</a></div>
+               <div class="fr" style="padding-top:3px; margin-right:40px;"><a href="<%=request.getContextPath()%>/member/memberPwFind"> |&nbsp;비밀번호 찾기</a></div>
                <div class="fr" style="padding-top:3px;"><a href="<%=request.getContextPath()%>/member/memberIdFind">아이디 찾기  &nbsp; </a></div>
                <div class="clear2"></div>
             </div>
@@ -90,7 +90,7 @@ margin: 0 auto;
       var naverLogin = new naver.LoginWithNaverId(
             {
                clientId : "QuDRvcnM4lcWAokv8mOE",
-               callbackUrl : "http://ec2-52-78-244-162.ap-northeast-2.compute.amazonaws.com:8080/exchange/",
+               callbackUrl : "http://localhost:8080/exchange/",
                isPopup : false, /* 팝업을 통한 연동처리 여부 */
                callbackHandle : false,
                loginButton : {

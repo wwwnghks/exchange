@@ -26,25 +26,25 @@
 								value="${pro_idx}">
 								<%-- <input type="hidden" name="msg_idx"
 								value="${msg_idx}"> --%>
-							<table width="520" border="3" bordercolor="lightgray">
+							<table style="width: 550px" class="table" >
 								<tr>
-									<td id="mem_id">수신인</td>
-									<td>&nbsp;&nbsp;${mem_nickname}</td>
+									<td id="mem_id"><strong>수신인</strong></td>
+									<td>&nbsp;&nbsp;&nbsp;${mem_nickname}</td>
 								</tr>
 								<tr align="center">
-									<td id="msg_title">제 목</td>
+									<td id="msg_title"><strong>제 목</strong></td>
 									<td><input name="msg_title" type="text" size="70"
 										maxlength="100" /></td>
 								</tr>
 								<tr align="center">
-									<td id="msg_contents">내 용</td>
+									<td id="msg_contents"><strong>내 용</strong></td>
 									<td><textarea name="msg_contents" cols="70" rows="20"></textarea>
 									</td>
 								</tr>
 								<tr align="center" valign="middle">
-									<td colspan="5"><input type="reset" value="작성취소">
-										<input type="submit" value="전송"> <input type="button"
-										value="닫기" onclick="window.close();"></td>
+									<td colspan="5"><input type="reset" class="btn btn-lm" style="background-color: #ee627d; color: white;" value="초기화" >
+										<input type="submit" class="btn btn-lm" style="background-color: #09d2e5; color: white;" value="전송" > <input type="button"
+										 class="btn btn-lm" style="background-color: #b4b6c1; color: white;" value="닫기" onclick="window.close();"></td>
 								</tr>
 							</table>
 						</form>

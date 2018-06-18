@@ -36,7 +36,7 @@
 <body>
 	<%@include file="../include/header.jsp"%>
 	<div id="content">
-		<div class="container background-white">
+		<div class="container background-white" style="height: 800px;">
 			<div class="margin-center">
 				<div class="col-md-2">
 					<ul class="list-group sidebar-nav" id="sidebar-nav">

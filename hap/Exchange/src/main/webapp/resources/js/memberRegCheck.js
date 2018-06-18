@@ -63,7 +63,7 @@ function id_check() {
 		dataType : 'json',
 		success : function(data) {
 			if (data.result == "length") {
-				$('#logCh').html("8자 이상 입력하세요.");
+				$('#logCh').html("4자 이상 입력하세요.");
 				$('#logCh').css('color', 'red');
 				check03 = false;
 				$('#reg_btn').attr('disabled', 'disabled');

@@ -83,7 +83,7 @@
 		<%@include file="../include/header.jsp"%>
 		<!-- === BEGIN CONTENT === -->
 		<div id="content">
-			<div class="container background-white">
+			<div class="container background-white" style="height: 945px;">
 				<div class="row margin-vert-40">
 					<div class="col-md-12">
 						<div class="row">
@@ -213,13 +213,10 @@
 									</div>
 								</h5>
 								<br> <br> 댓글<br>
-								<textarea class='form-control' id="comment" name="comment"
-									cols="70"></textarea>
+								<textarea class='form-control' id="comment" name="comment" cols="70"></textarea>
 								<br>
 								<div class='right-box'>
-									<input type="button" class="btn btn-sm"
-										style="background-color: white; border-color: #222; color: #222;"
-										value="입력" id="write">
+									<input type="button" value="입력" id="write">
 								</div>
 								<br> <br>
 								<div id="table"></div>

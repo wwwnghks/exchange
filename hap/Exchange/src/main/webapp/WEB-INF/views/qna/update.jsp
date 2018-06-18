@@ -53,7 +53,7 @@
 	<div id="content">
 		<div class="container background-white">
 			<div class="row margin-vert-40">
-				<div class="col-md-2">
+		<%-- 		<div class="col-md-2">
 					<ul class="list-group sidebar-nav" id="sidebar-nav">
 						<!-- Buttons -->
 						<li class="list-group-item"><a
@@ -64,27 +64,27 @@
 							href="<%=request.getContextPath()%>/qna/list">Q&A</a></li>
 						<!-- End Accordion and Tabs -->
 					</ul>
-				</div>
+				</div> --%>
 
 				<h2>게시글 수정</h2>
-				<hr class="margin-vert-30">
+				<br>
 
 				<form name="form1" method="post" action="update"
 					enctype="multipart/form-data">
-					<table width="800" border="2" bordercolor="lightgray"
+					<table width="600" border="2" bordercolor="lightgray"
 						align="center">
 
 						<input type="hidden" name="mem_idx"
 							value="${session_member.mem_idx}">
 						<tr>
-							<td><label>제목</label></td>
-							<td><input name="qa_title" id="qa_title" size="80"
+							<td style="width:40px"><label>제목</label></td>
+							<td><input name="qa_title" id="qa_title" size="90"
 								value="${qna.qa_title}"></td>
 						</tr>
 						<tr>
 							<td><label>이름</label></td>
 							<td><input name="mem_name" id="mem_name" type="text"
-								value="${session_member.mem_name}" readonly="readonly">
+								value="${session_member.mem_name}" readonly="readonly" size="90">
 							</td>
 						</tr>
 						<tr>
@@ -97,9 +97,9 @@
 						<input type="hidden" name="qa_idx" value="${qna.qa_idx}">
 						<tr align="center" valign="middle">
 
-							<td colspan="5"><button type="button" id="btnUpdete"
-									style="border-radius: 5px;">저장</button> <!-- **상세보기 화면에서 게시글 목록화면으로 이동 -->
-								<button type="button" id="btnList">
+							<td colspan="5"><button type="button" id="btnUpdete" class="btn btn-sm"
+									>저장</button> <!-- **상세보기 화면에서 게시글 목록화면으로 이동 -->
+								<button type="button" id="btnList" class="btn btn-sm">
 									<a href="list">목록</a>
 								</button></td>
 						</tr>

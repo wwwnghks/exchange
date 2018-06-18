@@ -21,7 +21,7 @@ table {
 		<%@include file="../include/header.jsp"%>
 		<!-- === BEGIN CONTENT === -->
 		<div id="content">
-			<div class="container background-white">
+			<div class="container background-white" style="height: 780px;">
 				<div class="row margin-vert-30">
 					<div class="col-md-12">
 						<%-- <h2 style="display: inline;"> &nbsp;&nbsp;&nbsp;카테고리 : ${searchName } </h2><br> --%>

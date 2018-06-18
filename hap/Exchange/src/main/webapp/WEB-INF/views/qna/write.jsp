@@ -57,9 +57,9 @@
 	<div id="body-bg">
 		<%@include file="../include/header.jsp"%>
 		<div id="content">
-			<div class="container background-white">
-				<div class="row margin-vert-30">
-					<div class="col-md-2">
+			<div class="container background-white" style="height: 785px;">
+				<div class="row margin-vert-40">
+					<%-- <div class="col-md-2">
 						<ul class="list-group sidebar-nav" id="sidebar-nav">
 							<!-- Buttons -->
 							<li class="list-group-item"><a
@@ -70,28 +70,29 @@
 								href="<%=request.getContextPath()%>/qna/list">Q&A</a></li>
 							<!-- End Accordion and Tabs -->
 						</ul>
-					</div>
+					</div> --%>
 
 					<h2>게시글 작성</h2>
-					<hr class="margin-vert-30">
+					<br>
+					<!-- <hr class="margin-vert-40"> -->
 					<form name="form1" method="post" action="insert"
 						enctype="multipart/form-data">
 						<input type="hidden" name="mem_idx"
 							value="${session_member.mem_idx}">
-						<table width="800" border="2" bordercolor="lightgray"
+						<table width="600" border="2" bordercolor="lightgray"
 							align="center">
 							<tr>
 
-								<td><label>제목</label></td>
-								<td><input name="qa_title" id="qa_title" size="80"
+								<td style="width:40px"><label>제 목</label></td>&nbsp;
+								<td><input name="qa_title" id="qa_title" size="90"
 									placeholder="제목을 입력해주세요"></td>
 							</tr>
 
 
 							<tr>
-								<td><label>이름</label></td>
+								<td><label>이 름</label></td>&nbsp;
 								<td><input name="mem_name" id="mem_name" type="text" 
-									value="${session_member.mem_name}" readonly="readonly"></td>
+									value="${session_member.mem_name}" readonly="readonly" size="90"></td>
 							</tr>
 							<tr>
 								<td colspan='2'><textarea name="qa_contents"
@@ -101,9 +102,9 @@
 							<tr align="center" valign="middle">
 								<td colspan="5">
 
-									<button type="button" id="btnSave" style="border-radius: 5px;">확인</button>
+									<button type="button" id="btnSave" class="btn btn-sm">확인</button>
 									<button type="button" OnClick="javascript:history.back(-1)"
-										style="border-radius: 5px;">취소</button>
+										class="btn btn-sm">취소</button>
 								</td>
 							</tr>
 

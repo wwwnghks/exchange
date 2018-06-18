@@ -34,7 +34,7 @@
 			<div class="container background-white">
 				<div class="row margin-vert-30">
 					<!-- Register Box -->
-					<div class="col-md-6 col-md-offset-3 col-sm-offset-3">
+					<div class="col-md-4 col-md-offset-4 col-sm-offset-3">
 						<form action="${pageContext.request.contextPath }/member/myDelete" method="post" enctype="multipart/form-data" class="signup-page">
 							<div class="signup-header">
 								<h2>회원탈퇴</h2>
@@ -45,12 +45,13 @@
 								회원탈퇴 하시겠습니까?<br><br>
 								회원 탈퇴로 인해 발생하는 문제는 책임지지 않습니다.
 							</div>
-							<hr>
+							
 							<div class="row">
 								<div align="right">
-									<input type=button class="btn btn-aqua" value="뒤로가기"
-										onclick="location='../'">
-									<button class="btn btn-primary" type="submit">회원탈퇴</button>
+									<input type=button class="btn btn-lm" value="취소"
+											style="background-color: #222; color: white;"
+										onclick="location='../'">&nbsp;
+									<button class="btn btn-lm" type="submit" style="background-color: #09d2e5; color: white;">회원탈퇴</button>
 								</div>
 							</div>
 						</form>

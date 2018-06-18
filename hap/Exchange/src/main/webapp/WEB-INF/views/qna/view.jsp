@@ -82,7 +82,7 @@ th {
 <body>
 	<%@include file="../include/header.jsp"%>
 	<div id="content">
-		<div class="container background-white">
+		<div class="container background-white" style="height: 785px;">
 			<div class="row margin-vert-40">
 				<div class="col-md-2">
 					<ul class="list-group sidebar-nav" id="sidebar-nav">
